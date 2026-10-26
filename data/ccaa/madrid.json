@@ -1,29 +1,41 @@
 {
   "id_ccaa": "madrid",
   "nombre": "Comunidad de Madrid",
-  "notas_generales": [
-    "La Comunidad de Madrid publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "En Primaria, el marco autonómico de referencia es el Decreto 61/2022, de 13 de julio.",
-    "En Educación Infantil, el marco autonómico de refencia es el Decreto 36/2022, de 8 de junio.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "educacion_madrid": "https://www.comunidad.madrid/educacion",
-    "programaciones_docentes": "https://www.comunidad.madrid/educacion/programaciones-docentes-etapas-educacion-infantil-educacion-primaria"
+    "curriculo": "https://www.comunidad.madrid/servicios/educacion"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "Decreto 36/2022, de 8 de junio, del Consejo de Gobierno, por el que se establece para la Comunidad de Madrid la ordenación y el currículo de la etapa de Educación Infantil",
-      "observaciones": "En esta etapa el documento institucional es la propuesta pedagógica, con unidades de programación didáctica por ciclo."
+      "decreto_referencia": "Decreto 36/2022, de 8 de junio",
+      "boletin": "BOCM",
+      "estado": "contrastado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "Decreto 61/2022, de 13 de julio, del Consejo de Gobierno, por el que se establece para la Comunidad de Madrid la ordenación y el currículo de la etapa de Educación Primaria",
-      "observaciones": "La programación didáctica de cada una de las áreas ha de ordenarse para cada ciclo."
+      "decreto_referencia": "Decreto 61/2022, de 13 de julio",
+      "boletin": "BOCM",
+      "estado": "contrastado",
+      "observaciones": ""
+    },
+    "eso": {
+      "decreto_referencia": "Decreto 65/2022, de 20 de julio",
+      "boletin": "BOCM",
+      "estado": "contrastado",
+      "observaciones": ""
+    },
+    "bachillerato": {
+      "decreto_referencia": "Decreto 64/2022, de 20 de julio",
+      "boletin": "BOCM",
+      "estado": "contrastado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "Los centros, en uso de su autonomía pedagógica, concretan y temporalizan el currículo.",
-    "Los elementos transversales pueden tratarse de forma específica en algunos ciclos y no en otros.",
-    "En oposiciones, la convocatoria puede exigir requisitos formales particulares."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

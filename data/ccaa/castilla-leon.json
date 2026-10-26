@@ -1,34 +1,41 @@
 {
   "id_ccaa": "castilla-leon",
   "nombre": "Castilla y León",
-  "notas_generales": [
-    "Castilla y León publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
-    "En oposiciones, la convocatoria puede incluir requisitos formales particulares."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "educacion_cyL": "https://www.educa.jcyl.es"
+    "curriculo": "https://www.educa.jcyl.es"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "currículo de Educación Infantil desarrollado por la Junta de Castilla y León, con referencia al Real Decreto 95/2022",
-      "observaciones": "En esta etapa el documento institucional puede ser la propuesta pedagógica, con unidades de programación didáctica por ciclo."
+      "decreto_referencia": "Decreto 37/2022, de 29 de septiembre",
+      "boletin": "BOCYL",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "currículo de Educación Primaria desarrollado por la Junta de Castilla y León, con referencia al Real Decreto 157/2022",
-      "observaciones": "La programación didáctica de cada una de las áreas ha de ordenarse para cada ciclo."
+      "decreto_referencia": "Decreto 38/2022, de 29 de septiembre",
+      "boletin": "BOCYL",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "eso": {
-      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarrollado por la Junta de Castilla y León, con referencia al Real Decreto 217/2022",
-      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+      "decreto_referencia": "Decreto 39/2022, de 29 de septiembre",
+      "boletin": "BOCYL",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "bachillerato": {
-      "decreto_referencia": "currículo de Bachillerato desarrollado por la Junta de Castilla y León, con referencia al Real Decreto 243/2022",
-      "observaciones": "El Bachillerato se organiza en materias y modalidades; el docente debe tener en cuenta la modalidad y los itinerarios cuando corresponda."
+      "decreto_referencia": "Decreto 40/2022, de 29 de septiembre",
+      "boletin": "BOCYL",
+      "estado": "verificado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "Los centros, en uso de su autonomía pedagógica, concretan y temporalizan el currículo.",
-    "Los elementos transversales pueden tratarse de forma específica en algunos ciclos y no en otros."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

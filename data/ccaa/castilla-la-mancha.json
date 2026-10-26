@@ -1,31 +1,41 @@
 {
   "id_ccaa": "castilla-la-mancha",
   "nombre": "Castilla-La Mancha",
-  "notas_generales": [
-    "Castilla-La Mancha publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
-    "En oposiciones, la convocatoria puede incluir requisitos formales particulares."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "educacion_clm": "https://www.educa.cmm.la"
+    "curriculo": "https://educacion.castillalamancha.es"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "currículo de Educación Infantil desarrollado por la Junta de Comunidades de Castilla-La Mancha, con referencia al Real Decreto 95/2022",
-      "observaciones": "En esta etapa el documento institucional puede ser la propuesta pedagógica, con unidades de programación didáctica por ciclo."
+      "decreto_referencia": "Decreto 80/2022, de 12 de julio",
+      "boletin": "DOCM",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "currículo de Educación Primaria desarrollado por la Junta de Comunidades de Castilla-La Mancha, con referencia al Real Decreto 157/2022",
-      "observaciones": "La programación didáctica de cada una de las áreas ha de ordenarse para cada ciclo."
+      "decreto_referencia": "Decreto 81/2022, de 12 de julio",
+      "boletin": "DOCM",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "eso": {
-      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarrollado por la Junta de Comunidades de Castilla-La Mancha, con referencia al Real Decreto 217/2022",
-      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+      "decreto_referencia": "Decreto 82/2022, de 12 de julio",
+      "boletin": "DOCM",
+      "estado": "contrastado",
+      "observaciones": ""
+    },
+    "bachillerato": {
+      "decreto_referencia": "Decreto 83/2022, de 12 de julio",
+      "boletin": "DOCM",
+      "estado": "verificado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "Los centros, en uso de su autonomía pedagógica, concretan y temporalizan el currículo.",
-    "Los elementos transversales pueden tratarse de forma específica en algunos ciclos y no en otros.",
-    "En oposiciones, la convocatoria puede exigir requisitos formales particulares."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

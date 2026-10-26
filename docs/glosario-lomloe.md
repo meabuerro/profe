@@ -64,4 +64,4 @@ Real Decreto 157/2022, de 1 de marzo, por el que se establece la ordenación y l
 Real Decreto 217/2022, de 29 de marzo, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Secundaria Obligatoria.
 
 ## RD 243/2022
-Real Decreto 243/2022, de 5 de octubre, por el que se establece la ordenación y las enseñanzas mínimas del Bachillerato.
+Real Decreto 243/2022, de 5 de abril, por el que se establece la ordenación y las enseñanzas mínimas del Bachillerato.

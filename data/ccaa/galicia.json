@@ -1,35 +1,41 @@
 {
   "id_ccaa": "galicia",
   "nombre": "Galicia",
-  "notas_generales": [
-    "Galicia publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
-    "En oposiciones, la convocatoria puede incluir requisitos formales particulares."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "educacion_galicia": "https://www.edu.xunta.gal"
+    "curriculo": "https://www.edu.xunta.gal/portal/"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "currículo de Educación Infantil développado por la Xunta de Galicia, con referéncia al Real Decreto 95/2022",
-      "observaciones": "En esta etapa o documento institucional pode ser a proposta pedagóxica, con unidades de programación didáctica por ciclo."
+      "decreto_referencia": "Decreto 150/2022, do 8 de setembro",
+      "boletin": "DOG",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "currículo de Educación Primaria desenvolvido pola Xunta de Galicia, con referéncia ao Real Decreto 157/2022",
-      "observaciones": "A programación didáctica de cada unha das áreas debe ordenarse para cada ciclo."
+      "decreto_referencia": "Decreto 155/2022, do 15 de setembro",
+      "boletin": "DOG",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "eso": {
-      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desenvolvido pola Xunta de Galicia, con referéncia ao Real Decreto 217/2022",
-      "observaciones": "Na ESO as materias e a súa organización poden variar segundo a autonómica."
+      "decreto_referencia": "Decreto 156/2022, do 15 de setembro",
+      "boletin": "DOG",
+      "estado": "contrastado",
+      "observaciones": ""
     },
     "bachillerato": {
-      "decreto_referencia": "currículo de Bachillerato desenvolvido pola Xunta de Galicia, con referéncia ao Real Decreto 243/2022",
-      "observaciones": "O Bacharelato organízase en materias e modalidades; o docente debe ter en conta a modalidade e os itinerarios cando corresponda."
+      "decreto_referencia": "Decreto 157/2022, do 15 de setembro",
+      "boletin": "DOG",
+      "estado": "verificado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "Os centros, no uso de súa autonomía pedagóxica, concretan e temporalizan o currículo.",
-    "Os elementos transversais poden tratarse de forma específica en algúns ciclos e non en outros.",
-    "En oposicións, a convocatoria pode exigir requisitos formais particulares."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

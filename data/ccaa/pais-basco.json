@@ -1,33 +1,41 @@
 {
   "id_ccaa": "pais-basco",
   "nombre": "País Vasco",
-  "notas_generales": [
-    "Esta ficha de referencia recoge las disposiciones del tipo curricular para la Educación Básica Obligatoria en el País Vasco.",
-    "El docente debe validar los enlaces oficiales y las normativas aplicables."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "pais-basco": "https://www.euskadi.eus/educacion"
+    "curriculo": "https://www.euskadi.eus/educacion/"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "Consejo de Ministros de 1 de octubre de 2022",
-      "observaciones": "Primera etapa de Educación Infantil"
+      "decreto_referencia": "Decreto 75/2023, de 30 de mayo",
+      "boletin": "BOPV",
+      "estado": "contrastado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
-      "observaciones": "Primeros cursos de primaria"
+      "decreto_referencia": "Decreto 77/2023, de 30 de mayo",
+      "boletin": "BOPV",
+      "estado": "contrastado",
+      "observaciones": "Establece el currículo de la Educación Básica (Primaria y ESO)."
     },
     "eso": {
-      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
-      "observaciones": "Educación Secundaria Obligatoria"
+      "decreto_referencia": "Decreto 77/2023, de 30 de mayo",
+      "boletin": "BOPV",
+      "estado": "contrastado",
+      "observaciones": "Establece el currículo de la Educación Básica (Primaria y ESO)."
     },
     "bachillerato": {
-      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
-      "observaciones": "Educación de Bachillerato"
+      "decreto_referencia": "Decreto 76/2023, de 30 de mayo",
+      "boletin": "BOPV",
+      "estado": "contrastado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "En el País Vasco pueden existir adaptaciones curriculares propias.",
-    "Se requiere coordinación entre el currículo estatal y las adaptaciones autonómicas."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

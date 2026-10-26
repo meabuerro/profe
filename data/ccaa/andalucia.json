@@ -1,33 +1,41 @@
 {
   "id_ccaa": "andalucia",
   "nombre": "Andalucía",
-  "notas_generales": [
-    "Esta ficha de referencia recoge los aspectos más relevantes del currículo oficial en Andalucía.",
-    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "juntadeandalucia": "https://www.juntadeandalucia.es/educacion"
+    "boletin": "https://www.juntadeandalucia.es/boja"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
-      "observaciones": "Primera etapa de Educación Infantil"
+      "decreto_referencia": "Decreto 100/2023, de 9 de mayo",
+      "boletin": "BOJA",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
-      "observaciones": "Currículo de Educación Primaria"
+      "decreto_referencia": "Decreto 101/2023, de 9 de mayo",
+      "boletin": "BOJA",
+      "estado": "verificado",
+      "observaciones": "Desarrollado por la Orden de 30 de mayo de 2023."
     },
     "eso": {
-      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
-      "observaciones": "Currículo de Educación Secundaria Obligatoria"
+      "decreto_referencia": "Decreto 102/2023, de 9 de mayo",
+      "boletin": "BOJA",
+      "estado": "verificado",
+      "observaciones": "Desarrollado por la Orden de 30 de mayo de 2023."
     },
     "bachillerato": {
-      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
-      "observaciones": "Currículo de Bachillerato"
+      "decreto_referencia": "Decreto 103/2023, de 9 de mayo",
+      "boletin": "BOJA",
+      "estado": "verificado",
+      "observaciones": "Desarrollado por la Orden de 30 de mayo de 2023."
     }
   },
-  "observaciones_transversales": [
-    "En Andalucía pueden existir adaptaciones curriculares propias.",
-    "Coordinación entre el currículo estatal y la normativa autonómica."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

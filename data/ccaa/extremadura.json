@@ -1,31 +1,41 @@
 {
   "id_ccaa": "extremadura",
   "nombre": "Extremadura",
-  "notas_generales": [
-    "Extremadura publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
-    "En oposiciones, la convocatoria puede incluir requisitos formales particulares."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "educacion_extremadura": "https://www.educacion extremes.es"
+    "curriculo": "https://www.educarex.es/sistema-educativo/curriculum-educacion.html"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "currículo de Educación Infantil desarrollado por el Gobierno de Extremadura, con reference al Real Decreto 95/2022",
-      "observaciones": "En esta etapa el documento institucional puede ser la propuesta pedagógica, con unidades de programación didáctica por ciclo."
+      "decreto_referencia": "Decreto 98/2022, de 20 de julio",
+      "boletin": "DOE",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "currículo de Educación Primaria desarrollado por el Gobierno de Extremadura, con reference al Real Decreto 157/2022",
-      "observaciones": "La programación didáctica de cada una de las áreas ha de ordenarse para cada ciclo."
+      "decreto_referencia": "Decreto 107/2022, de 28 de julio",
+      "boletin": "DOE",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "eso": {
-      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarrollado por el Gobierno de Extremadura, con reference al Real Decreto 217/2022",
-      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+      "decreto_referencia": "Decreto 110/2022, de 22 de agosto",
+      "boletin": "DOE",
+      "estado": "verificado",
+      "observaciones": ""
+    },
+    "bachillerato": {
+      "decreto_referencia": "Decreto 109/2022, de 22 de agosto",
+      "boletin": "DOE",
+      "estado": "verificado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "Los ce 단계로 내며, en uso de su autonomía pedagógica, concretan y temporalizan el currículo.",
-    "Los elementos transvversales pueden trattarse de forma específica en algúns ciclos y non en otros.",
-    "En oposicións, a convocatoria pode exigir requisitos formais particulares."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

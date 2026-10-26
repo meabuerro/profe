@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Profe — arranca la app local y abre el navegador predeterminado.
+set -euo pipefail
+
+AQUI="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$AQUI"
+
+if command -v python3 >/dev/null 2>&1; then
+  PY=python3
+elif command -v python >/dev/null 2>&1; then
+  PY=python
+else
+  echo "Profe necesita Python 3. Instálalo desde https://www.python.org/downloads/ y vuelve a intentarlo." >&2
+  exit 1
+fi
+
+exec "$PY" scripts/profe_server.py "$@"

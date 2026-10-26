@@ -1,480 +1,2291 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Programación Didáctica Local - Docente Español</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    header { background: #2563eb; color: white; padding: 20px 0; text-align: center; }
-    header h1 { margin-bottom: 10px; }
-    .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px; margin: 15px 0; }
-    .form-group { margin-bottom: 15px; }
-    label { display: block; font-weight: 600; margin-bottom: 5px; }
-    input, textarea, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
-    button { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; }
-    button:hover { background: #1d4ed8; }
-    .nav-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
-    .tab { padding: 10px 20px; background: #f3f4f6; border-radius: 4px; cursor: pointer; }
-    .tab.active { background: #2563eb; color: white; }
-    .section { display: none; }
-    .section.active { display: block; }
-    .success { background: #dcfce7; color: #166534; padding: 15px; border-radius: 4px; margin: 10px 0; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profe · Programación docente LOMLOE</title>
+<meta name="description" content="Herramienta local para diseñar la programación anual, las programaciones didácticas y las situaciones de aprendizaje conforme a la LOMLOE.">
+<style>
+  :root{
+    --bg:#f6f7fb;
+    --surface:#ffffff;
+    --surface-2:#f2f4f9;
+    --ink:#131722;
+    --ink-2:#4a5468;
+    --ink-3:#78829a;
+    --line:#e3e7f0;
+    --line-strong:#ccd3e0;
+    --brand:#4353e8;
+    --brand-ink:#2c39b8;
+    --brand-soft:#eef0ff;
+    --ok:#137a4d;
+    --ok-soft:#e6f6ee;
+    --warn:#9a5b00;
+    --warn-soft:#fdf3e0;
+    --danger:#b42318;
+    --danger-soft:#fdeceb;
+    --sidebar:#161a26;
+    --sidebar-ink:#c9cfdd;
+    --sidebar-ink-2:#8891a8;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px -16px rgba(16,24,40,.28);
+    --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+    font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{margin:0;font-weight:650;letter-spacing:-.01em;line-height:1.25}
+  h1{font-size:26px}
+  h2{font-size:19px}
+  h3{font-size:16px}
+  p{margin:0}
+  a{color:var(--brand)}
+  button{font:inherit;color:inherit}
+  ::selection{background:#d8dcff}
+
+  /* ---------- Layout ---------- */
+  .app{display:grid;grid-template-columns:266px minmax(0,1fr);min-height:100vh}
+
+  .sidebar{
+    background:var(--sidebar);color:var(--sidebar-ink);
+    display:flex;flex-direction:column;gap:4px;
+    padding:20px 14px 16px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;padding:4px 8px 16px}
+  .brand-mark{
+    width:34px;height:34px;border-radius:10px;flex:none;
+    background:linear-gradient(145deg,#5b6cff,#3a46d6);
+    display:grid;place-items:center;color:#fff;font-weight:700;font-size:16px;
+    box-shadow:0 6px 16px -8px #4a58ff;
+  }
+  .brand-name{color:#fff;font-weight:650;font-size:16px;letter-spacing:-.01em}
+  .brand-sub{font-size:11.5px;color:var(--sidebar-ink-2);margin-top:-2px}
+
+  .nav-group{margin-top:14px}
+  .nav-label{
+    font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+    color:var(--sidebar-ink-2);padding:0 10px 6px;font-weight:600;
+  }
+  .nav-item{
+    display:flex;align-items:center;gap:10px;width:100%;
+    padding:9px 10px;border-radius:9px;border:0;background:transparent;
+    color:var(--sidebar-ink);font-size:14px;text-align:left;cursor:pointer;
+    transition:background .12s ease,color .12s ease;
+  }
+  .nav-item:hover{background:#222838;color:#fff}
+  .nav-item[aria-current="page"]{background:#2a3150;color:#fff;font-weight:600}
+  .nav-item .ico{width:18px;height:18px;flex:none;opacity:.9}
+  .nav-item .badge{
+    margin-left:auto;font-size:11px;background:#2f3752;color:#c9cfdd;
+    border-radius:999px;padding:1px 7px;font-weight:600;
+  }
+  .nav-item[aria-current="page"] .badge{background:#4353e8;color:#fff}
+  .sidebar-foot{margin-top:auto;padding:14px 10px 0;border-top:1px solid #262d40}
+  .context-chip{
+    background:#1d2231;border:1px solid #2a3145;border-radius:10px;
+    padding:9px 10px;font-size:12.5px;color:var(--sidebar-ink);
+  }
+  .context-chip strong{display:block;color:#fff;font-size:13px;margin-bottom:1px}
+  .context-chip span{color:var(--sidebar-ink-2)}
+
+  .main{min-width:0;display:flex;flex-direction:column}
+  .topbar{
+    position:sticky;top:0;z-index:20;background:rgba(246,247,251,.88);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:12px 28px;display:flex;align-items:center;gap:14px;
+  }
+  .crumb{font-size:13px;color:var(--ink-3)}
+  .crumb strong{color:var(--ink);font-weight:600}
+  .topbar-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .save-state{font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+  .dot.pending{background:#c9a227}
+
+  .view{padding:26px 28px 72px;max-width:1180px;width:100%}
+  .view-head{margin-bottom:20px}
+  .view-head p{color:var(--ink-2);margin-top:5px;max-width:74ch;font-size:14px}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    border-radius:10px;border:1px solid var(--line-strong);background:var(--surface);
+    color:var(--ink);padding:8px 14px;font-size:13.5px;font-weight:600;
+    cursor:pointer;transition:.13s ease;white-space:nowrap;
+  }
+  .btn:hover{background:var(--surface-2);border-color:#b9c1d1}
+  .btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .btn-primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-ink);border-color:var(--brand-ink)}
+  .btn-ghost{background:transparent;border-color:transparent;color:var(--ink-2)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .btn-danger{color:var(--danger);border-color:#f0c8c4}
+  .btn-danger:hover{background:var(--danger-soft)}
+  .btn-sm{padding:5px 10px;font-size:12.5px;border-radius:8px}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+
+  /* ---------- Cards & grid ---------- */
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  .card-pad{padding:20px}
+  .card-head{
+    padding:16px 20px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .card-head h2{font-size:16px}
+  .card-head .hint{font-size:12.5px;color:var(--ink-3)}
+  .card-head .grow{margin-left:auto}
+  .card-body{padding:20px}
+  .stack{display:flex;flex-direction:column;gap:16px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+  /* ---------- Form ---------- */
+  .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .field label{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+  .field .help{font-size:11.5px;color:var(--ink-3)}
+  input[type=text],input[type=number],input[type=date],select,textarea{
+    width:100%;padding:8px 10px;border:1px solid var(--line-strong);border-radius:9px;
+    background:var(--surface);color:var(--ink);font:inherit;font-size:14px;
+    transition:border-color .12s ease,box-shadow .12s ease;
+  }
+  textarea{resize:vertical;min-height:84px;line-height:1.5}
+  input:focus,select:focus,textarea:focus{
+    outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(67,83,232,.14);
+  }
+  input:disabled,select:disabled{background:var(--surface-2);color:var(--ink-3)}
+  .check{
+    display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border:1px solid var(--line);
+    border-radius:10px;background:var(--surface);cursor:pointer;font-size:13.5px;line-height:1.45;
+  }
+  .check:hover{border-color:var(--line-strong);background:var(--surface-2)}
+  .check input{margin-top:3px;accent-color:var(--brand);flex:none}
+  .check strong{font-weight:600}
+  .check small{display:block;color:var(--ink-3);font-size:12px;margin-top:2px}
+
+  /* ---------- Bits ---------- */
+  .pill{
+    display:inline-flex;align-items:center;gap:5px;border-radius:999px;
+    padding:2px 9px;font-size:11.5px;font-weight:600;border:1px solid transparent;
+  }
+  .pill-brand{background:var(--brand-soft);color:var(--brand-ink)}
+  .pill-ok{background:var(--ok-soft);color:var(--ok)}
+  .pill-warn{background:var(--warn-soft);color:var(--warn)}
+  .pill-mute{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}
+  .muted{color:var(--ink-3)}
+  .small{font-size:12.5px}
+  .divider{height:1px;background:var(--line);margin:4px 0}
+  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .list-num{padding-left:20px;color:var(--ink-2);font-size:13.5px}
+  .list-num li{margin-bottom:6px}
+
+  /* ---------- Panel / hero ---------- */
+  .hero{
+    background:linear-gradient(120deg,#1b2040 0%,#2a3161 52%,#3a46a8 100%);
+    color:#fff;border-radius:18px;padding:28px 30px;position:relative;overflow:hidden;
+    box-shadow:0 20px 50px -34px #1b2040;
+  }
+  .hero:after{
+    content:"";position:absolute;right:-80px;top:-90px;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(120,138,255,.55),transparent 65%);
+  }
+  .hero h1{font-size:27px;max-width:22ch;position:relative}
+  .hero p{margin-top:10px;color:#cdd3ee;max-width:62ch;position:relative;font-size:14.5px}
+  .hero .row{margin-top:20px;position:relative}
+  .hero-kicker{
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:#a9b3e6;font-weight:700;margin-bottom:10px;position:relative;
+  }
+  .hero .btn{background:#fff;border-color:#fff;color:#1b2040}
+  .hero .btn:hover{background:#eef0ff}
+  .hero .btn-ghost{background:transparent;border-color:rgba(255,255,255,.32);color:#fff}
+  .hero .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  .tool-card{
+    display:flex;gap:14px;align-items:flex-start;text-align:left;
+    padding:17px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+    cursor:pointer;transition:.14s ease;box-shadow:var(--shadow);
+  }
+  .tool-card:hover{border-color:#c3c9e8;transform:translateY(-1px)}
+  .tool-card:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .tool-ico{
+    width:36px;height:36px;border-radius:10px;flex:none;display:grid;place-items:center;
+    background:var(--brand-soft);color:var(--brand-ink);font-size:16px;
+  }
+  .tool-card h3{font-size:14.5px;margin-bottom:3px}
+  .tool-card p{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+  .tool-card .meta{margin-top:8px;font-size:11.5px;color:var(--ink-3);display:flex;gap:8px;align-items:center}
+
+  .steps{display:flex;flex-direction:column;gap:2px}
+  .step{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:0}
+  .step-mark{
+    width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;
+    font-size:11.5px;font-weight:700;background:var(--surface-2);color:var(--ink-3);
+    border:1px solid var(--line-strong);margin-top:1px;
+  }
+  .step-mark.done{background:var(--ok);border-color:var(--ok);color:#fff}
+  .step-body{min-width:0}
+  .step-body strong{font-size:13.5px;display:block}
+  .step-body span{font-size:12.5px;color:var(--ink-3)}
+
+  /* ---------- Tables ---------- */
+  .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--surface)}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{
+    background:var(--surface-2);font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--ink-2);font-weight:700;white-space:nowrap;
+  }
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#fafbff}
+  td input,td select,td textarea{border-color:transparent;background:transparent;padding:5px 7px;font-size:13.5px}
+  td input:hover,td select:hover,td textarea:hover{border-color:var(--line-strong);background:#fff}
+  td input:focus,td textarea:focus,td select:focus{background:#fff}
+  td textarea{min-height:52px}
+  .col-num{width:44px;text-align:center;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .col-actions{width:74px;text-align:right;white-space:nowrap}
+
+  /* ---------- Empty ---------- */
+  .doc-frame{
+    width:100%;height:min(72vh,720px);border:1px solid var(--line);border-radius:12px;
+    background:#fff;box-shadow:inset 0 1px 3px rgba(16,24,40,.05);
+  }
+  .req{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .req:last-child{border-bottom:0}
+  .req .mark{width:18px;height:18px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:10.5px;font-weight:700;margin-top:2px}
+  .req .mark.ok{background:var(--ok);color:#fff}
+  .req .mark.ko{background:var(--danger-soft);color:var(--danger);border:1px solid #f0c8c4}
+  .req .txt{flex:1;min-width:0}
+  .req .txt span{display:block;color:var(--ink-3);font-size:12px}
+
+  .empty{
+    text-align:center;padding:44px 22px;border:1px dashed var(--line-strong);
+    border-radius:var(--radius);background:linear-gradient(180deg,#fcfdff,#f7f9fe);
+  }
+  .empty h3{font-size:15px;margin-bottom:6px}
+  .empty p{color:var(--ink-3);font-size:13.5px;max-width:46ch;margin:0 auto 16px}
+
+  /* ---------- Catálogo ---------- */
+  .cat-grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start}
+  @media (max-width:980px){.cat-grid{grid-template-columns:1fr}}
+  .cat-list{max-height:calc(100vh - 250px);overflow:auto;padding:8px}
+  .cat-item{
+    display:flex;gap:8px;align-items:center;width:100%;text-align:left;
+    padding:9px 10px;border:0;background:transparent;border-radius:9px;cursor:pointer;font-size:13.5px;
+  }
+  .cat-item:hover{background:var(--surface-2)}
+  .cat-item.sel{background:var(--brand-soft);color:var(--brand-ink);font-weight:600}
+  .cat-item .flag{margin-left:auto;font-size:10.5px;color:var(--ink-3);white-space:nowrap}
+  .cat-item.sel .flag{color:var(--brand-ink)}
+  .detail h3{margin-bottom:4px}
+  .detail .ce{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px;background:#fff}
+  .detail .ce h4{font-size:13px;color:var(--brand-ink);margin-bottom:5px}
+  .detail .ce p{font-size:13px;color:var(--ink-2)}
+  .detail .ce ul{margin:7px 0 0;padding-left:18px;font-size:12.5px;color:var(--ink-2)}
+
+  /* ---------- Situaciones ---------- */
+  .sit{display:flex;gap:12px;align-items:center;padding:13px 15px;border-bottom:1px solid var(--line)}
+  .sit:last-child{border-bottom:0}
+  .sit .body{min-width:0;flex:1}
+  .sit strong{font-size:14px;display:block}
+  .sit span{font-size:12.5px;color:var(--ink-3)}
+  .sit-edit{padding:0 20px 20px}
+  .fase{border-left:3px solid var(--brand-soft);padding-left:12px}
+
+  /* ---------- Toast ---------- */
+  #toast{
+    position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);
+    background:#131722;color:#fff;padding:11px 18px;border-radius:11px;font-size:13.5px;
+    opacity:0;pointer-events:none;transition:.2s ease;z-index:100;
+    box-shadow:0 18px 40px -20px #000;
+  }
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* ---------- Print ---------- */
+  @media print{
+    .sidebar,.topbar,#toast,.no-print{display:none!important}
+    .app{display:block}
+    .view{padding:0;max-width:none}
+    .card{box-shadow:none;border-color:#d7dbe4;break-inside:avoid}
+    body{background:#fff}
+  }
+  @media (max-width:820px){
+    .app{grid-template-columns:1fr}
+    .sidebar{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px}
+    .brand{padding:0 8px 0 0}
+    .nav-group{margin:0;display:flex;gap:4px;flex-wrap:wrap}
+    .nav-label{display:none}
+    .sidebar-foot{display:none}
+    .view{padding:18px 16px 60px}
+    .topbar{padding:10px 16px}
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Programación Didáctica Local</h1>
-      <p>Herramienta offline para docentes de España - Sin conexión, tus datos permanecen en tu equipo</p>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="card">
-      <h2>Configuración del Centro y Docente</h2>
-      <form id="configForm">
-        <div class="form-group">
-          <label for="centro">Centro Educativo *</label>
-          <input type="text" id="centro" required placeholder="Nombre del centro">
-        </div>
-        <div class="form-group">
-          <label for="cp">Código Postal *</label>
-          <input type="text" id="cp" required placeholder="08001">
-        </div>
-        <div class="form-group">
-          <label for="docente">Docente Responsable *</label>
-          <input type="text" id="docente" required placeholder="Nombre y apellidos">
-        </div>
-        <button type="submit">Guardar Configuración</button>
-      </form>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div>
+        <div class="brand-name">Profe</div>
+        <div class="brand-sub">Programación LOMLOE</div>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Programación Didáctica</h2>
-      <div class="nav-tabs">
-        <div class="tab active" data-tab="basics">1. Datos Básicos</div>
-        <div class="tab" data-tab="competencias">2. Competencias</div>
-        <div class="tab" data-tab="saberes">3. Saberes Básicos</div>
-        <div class="tab" data-tab="unidades">4. Unidades Didácticas</div>
-        <div class="tab" data-tab="evaluacion">5. Evaluación</div>
-        <div class="tab" data-tab="export">6. Exportar</div>
-      </div>
+    <div class="nav-group">
+      <div class="nav-label">Planificación</div>
+      <button class="nav-item" data-nav="panel" aria-current="page"><span class="ico">▦</span>Panel</button>
+      <button class="nav-item" data-nav="anual"><span class="ico">▤</span>Programación anual<span class="badge" id="badge-anual">0</span></button>
+      <button class="nav-item" data-nav="situaciones"><span class="ico">◈</span>Situaciones de aprendizaje<span class="badge" id="badge-sit">0</span></button>
+    </div>
 
-      <div id="basics" class="section active">
-        <h3>1. Datos Básicos de la Programación</h3>
-        <form id="basicsForm">
-          <div class="form-group">
-            <label for="etapa">Etapa Educativa *</label>
-            <select id="etapa" required>
-              <option value="">Seleccionar...</option>
-              <option value="infantil">Educación Infantil</option>
-              <option value="primaria">Educación Primaria</option>
-              <option value="eso">Educación Secundaria Obligatoria</option>
-              <option value="bachillerato">Bachillerato</option>
-              <option value="fp">Formación Profesional</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="ciclo">Ciclo/Curso *</label>
-            <input type="text" id="ciclo" required placeholder="Ej: 3º ESO, 5º Primaria">
-          </div>
-          <div class="form-group">
-            <label for="materia">Materia/Area *</label>
-            <input type="text" id="materia" required placeholder="Ej: Matemáticas, Lengua Castellana">
-          </div>
-          <div class="form-group">
-            <label for="cuatrimestre">Número de Unidades Didácticas</label>
-            <input type="number" id="numUnidades" min="1" value="12">
-          </div>
-          <button type="submit">Guardar Datos Básicos</button>
-        </form>
-      </div>
+    <div class="nav-group">
+      <div class="nav-label">Documentos</div>
+      <button class="nav-item" data-nav="didactica"><span class="ico">▣</span>Programación didáctica</button>
+      <button class="nav-item" data-nav="documento"><span class="ico">▧</span>Documento final</button>
+      <button class="nav-item" data-nav="catalogo"><span class="ico">▥</span>Catálogo curricular</button>
+    </div>
 
-      <div id="competencias" class="section">
-        <h3>2. Competencias Clave (LOMLOE)</h3>
-        <form id="competenciasForm">
-          <div id="competenciasList">
-            <div class="form-group">
-              <label><input type="checkbox" value="cc1"> Competencia en comunicación lingüística</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc2"> Competencia multilingüe</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc3"> Competencia matemática y competencia en ciencia, tecnología e ingeniería</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc4"> Competencia digital</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc5"> Competencia personal, social y de aprender a aprender</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc6"> Competencia ciudadana</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc7"> Competencia emprendedora</label>
-            </div>
-            <div class="form-group">
-              <label><input type="checkbox" value="cc8"> Competencia en conciencia y expresiones culturales</label>
-            </div>
-          </div>
-          <button type="submit">Guardar Competencias</button>
-        </form>
-      </div>
+    <div class="nav-group">
+      <div class="nav-label">Sistema</div>
+      <button class="nav-item" data-nav="ajustes"><span class="ico">⚙</span>Ajustes y normativa</button>
+    </div>
 
-      <div id="saberes" class="section">
-        <h3>3. Saberes Básicos</h3>
-        <form id="saberesForm">
-          <div id="saberesContainer">
-            <div class="saberes-item" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;">
-              <div class="form-group">
-                <label>Bloque de Contenidos</label>
-                <input type="text" placeholder="Ej: Bloque 1: Sentidos del lenguaje">
+    <div class="sidebar-foot">
+      <div class="context-chip" id="context-chip">
+        <strong>Sin configurar</strong>
+        <span>Empieza en el panel</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="crumb" id="crumb">Panel</div>
+      <div class="topbar-actions">
+        <span class="save-state" id="save-state"><span class="dot"></span>Todo guardado en este equipo</span>
+        <button class="btn btn-sm" data-action="print" title="Imprime el documento final (no la interfaz)">Imprimir documento</button>
+      </div>
+    </div>
+    <div class="view" id="view"></div>
+  </main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="data/app-data.js"></script>
+<script>
+(() => {
+  "use strict";
+
+  const DATA = window.PROFE_DATA || {etapas: [], competenciasClave: [], ccaa: [], materias: {}};
+  const STORAGE_KEY = "profe.state.v1";
+
+  const TITULOS = {
+    panel: "Panel",
+    anual: "Programación anual",
+    situaciones: "Situaciones de aprendizaje",
+    didactica: "Programación didáctica",
+    documento: "Documento final",
+    catalogo: "Catálogo curricular",
+    ajustes: "Ajustes y normativa"
+  };
+
+  // Propuestas de redacción por etapa: ahorran el folio en blanco y son editables.
+  const PROPUESTAS = {
+    metodologia: {
+      infantil: "Partiremos del juego, la experimentación y la vida cotidiana del aula. Las propuestas se organizan en pequeños grupos con rincones de actividad, asegurando tiempos de exploración libre y de acompañamiento individual. El adulto actúa como modelo y mediador, y se da prioridad al lenguaje oral, al movimiento y a la manipulación.",
+      primaria: "Aprendizaje basado en proyectos y en retos cercanos al alumnado, con trabajo cooperativo en equipos heterogéneos, rutinas de pensamiento y uso planificado de recursos digitales. Alternamos actividades de gran grupo, trabajo individual y talleres, con momentos de reflexión sobre lo aprendido y de autoevaluación.",
+      eso: "Metodologías activas: aprendizaje basado en proyectos y en problemas, trabajo cooperativo con roles, y aula invertida en los contenidos de mayor carga conceptual. Se combinan explicaciones breves con prácticas, investigación guiada y producción de un producto final, incorporando el uso responsable de herramientas digitales.",
+      bachillerato: "Metodología que combina la exposición rigurosa de marcos teóricos con la indagación y el trabajo autónomo del alumnado. Se emplean tareas de investigación, seminarios de discusión, resolución de problemas y prácticas de laboratorio o taller, con atención a la comunicación científica y a la preparación para la prueba de acceso a la universidad.",
+      fp: "Metodología basada en retos profesionales y en la simulación de contextos reales de trabajo, con planificación por resultados de aprendizaje, prácticas en taller o aula técnica y seguimiento individualizado del progreso competencial."
+    },
+    diversidad: {
+      infantil: "Se respetan los distintos ritmos de desarrollo con apoyos visuales, anticipación de rutinas y adaptación de tiempos y materiales. La coordinación con las familias y con el equipo de orientación permite ajustar las ayudas a las necesidades detectadas.",
+      primaria: "Medidas ordinarias de refuerzo y ampliación, agrupamientos flexibles, tutoría entre iguales y adaptación de materiales y tiempos. Cuando las necesidades lo requieren, se aplican adaptaciones significativas con el asesoramiento del equipo de orientación y se coordina la respuesta con las familias.",
+      eso: "Se aplican medidas de refuerzo y ampliación, desdobles y agrupamientos flexibles, además de adaptaciones no significativas del currículo (tiempos, materiales, instrumentos de evaluación). El alumnado con necesidades específicas cuenta con un plan de trabajo personalizado y con la coordinación del departamento de orientación.",
+      bachillerato: "Atención a los distintos ritmos de aprendizaje mediante materiales de ampliación, tutorías individualizadas y orientación académica. Se ajustan las tareas y los instrumentos de evaluación para el alumnado con necesidades específicas, con el asesoramiento del departamento de orientación.",
+      fp: "Adaptación de los puestos de trabajo, de los tiempos de ejecución y de los apoyos técnicos, con seguimiento individualizado y coordinación con el departamento de orientación y con las empresas colaboradoras."
+    },
+    evaluacionPractica: "La práctica docente se evalúa mediante tres indicadores: el ajuste de la programación al ritmo real del grupo, la adecuación de las situaciones de aprendizaje al nivel competencial detectado y la eficacia de las medidas de atención a la diversidad. Los datos se recogen en el diario de aula y en las actas de evaluación, y se revisan al final de cada evaluación para introducir mejoras en la siguiente.",
+    actividades: "Se programan actividades complementarias vinculadas a los saberes de la materia, como visitas, talleres o participación en proyectos del centro, con carácter integrado en la programación y no como añadido aislado."
+  };
+
+  const propuesta = (clave) => {
+    const valor = PROPUESTAS[clave];
+    if (!valor) return "";
+    if (typeof valor === "string") return valor;
+    return valor[state.perfil.etapa] || valor.eso || "";
+  };
+
+  const uid = () => Math.random().toString(36).slice(2, 10);
+
+  const statePorDefecto = () => ({
+    vista: "panel",
+    guardado: null,
+    perfil: {
+      centro: "", docente: "", cursoEscolar: "2026/2027",
+      ccaa: "", etapa: "eso", curso: "", materia: "", numUnidades: 9
+    },
+    didactica: {
+      contexto: "", justificacion: "", metodologia: "", diversidad: "",
+      recursos: "", actividades: "", evaluacionPractica: "",
+      competencias: [], criteriosTexto: "", saberesTexto: "",
+      calificacion: [
+        {nombre: "Pruebas escritas", instrumento: "Prueba objetiva", peso: 40},
+        {nombre: "Actividades y tareas", instrumento: "Observación sistemática", peso: 30},
+        {nombre: "Proyecto / producto", instrumento: "Rúbrica", peso: 30}
+      ]
+    },
+    anual: [],
+    situaciones: [],
+    catalogo: {etapa: "eso", id: "", ccaa: ""},
+    situacionAbierta: null,
+    unidadAbierta: null
+  });
+
+  let state = load();
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return statePorDefecto();
+      const parsed = JSON.parse(raw);
+      return Object.assign(statePorDefecto(), parsed, {
+        perfil: Object.assign(statePorDefecto().perfil, parsed.perfil || {}),
+        didactica: Object.assign(statePorDefecto().didactica, parsed.didactica || {})
+      });
+    } catch (err) {
+      console.warn("No se pudo leer el estado guardado:", err);
+      return statePorDefecto();
+    }
+  }
+
+  let saveTimer = null;
+  function save() {
+    state.guardado = new Date().toISOString();
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (err) {
+      toast("No se pudo guardar: el almacenamiento local está lleno o bloqueado.");
+      return;
+    }
+    const node = document.getElementById("save-state");
+    if (node) {
+      node.classList.add("pending");
+      node.lastChild.textContent = "Guardando…";
+    }
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      if (!node) return;
+      node.classList.remove("pending");
+      node.lastChild.textContent = "Todo guardado en este equipo";
+    }, 700);
+  }
+
+  function toast(message) {
+    const node = document.getElementById("toast");
+    node.textContent = message;
+    node.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => node.classList.remove("show"), 2600);
+  }
+
+  const esc = (value) => String(value == null ? "" : value)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+  // ---------- Acceso a datos curriculares ----------
+  const etapaInfo = (id) => DATA.etapas.find((e) => e.id === id);
+  const materiasDe = (etapa) => DATA.materias[etapa] || [];
+  const materiaDe = (etapa, id) => materiasDe(etapa).find((m) => m.id === id);
+  const ccaaDe = (id) => DATA.ccaa.find((c) => c.id === id);
+
+  // Modelo normalizado de una ficha: competencias específicas de la etapa y, por
+  // nivel (ciclo o curso), los criterios de evaluación y los saberes básicos.
+  function modeloFicha(materia) {
+    const out = {
+      fuente: null, remiteA: null, remisionTexto: null,
+      competencias: [], criterios: {}, saberes: [], ciclos: {}, niveles: []
+    };
+    if (!materia) return out;
+    out.fuente = materia.fuente || null;
+    out.remiteA = materia.remiteA || null;
+    out.remisionTexto = materia.remisionTexto || null;
+
+    out.competencias = (Array.isArray(materia.competenciasEspecificas) ? materia.competenciasEspecificas : [])
+      .filter((ce) => ce && ce.texto)
+      .map((ce) => ({
+        id: ce.id || "ce",
+        texto: ce.texto,
+        descriptores: ce.descriptores || "",
+        explicacion: Array.isArray(ce.explicacion) ? ce.explicacion : []
+      }));
+
+    Object.entries(materia.ciclos || {}).forEach(([clave, nivel]) => {
+      if (!nivel || typeof nivel !== "object") return;
+      const criterios = {};
+      Object.entries(nivel.criterios_evaluacion_por_competencia || {}).forEach(([ceId, lista]) => {
+        if (Array.isArray(lista) && lista.length) criterios[ceId] = lista.slice();
+      });
+      const saberes = Array.isArray(nivel.saberes_basicos) ? nivel.saberes_basicos.slice() : [];
+      out.ciclos[clave] = {
+        etiqueta: nivel.etiqueta || clave,
+        competencias: out.competencias,
+        criterios,
+        saberes
+      };
+      out.niveles.push({clave, etiqueta: nivel.etiqueta || clave});
+      Object.entries(criterios).forEach(([ceId, lista]) => {
+        out.criterios[ceId] = Array.from(new Set([...(out.criterios[ceId] || []), ...lista]));
+      });
+      saberes.forEach((s) => { if (!out.saberes.includes(s)) out.saberes.push(s); });
+    });
+    return out;
+  }
+
+  const modeloActual = () => modeloFicha(materiaDe(state.perfil.etapa, state.perfil.materia));
+
+  // Elige el nivel de la ficha que corresponde al curso elegido:
+  // 4º ESO -> "4-eso", 2º ESO -> "1-2-eso", 1er ciclo -> "1er-ciclo".
+  function cicloDeFicha(modelo, curso) {
+    const claves = Object.keys(modelo.ciclos || {});
+    if (!claves.length) return null;
+    const numeros = String(curso || "").match(/\d+/g);
+    const n = numeros && numeros.length ? Number(numeros[0]) : null;
+    if (n !== null) {
+      const exacto = claves.find((k) => k === `${n}-eso` || k === `${n}-bach` || k === `${n}-curso`);
+      if (exacto) return exacto;
+      const rango = claves.find((k) => {
+        const cifras = (k.match(/\d+/g) || []).map(Number);
+        return cifras.length >= 2 && n >= cifras[0] && n <= cifras[1];
+      });
+      if (rango) return rango;
+      const porDigito = claves.find((k) => (k.match(/\d+/) || [])[0] === String(n));
+      if (porDigito) return porDigito;
+    }
+    return claves.length === 1 ? claves[0] : null;
+  }
+
+  // Modelo acotado al curso seleccionado; si no hay coincidencia, el conjunto completo.
+  function modeloParaCurso() {
+    const modelo = modeloActual();
+    const clave = cicloDeFicha(modelo, state.perfil.curso);
+    if (clave && modelo.ciclos[clave]) {
+      return Object.assign({}, modelo.ciclos[clave], {ciclos: modelo.ciclos, ciclo: clave});
+    }
+    return Object.assign({}, modelo, {ciclo: null});
+  }
+
+  // ---------- Utilidades de estado ----------
+  function getPath(path) {
+    return path.split(".").reduce((acc, key) => (acc == null ? undefined : acc[key]), state);
+  }
+  function setPath(path, value) {
+    const keys = path.split(".");
+    let node = state;
+    for (let i = 0; i < keys.length - 1; i += 1) {
+      const key = keys[i];
+      if (node[key] == null) node[key] = /^\d+$/.test(keys[i + 1]) ? [] : {};
+      node = node[key];
+    }
+    node[keys[keys.length - 1]] = value;
+  }
+
+  function totalPesos() {
+    return state.didactica.calificacion.reduce((sum, c) => sum + (Number(c.peso) || 0), 0);
+  }
+
+  function perfilCompleto() {
+    const p = state.perfil;
+    return Boolean(p.etapa && p.curso && p.materia && p.ccaa);
+  }
+
+  const trimestreDe = (index, total) => {
+    const corte = Math.ceil(total / 3);
+    if (index < corte) return "1.ª evaluación";
+    if (index < corte * 2) return "2.ª evaluación";
+    return "3.ª evaluación";
+  };
+
+  // Reparte las competencias específicas del curso entre las unidades y rellena,
+  // con el texto literal de la ficha, los criterios y el bloque de saberes.
+  function generarAnual() {
+    const total = Math.max(1, Number(state.perfil.numUnidades) || 9);
+    const modelo = modeloParaCurso();
+    const competencias = modelo.competencias || [];
+    const criterios = modelo.criterios || {};
+    const bloques = (modelo.saberes || []).filter((s) => /^[A-Z]\.\s/.test(s));
+    const sesionesPorUnidad = Math.max(1, Math.round(32 / total));
+    const pesoBase = Math.round((100 / total) * 10) / 10;
+
+    state.anual = Array.from({length: total}, (_, i) => {
+      const ids = [];
+      if (competencias.length) {
+        ids.push(competencias[i % competencias.length].id);
+        if (total >= competencias.length * 2) {
+          const siguiente = competencias[(i + 1) % competencias.length].id;
+          if (!ids.includes(siguiente)) ids.push(siguiente);
+        }
+      }
+      const textos = ids.flatMap((id) => (criterios[id] || []).slice(0, 2));
+      return {
+        id: uid(),
+        titulo: "",
+        trimestre: trimestreDe(i, total),
+        competencias: ids.map((id) => id.toUpperCase()).join(", "),
+        criterios: textos.join("; "),
+        saberes: bloques.length ? bloques[i % bloques.length] : "",
+        instrumentos: "",
+        sesiones: sesionesPorUnidad,
+        peso: pesoBase
+      };
+    });
+    // El redondeo deja décimas sueltas: se ajustan en la última unidad.
+    if (state.anual.length) {
+      state.anual[state.anual.length - 1].peso =
+        Math.round((100 - pesoBase * (total - 1)) * 10) / 10;
+    }
+    save();
+  }
+
+  // Rellena el expediente con el texto literal de la ficha y las propuestas por
+  // etapa. No toca lo que el docente ya haya escrito.
+  function generarBorrador() {
+    const modelo = modeloParaCurso();
+    const d = state.didactica;
+    const etapa = etapaInfo(state.perfil.etapa);
+    const ccaa = ccaaDe(state.perfil.ccaa);
+    const autonoma = ccaa && ccaa.etapas ? ccaa.etapas[state.perfil.etapa] : null;
+
+    if (!d.competencias.length) {
+      d.competencias = modelo.competencias.map((ce) => ce.id);
+    }
+    if (!String(d.criteriosTexto || "").trim()) {
+      d.criteriosTexto = Object.entries(modelo.criterios)
+        .map(([id, lista]) => `${id.toUpperCase()}: ${lista.join("; ")}`).join("\n");
+    }
+    if (!String(d.saberesTexto || "").trim()) {
+      d.saberesTexto = modelo.saberes.map((s) => `- ${s}`).join("\n");
+    }
+    ["metodologia", "diversidad", "actividades", "evaluacionPractica"].forEach((campo) => {
+      if (!String(d[campo] || "").trim()) d[campo] = propuesta(campo);
+    });
+    if (!String(d.justificacion || "").trim()) {
+      const materia = materiaDe(state.perfil.etapa, state.perfil.materia);
+      d.justificacion = [
+        `Esta programación desarrolla el currículo de ${materia ? materia.nombre : "la materia"} ` +
+        `para ${state.perfil.curso} de ${etapa ? etapa.nombre : "la etapa"}, de acuerdo con ` +
+        `${(materia && materia.decreto) || (etapa && etapa.decreto) || "la normativa vigente"}.`,
+        autonoma ? `En ${ccaa.nombre} se aplica ${autonoma.decreto_referencia}.` : "",
+        "El currículo se organiza en competencias específicas, criterios de evaluación y saberes " +
+        "básicos, y se concreta en las situaciones de aprendizaje de esta programación.",
+        "Las competencias clave del perfil de salida se trabajan de forma integrada a través de " +
+        "las tareas y productos que se describen en los apartados siguientes."
+      ].filter(Boolean).join(" ");
+    }
+    if (!state.anual.length) generarAnual();
+    save();
+    toast("Borrador generado con el texto literal de la ficha. Revísalo y ajústalo a tu grupo.");
+  }
+
+  function nuevaSituacion() {
+    const sit = {
+      id: uid(), titulo: "", curso: state.perfil.curso, materia: state.perfil.materia,
+      reto: "", producto: "", competenciasClave: [], competenciasEsp: "", criterios: "",
+      saberes: "", agrupamientos: "", recursos: "", tiempo: "",
+      fases: {motivacion: "", desarrollo: "", aplicacion: "", evaluacion: ""},
+      evaluacion: "", diversidad: ""
+    };
+    state.situaciones.push(sit);
+    state.situacionAbierta = sit.id;
+    save();
+  }
+
+  // ---------- Render ----------
+  const view = () => document.getElementById("view");
+
+  function focusTitulo() {
+    const titulo = view().querySelector("h1");
+    if (!titulo) return;
+    titulo.setAttribute("tabindex", "-1");
+    titulo.focus({preventScroll: true});
+  }
+
+  function render() {
+    document.querySelectorAll("[data-nav]").forEach((btn) => {
+      if (btn.dataset.nav === state.vista) btn.setAttribute("aria-current", "page");
+      else btn.removeAttribute("aria-current");
+    });
+    document.getElementById("crumb").innerHTML = `Profe <span aria-hidden="true">/</span> <strong>${esc(TITULOS[state.vista] || "")}</strong>`;
+    document.getElementById("badge-anual").textContent = state.anual.length;
+    document.getElementById("badge-sit").textContent = state.situaciones.length;
+    renderContexto();
+
+    const vistas = {panel: vistaPanel, anual: vistaAnual, situaciones: vistaSituaciones,
+                    didactica: vistaDidactica, documento: vistaDocumento,
+                    catalogo: vistaCatalogo, ajustes: vistaAjustes};
+    view().innerHTML = (vistas[state.vista] || vistaPanel)();
+    if (state.vista === "documento") {
+      const marco = document.getElementById("doc-preview");
+      if (marco) marco.srcdoc = documentoImprimible();
+    }
+    window.scrollTo({top: 0, behavior: "instant" in window ? "instant" : "auto"});
+  }
+
+  function renderContexto() {
+    const p = state.perfil;
+    const etapa = etapaInfo(p.etapa);
+    const materia = materiaDe(p.etapa, p.materia);
+    const ccaa = ccaaDe(p.ccaa);
+    const chip = document.getElementById("context-chip");
+    if (!p.materia) {
+      chip.innerHTML = `<strong>${esc(etapa ? etapa.nombre : "Sin etapa")}</strong><span>Elige materia y comunidad</span>`;
+      return;
+    }
+    chip.innerHTML = `<strong>${esc(materia ? materia.nombre : "")}</strong>
+      <span>${esc(p.curso)}${ccaa ? " · " + esc(ccaa.nombre) : ""}</span>`;
+  }
+
+  // --- Panel ---
+  // Requisitos que suele revisar la inspección educativa al pedir el expediente.
+  function requisitos() {
+    const p = state.perfil;
+    const d = state.didactica;
+    const modelo = modeloParaCurso();
+    const pesos = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    return [
+      {ok: Boolean(p.centro && p.docente), t: "Datos del centro y del docente", s: "Cabecera de todos los documentos.", vista: "ajustes"},
+      {ok: Boolean(p.etapa && p.curso && p.materia && p.ccaa), t: "Contexto curricular", s: "Etapa, curso, materia y comunidad autónoma.", vista: "panel"},
+      {ok: d.contexto.trim().length > 40, t: "Contextualización del grupo", s: "Entorno, características del alumnado y necesidades detectadas.", vista: "didactica"},
+      {ok: d.competencias.length > 0, t: "Competencias específicas", s: "Seleccionadas del currículo de la materia.", vista: "didactica"},
+      {ok: Boolean(d.criteriosTexto.trim() && d.saberesTexto.trim()), t: "Criterios de evaluación y saberes básicos", s: "Elementos curriculares que se trabajan.", vista: "didactica"},
+      {ok: d.calificacion.length > 0 && totalPesos() === 100, t: "Criterios de calificación al 100 %", s: "Instrumentos y peso de cada uno.", vista: "didactica"},
+      {ok: Boolean(d.metodologia.trim()), t: "Metodología", s: "Principios y estrategias didácticas.", vista: "didactica"},
+      {ok: Boolean(d.diversidad.trim()), t: "Atención a la diversidad", s: "Medidas ordinarias y específicas.", vista: "didactica"},
+      {ok: state.anual.length > 0 && pesos === 100, t: "Programación anual completa", s: "Unidades repartidas y pesos que suman 100 %.", vista: "anual"},
+      {ok: state.situaciones.some((s) => s.titulo.trim() && s.producto.trim()), t: "Situación de aprendizaje evaluable", s: "Con título y producto final definidos.", vista: "situaciones"},
+      {ok: Boolean(d.evaluacionPractica.trim()), t: "Evaluación de la práctica docente", s: "Indicadores de mejora para el curso.", vista: "didactica"},
+      {ok: Boolean(modelo.competencias.length), t: "Ficha curricular disponible", s: "Competencias y saberes cargados desde el catálogo.", vista: "catalogo"}
+    ];
+  }
+
+  function vistaPanel() {
+    const p = state.perfil;
+    const etapa = etapaInfo(p.etapa);
+    const materia = materiaDe(p.etapa, p.materia);
+    const ccaa = ccaaDe(p.ccaa);
+    const modelo = modeloActual();
+    const pesos = totalPesos();
+
+    const pasos = requisitos();
+    const hechos = pasos.filter((x) => x.ok).length;
+    const porcentaje = Math.round(hechos / pasos.length * 100);
+
+    return `
+      <section class="hero">
+        <div class="hero-kicker">LOMLOE · Curso ${esc(p.cursoEscolar)}</div>
+        <h1>Tu programación docente, ordenada y lista para entregar.</h1>
+        <p>Programación anual, programaciones didácticas y situaciones de aprendizaje enlazadas al currículo oficial de tu etapa y tu comunidad. Todo se guarda en este equipo.</p>
+        <div class="row">
+          <button class="btn" data-action="ir-anual">${state.anual.length ? "Continuar programación anual" : "Empezar programación anual"}</button>
+          <button class="btn btn-ghost" data-action="ir-didactica">Programación didáctica</button>
+          <button class="btn btn-ghost" data-action="ir-vista" data-vista="documento">Documento final</button>
+        </div>
+      </section>
+
+      <div class="grid-2" style="margin-top:18px;align-items:start">
+        <div class="card">
+          <div class="card-head">
+            <h2>Contexto de trabajo</h2>
+            <span class="grow"></span>
+            <span class="pill ${perfilCompleto() ? "pill-ok" : "pill-warn"}">${perfilCompleto() ? "Completo" : "Falta configurar"}</span>
+          </div>
+          <div class="card-body stack">
+            <div class="grid-2">
+              <div class="field">
+                <label for="p-etapa">Etapa educativa</label>
+                <select id="p-etapa" data-change="perfil.etapa">
+                  ${DATA.etapas.map((e) => `<option value="${esc(e.id)}" ${e.id === p.etapa ? "selected" : ""}>${esc(e.nombre)}</option>`).join("")}
+                </select>
               </div>
-              <div class="form-group">
-                <label>Saberes Básicos</label>
-                <textarea rows="3" placeholder="Describir los saberes básicos..."></textarea>
-              </div>
-            </div>
-          </div>
-          <button type="button" onclick="addSaberesItem()">Añadir Bloque</button>
-          <button type="submit" style="margin-left: 10px;">Guardar Saberes</button>
-        </form>
-      </div>
-
-      <div id="unidades" class="section">
-        <h3>4. Unidades Didácticas</h3>
-        <p style="margin: 10px 0; color: #666;">Para cada unidad didáctica, especifica los elementos curriculares.</p>
-        <div id="unidadesContainer"></div>
-        <button type="button" onclick="addUnidad()">Añadir Unidad Didáctica</button>
-        <button type="submit" style="margin-left: 10px;">Generar Estructura</button>
-      </div>
-
-      <div id="evaluacion" class="section">
-        <h3>5. Criterios de Evaluación</h3>
-        <form id="evaluacionForm">
-          <div id="criteriosContainer">
-            <div class="criterio-item" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;">
-              <div class="form-group">
-                <label>Criterio de Evaluación</label>
-                <textarea rows="2" placeholder="Describir el criterio..."></textarea>
-              </div>
-              <div class="form-group">
-                <label>Instrumento de Evaluación</label>
-                <select class="evaluacion-instruments">
-                  <option value="">Seleccionar...</option>
-                  <option>Rúbrica</option>
-                  <option>Lista de cotejo</option>
-                  <option>Prueba objetiva</option>
-                  <option>Observación sistemática</option>
-                  <option>Diario de aprendizaje</option>
-                  <option>Portafolio</option>
-                  <option>Autoevaluación</option>
-                  <option>Coevaluación</option>
+              <div class="field">
+                <label for="p-curso">Curso o ciclo</label>
+                <select id="p-curso" data-change="perfil.curso">
+                  <option value="">Selecciona…</option>
+                  ${(etapa ? etapa.ciclos : []).map((c) => `<option value="${esc(c)}" ${c === p.curso ? "selected" : ""}>${esc(c)}</option>`).join("")}
                 </select>
               </div>
             </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="p-materia">${esc(etapa ? etapa.terminologia : "Materia")}</label>
+                <select id="p-materia" data-change="perfil.materia">
+                  <option value="">Selecciona…</option>
+                  ${materiasDe(p.etapa).map((m) => `<option value="${esc(m.id)}" ${m.id === p.materia ? "selected" : ""}>${esc(m.nombre)}</option>`).join("")}
+                </select>
+              </div>
+              <div class="field">
+                <label for="p-ccaa">Comunidad autónoma</label>
+                <select id="p-ccaa" data-change="perfil.ccaa">
+                  <option value="">Selecciona…</option>
+                  ${DATA.ccaa.map((c) => `<option value="${esc(c.id)}" ${c.id === p.ccaa ? "selected" : ""}>${esc(c.nombre)}</option>`).join("")}
+                </select>
+              </div>
+            </div>
+            ${materia ? `
+              <div class="card-pad" style="background:var(--surface-2);border-radius:10px;border:1px solid var(--line)">
+                <div class="row" style="justify-content:space-between">
+                  <div>
+                    <strong style="font-size:13.5px">${esc(materia.nombre)}</strong>
+                    <div class="small muted">${esc(materia.decreto || etapa.decreto || "")}</div>
+                  </div>
+                  <span class="pill ${modelo.competencias.length ? "pill-brand" : "pill-mute"}">
+                    ${modelo.competencias.length ? modelo.competencias.length + " competencias específicas" : "Sin ficha de referencia"}
+                  </span>
+                </div>
+              </div>` : ""}
+            <details ${(!p.centro || !p.docente) ? "open" : ""}>
+              <summary class="small" style="cursor:pointer;color:var(--ink-2);font-weight:600">Datos de cabecera del documento</summary>
+              <div class="grid-2" style="margin-top:10px">
+                <div class="field">
+                  <label for="p-centro">Centro educativo</label>
+                  <input id="p-centro" type="text" placeholder="Nombre del centro" value="${esc(p.centro)}" data-bind="perfil.centro">
+                </div>
+                <div class="field">
+                  <label for="p-docente">Docente responsable</label>
+                  <input id="p-docente" type="text" placeholder="Nombre y apellidos" value="${esc(p.docente)}" data-bind="perfil.docente">
+                </div>
+              </div>
+            </details>
+            <div class="field">
+              <label for="p-uni">Número de unidades o situaciones</label>
+              <input id="p-uni" type="number" min="1" max="30" value="${esc(p.numUnidades)}" data-bind="perfil.numUnidades">
+            </div>
           </div>
-          <button type="button" onclick="addCriterio()">Añadir Criterio</button>
-          <button type="submit" style="margin-left: 10px;">Guardar Evaluación</button>
-        </form>
-      </div>
+        </div>
 
-      <div id="export" class="section">
-        <h3>6. Exportar Programación</h3>
         <div class="card">
-          <h4>Exportar como:</h4>
-          <div style="margin: 20px 0;">
-            <button onclick="exportarPDF()">Exportar a PDF</button>
-            <button onclick="exportarJSON()" style="margin-left: 10px;">Exportar a JSON (para reutilizar)</button>
-            <button onclick="exportarHTML()" style="margin-left: 10px;">Exportar vista previa HTML</button>
+          <div class="card-head">
+            <h2>Checklist de entrega</h2>
+            <span class="grow"></span>
+            <span class="pill ${porcentaje === 100 ? "pill-ok" : "pill-mute"}" id="checklist-pct">${porcentaje} %</span>
           </div>
-          <div id="exportStatus"></div>
-        </div>
-
-        <div class="card" style="background: #fef3c7;">
-          <h4>📋 Resumen Legal</h4>
-          <p style="font-size: 14px; color: #92400e;">
-            <strong>Marco normativo:</strong> LOMLOE (LO 3/2020), RD 157/2022 (Primaria), RD 217/2022 (ESO), 
-            RD 243/2022 (Bachillerato), Decretos Autonómicos de cada CCAA.
-            <br><br>
-            <strong>Competencias clave (8):</strong> La programación debe integrar las 8 competencias clave del 
-            Perfil de Salida del alumnado.
-            <br><br>
-            <strong>Situaciones de aprendizaje:</strong> La LOMLOE exige el diseño de situaciones de aprendizaje 
-            contextualizadas y significativas.
-          </p>
+          <div class="card-body">
+            <div class="req-list">
+              ${pasos.map((paso) => `
+                <div class="req">
+                  <div class="mark ${paso.ok ? "ok" : "ko"}">${paso.ok ? "✓" : "!"}</div>
+                  <div class="txt"><strong>${esc(paso.t)}</strong><span>${esc(paso.s)}</span></div>
+                  ${paso.ok ? "" : `<button class="btn btn-ghost btn-sm" data-action="ir-vista" data-vista="${paso.vista}">Completar</button>`}
+                </div>`).join("")}
+            </div>
+            <div class="row" style="margin-top:14px;flex-wrap:wrap">
+              <button class="btn btn-primary btn-sm" data-action="borrador">Generar borrador completo</button>
+              <button class="btn btn-sm" data-action="ir-vista" data-vista="documento">Ver documento final</button>
+              <span class="small muted">${hechos} de ${pasos.length} requisitos listos</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div id="mensaje"></div>
-    </div>
-  </div>
-
-  <script>
-    // Gestionar pestañas
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
-
-    // Guardar configuración básica
-    document.getElementById('configForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const config = {
-        centro: document.getElementById('centro').value,
-        codigoPostal: document.getElementById('cp').value,
-        docente: document.getElementById('docente').value,
-        fecha: new Date().toISOString()
-      };
-      localStorage.setItem('programacionConfig', JSON.stringify(config));
-      mostrarMensaje('Configuración guardada correctamente en local', 'success');
-    });
-
-    // Datos básicos
-    document.getElementById('basicsForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const basics = {
-        etapa: document.getElementById('etapa').value,
-        ciclo: document.getElementById('ciclo').value,
-        materia: document.getElementById('materia').value,
-        numUnidades: parseInt(document.getElementById('numUnidades').value) || 12,
-        fecha: new Date().toISOString()
-      };
-      localStorage.setItem('programacionBasics', JSON.stringify(basics));
-      mostrarMensaje('Datos básicos guardados', 'success');
-    });
-
-    // Competencias
-    document.getElementById('competenciasForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const competencias = Array.from(document.querySelectorAll('#competenciasList input:checked'))
-        .map(cb => cb.value);
-      localStorage.setItem('programacionCompetencias', JSON.stringify(competencias));
-      mostrarMensaje('Competencias clave guardadas', 'success');
-    });
-
-    // Saberes básicos
-    function addSaberesItem() {
-      const container = document.getElementById('saberesContainer');
-      const div = document.createElement('div');
-      div.className = 'saberes-item';
-      div.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;';
-      div.innerHTML = `
-        <div class="form-group">
-          <label>Bloque de Contenidos</label>
-          <input type="text" placeholder="Ej: Bloque 1: Sentidos del lenguaje">
-        </div>
-        <div class="form-group">
-          <label>Saberes Básicos</label>
-          <textarea rows="3" placeholder="Describir los saberes básicos..."></textarea>
-        </div>
-      `;
-      container.appendChild(div);
-    }
-
-    document.getElementById('saberesForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const items = Array.from(document.querySelectorAll('#saberesContainer .saberes-item'));
-      const saberes = items.map((item, i) => ({
-        bloque: item.querySelector('input').value,
-        descripcion: item.querySelector('textarea').value
-      }));
-      localStorage.setItem('programacionSaberes', JSON.stringify(saberes));
-      mostrarMensaje('Saberes básicos guardados', 'success');
-    });
-
-    // Unidades didácticas
-    function addUnidad() {
-      const container = document.getElementById('unidadesContainer');
-      const div = document.createElement('div');
-      div.className = 'unidad-item';
-      div.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;';
-      div.innerHTML = `
-        <h4 style="margin: 0 0 10px 0;">Unidad Didáctica</h4>
-        <div class="form-group">
-          <label>Título de la Unidad</label>
-          <input type="text" placeholder="Ej: Unidad 1: La novela">
-        </div>
-        <div class="form-group">
-          <label>Descripción / Situación de Aprendizaje</label>
-          <textarea rows="3" placeholder="Describir la situación de aprendizaje..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>Competencias Específicas trabajadas</label>
-          <textarea rows="2" placeholder="Competencias específicas de la materia..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>Actividades Principales</label>
-          <textarea rows="3" placeholder="Describir actividades..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>Recursos Educativos</label>
-          <input type="text" placeholder="Ej: Libro de texto, pizarra digital, materiales manipulativos">
-        </div>
-      `;
-      container.appendChild(div);
-    }
-
-    document.querySelector('#unidadesContainer').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const unidades = Array.from(document.querySelectorAll('#unidadesContainer .unidad-item'));
-      const data = unidades.map((u, i) => ({
-        numero: i + 1,
-        titulo: u.querySelector('input').value,
-        descripcion: u.querySelectorAll('textarea')[0].value,
-        competenciasEspecificas: u.querySelectorAll('textarea')[1].value,
-        actividades: u.querySelectorAll('textarea')[2].value,
-        recursos: u.querySelector('input:last-of-type').value
-      }));
-      localStorage.setItem('programacionUnidades', JSON.stringify(data));
-      mostrarMensaje('Estructura de unidades guardada', 'success');
-    });
-
-    // Criterios de evaluación
-    function addCriterio() {
-      const container = document.getElementById('criteriosContainer');
-      const div = document.createElement('div');
-      div.className = 'criterio-item';
-      div.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;';
-      div.innerHTML = `
-        <div class="form-group">
-          <label>Criterio de Evaluación</label>
-          <textarea rows="2" placeholder="Describir el criterio..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>Instrumento de Evaluación</label>
-          <select class="evaluacion-instruments">
-            <option value="">Seleccionar...</option>
-            <option>Rúbrica</option>
-            <option>Lista de cotejo</option>
-            <option>Prueba objetiva</option>
-            <option>Observación sistemática</option>
-            <option>Diario de aprendizaje</option>
-            <option>Portafolio</option>
-            <option>Autoevaluación</option>
-            <option>Coevaluación</option>
-          </select>
-        </div>
-      `;
-      container.appendChild(div);
-    }
-
-    document.getElementById('evaluacionForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const criterios = Array.from(document.querySelectorAll('#criteriosContainer .criterio-item'));
-      const data = criterios.map((c, i) => ({
-        criterio: c.querySelector('textarea').value,
-        instrumento: c.querySelector('select').value
-      }));
-      localStorage.setItem('programacionEvaluacion', JSON.stringify(data));
-      mostrarMensaje('Criterios de evaluación guardados', 'success');
-    });
-
-    // Exportar
-    function exportarJSON() {
-      const data = {
-        config: JSON.parse(localStorage.getItem('programacionConfig') || 'null'),
-        basics: JSON.parse(localStorage.getItem('programacionBasics') || 'null'),
-        competencias: JSON.parse(localStorage.getItem('programacionCompetencias') || '[]'),
-        saberes: JSON.parse(localStorage.getItem('programacionSaberes') || '[]'),
-        unidades: JSON.parse(localStorage.getItem('programacionUnidades') || '[]'),
-        evaluacion: JSON.parse(localStorage.getItem('programacionEvaluacion') || '[]'),
-        exportDate: new Date().toISOString()
-      };
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `programacion_didactica_${new Date().toISOString().split('T')[0]}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-      mostrarMensaje('JSON exportado correctamente', 'success');
-    }
-
-    function exportarPDF() {
-      mostrarMensaje('La exportación a PDF estará disponible con la funcionalidad completa. Usa la vista HTML para imprimir.', 'info');
-    }
-
-    function exportarHTML() {
-      const data = JSON.parse(localStorage.getItem('programacionBasics') || '{}');
-      const html = `
-        <!DOCTYPE html>
-        <html lang="es">
-        <head>
-          <meta charset="UTF-8">
-          <title>Vista Previa - ${data.materia || 'Programación Didáctica'}</title>
-          <style>
-            body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
-            h1 { color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 10px; }
-            h2 { color: #374151; margin-top: 25px; }
-            .info { background: #f9fafb; padding: 15px; border-radius: 4px; margin: 10px 0; }
-            table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-            th { background: #2563eb; color: white; }
-            @media print { body { max-width: none; } .no-print { display: none; } }
-          </style>
-        </head>
-        <body>
-          <button class="no-print" onclick="window.print()" style="background: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Imprimir / Guardar como PDF</button>
-          <h1>Programación Didáctica</h1>
-          <div class="info">
-            <p><strong>Materia/Area:</strong> ${data.materia || 'No especificada'}</p>
-            <p><strong>Etapa:</strong> ${data.etapa || 'No especificada'}</p>
-            <p><strong>Curso/Ciclo:</strong> ${data.ciclo || 'No especificado'}</p>
-            <p><strong>Número de Unidades:</strong> ${data.numUnidades || 12}</p>
+      <div class="grid-3" style="margin-top:18px">
+        <button class="tool-card" data-action="ir-anual">
+          <div class="tool-ico">▤</div>
+          <div>
+            <h3>Programación anual</h3>
+            <p>Secuencia las unidades por evaluación con competencias, criterios y peso en la calificación.</p>
+            <div class="meta"><span class="pill pill-mute">${state.anual.length} unidades</span></div>
           </div>
-          <h2>Competencias Clave (LOMLOE)</h2>
-          <div id="competencias-preview"></div>
-          <h2>Saberes Básicos</h2>
-          <div id="saberes-preview"></div>
-          <h2>Unidades Didácticas</h2>
-          <div id="unidades-preview"></div>
-          <h2>Criterios de Evaluación</h2>
-          <div id="evaluacion-preview"></div>
-          <script>
-            const competencias = JSON.parse(localStorage.getItem('programacionCompetencias') || '[]');
-            document.getElementById('competencias-preview').innerHTML = competencias.length ? 
-              '<ul>' + competencias.map(c => '<li>' + getCompetenciaNombre(c) + '</li>').join('') + '</ul>' : '<p>No se han seleccionado competencias.</p>';
-            const saberes = JSON.parse(localStorage.getItem('programacionSaberes') || '[]');
-            document.getElementById('saberes-preview').innerHTML = saberes.length ? 
-              saberes.map(s => '<div class="info"><strong>' + (s.bloque || 'Bloque') + ':</strong> ' + (s.descripcion || '') + '</div>').join('') : '<p>No se han registrado saberes básicos.</p>';
-            const unidades = JSON.parse(localStorage.getItem('programacionUnidades') || '[]');
-            document.getElementById('unidades-preview').innerHTML = unidades.length ? 
-              unidades.map(u => '<div class="info"><h3>Unidad ' + u.numero + ': ' + (u.titulo || '') + '</h3><p>' + (u.descripcion || '') + '</p></div>').join('') : '<p>No se han creado unidades didácticas.</p>';
-            const evalData = JSON.parse(localStorage.getItem('programacionEvaluacion') || '[]');
-            document.getElementById('evaluacion-preview').innerHTML = evalData.length ? 
-              '<table><tr><th>Criterio</th><th>Instrumento</th></tr>' + evalData.map(e => '<tr><td>' + (e.criterio || '') + '</td><td>' + (e.instrumento || '') + '</td></tr>').join('') + '</table>' : '<p>No se han definido criterios de evaluación.</p>';
-            function getCompetenciaNombre(id) {
-              const map = {cc1:'Comunicación lingüística', cc2:'Multilingüe', cc3:'Matemática/Ciencia/Tecnología', cc4:'Digital', cc5:'Personal/Social/Aprender a aprender', cc6:'Ciudadana', cc7:'Emprendedora', cc8:'Conciencia y expresiones culturales'};
-              return map[id] || id;
-            }
-          <\/script>
-        </body>
-        </html>
-      `;
-      const blob = new Blob([html], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `vista_previa_programacion.html`;
-      a.click();
-      URL.revokeObjectURL(url);
+        </button>
+        <button class="tool-card" data-action="ir-didactica">
+          <div class="tool-ico">▣</div>
+          <div>
+            <h3>Programación didáctica</h3>
+            <p>Contextualización, metodología, atención a la diversidad y criterios de calificación.</p>
+            <div class="meta"><span class="pill ${pesos === 100 ? "pill-ok" : "pill-warn"}">Calificación ${pesos}%</span></div>
+          </div>
+        </button>
+        <button class="tool-card" data-action="ir-situaciones">
+          <div class="tool-ico">◈</div>
+          <div>
+            <h3>Situaciones de aprendizaje</h3>
+            <p>Retos competenciales con producto final, secuencia de fases e instrumentos de evaluación.</p>
+            <div class="meta"><span class="pill pill-mute">${state.situaciones.length} situaciones</span></div>
+          </div>
+        </button>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head">
+          <h2>Documento final</h2>
+          <span class="grow"></span>
+          <span class="pill ${porcentaje === 100 ? "pill-ok" : "pill-warn"}">${porcentaje === 100 ? "Listo para entregar" : "Faltan " + (pasos.length - hechos) + " apartados"}</span>
+        </div>
+        <div class="card-body row" style="justify-content:space-between">
+          <p class="small" style="color:var(--ink-2);max-width:60ch">Convierte todo lo anterior en un documento numerado, con portada, tablas y anexos, listo para imprimir o guardar en PDF.</p>
+          <div class="row">
+            <button class="btn" data-action="ir-vista" data-vista="documento">Abrir documento</button>
+            <button class="btn btn-primary" data-action="export-html">Imprimir o guardar PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="card-head">
+          <h2>Marco normativo aplicable</h2>
+          <span class="grow"></span>
+          ${etapa ? `<span class="pill pill-brand">${esc(etapa.nombre)}</span>` : ""}
+        </div>
+        <div class="card-body">
+          <p class="small" style="color:var(--ink-2)">${esc(DATA.fuente || "")}</p>
+          <div class="divider" style="margin:14px 0"></div>
+          <div class="grid-2">
+            <div>
+              <div class="small muted" style="margin-bottom:4px">Referencia estatal de la etapa</div>
+              <p class="small">${esc((etapa && etapa.decreto) || "Selecciona una etapa para ver su referencia normativa.")}</p>
+            </div>
+            <div>
+              <div class="small muted" style="margin-bottom:4px">Desarrollo autonómico</div>
+              ${ccaa && ccaa.etapas && ccaa.etapas[p.etapa] ? `
+                <p class="small">${esc(ccaa.etapas[p.etapa].decreto_referencia)}</p>
+                <div class="row" style="gap:8px;margin-top:6px;flex-wrap:wrap">
+                  <span class="pill ${ccaa.etapas[p.etapa].estado === "verificado" ? "pill-ok" : "pill-warn"}">${ccaa.etapas[p.etapa].estado === "verificado" ? "Norma comprobada" : "Confirma la norma"}</span>
+                  ${ccaa.etapas[p.etapa].boletin ? `<span class="small muted">${esc(ccaa.etapas[p.etapa].boletin)}</span>` : ""}
+                </div>
+                ${ccaa.etapas[p.etapa].observaciones ? `<p class="small muted" style="margin-top:6px">${esc(ccaa.etapas[p.etapa].observaciones)}</p>` : ""}` : `<p class="small">${ccaa ? "Sin ficha autonómica detallada para esta etapa." : "Selecciona tu comunidad autónoma."}</p>`}
+            </div>
+          </div>
+          ${etapa && etapa.notas && etapa.notas.length ? `
+            <div class="divider" style="margin:14px 0"></div>
+            <ul class="list-num">${etapa.notas.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
+        </div>
+      </div>`;
+  }
+
+  // --- Programación anual ---
+  function vistaAnual() {
+    const p = state.perfil;
+    if (!p.materia) return avisoConfigurar("programación anual");
+    const modelo = modeloActual();
+    const pesos = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    const sesiones = state.anual.reduce((s, u) => s + (Number(u.sesiones) || 0), 0);
+
+    // Cobertura del currículo: qué competencias específicas toca cada unidad.
+    const cubiertas = new Set();
+    state.anual.forEach((u) => String(u.competencias || "")
+      .split(/[,;]+/).map((x) => x.trim().toLowerCase()).filter(Boolean)
+      .forEach((x) => cubiertas.add(x)));
+    const totalCE = modelo.competencias.length;
+    const sinCubrir = modelo.competencias.filter((ce) => !cubiertas.has(ce.id.toLowerCase()));
+    const cobertura = totalCE ? Math.round(((totalCE - sinCubrir.length) / totalCE) * 100) : 0;
+
+    const cuerpo = state.anual.length ? `
+      ${totalCE ? `
+        <div class="card" style="margin-bottom:14px">
+          <div class="card-body row" style="justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:8px">
+            <div class="row" style="gap:8px;flex-wrap:wrap">
+              <span class="pill ${sinCubrir.length ? "pill-warn" : "pill-ok"}">CE trabajadas: ${totalCE - sinCubrir.length}/${totalCE}</span>
+              <span class="small muted">${cobertura} % del currículo del curso</span>
+            </div>
+            ${sinCubrir.length ? `<button class="btn btn-sm" data-action="cubrir-ce">Repartir las CE que faltan</button>` : ""}
+          </div>
+          ${sinCubrir.length ? `<p class="small muted" style="padding:0 16px 12px">Sin trabajar: ${sinCubrir.map((ce) => esc(ce.id.toUpperCase())).join(", ")}</p>` : ""}
+        </div>` : ""}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-num">Nº</th>
+              <th style="min-width:220px">Unidad / situación</th>
+              <th style="min-width:150px">Evaluación</th>
+              <th style="min-width:150px">Competencias específicas</th>
+              <th style="min-width:200px">Criterios de evaluación</th>
+              <th style="min-width:160px">Instrumentos</th>
+              <th style="width:82px">Sesiones</th>
+              <th style="width:86px">Peso %</th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${state.anual.map((u, i) => `
+              <tr>
+                <td class="col-num">${i + 1}</td>
+                <td><input type="text" placeholder="Título de la unidad" value="${esc(u.titulo)}" data-bind="anual.${i}.titulo"></td>
+                <td>
+                  <select data-bind="anual.${i}.trimestre">
+                    ${["1.ª evaluación", "2.ª evaluación", "3.ª evaluación"].map((t) =>
+                      `<option ${t === u.trimestre ? "selected" : ""}>${t}</option>`).join("")}
+                  </select>
+                </td>
+                <td><input type="text" placeholder="CE1, CE2…" value="${esc(u.competencias)}" data-bind="anual.${i}.competencias"></td>
+                <td><textarea placeholder="Criterios trabajados" data-bind="anual.${i}.criterios">${esc(u.criterios)}</textarea></td>
+                <td><input type="text" placeholder="Rúbrica, prueba…" value="${esc(u.instrumentos)}" data-bind="anual.${i}.instrumentos"></td>
+                <td><input type="number" min="0" max="80" value="${esc(u.sesiones == null ? "" : u.sesiones)}" data-bind="anual.${i}.sesiones"></td>
+                <td><input type="number" min="0" max="100" step="0.5" value="${esc(u.peso)}" data-bind="anual.${i}.peso"></td>
+                <td class="col-actions">
+                  <button class="btn btn-ghost btn-sm" data-action="toggle-unidad" data-id="${u.id}" title="Desarrollar la unidad" aria-expanded="${state.unidadAbierta === u.id}">${state.unidadAbierta === u.id ? "▴" : "▾"}</button>
+                  <button class="btn btn-ghost btn-sm" data-action="dup-anual" data-i="${i}" title="Duplicar">⧉</button>
+                  <button class="btn btn-ghost btn-sm" data-action="del-anual" data-i="${i}" title="Eliminar">✕</button>
+                </td>
+              </tr>
+              ${state.unidadAbierta === u.id ? `
+              <tr>
+                <td colspan="9" style="background:var(--bg-2, #f8fafc)">
+                  <div class="stack" style="padding:6px 2px">
+                    <div class="grid-2">
+                      <div class="field">
+                        <label>Objetivos de la unidad</label>
+                        <textarea placeholder="Qué debe lograr el alumnado al terminar la unidad" data-bind="anual.${i}.desarrollo.objetivos">${esc((u.desarrollo || {}).objetivos || "")}</textarea>
+                      </div>
+                      <div class="field">
+                        <label>Evaluación de la unidad</label>
+                        <textarea placeholder="Instrumentos, momentos y criterios de calificación" data-bind="anual.${i}.desarrollo.evaluacion">${esc((u.desarrollo || {}).evaluacion || "")}</textarea>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label>Actividades por sesión</label>
+                      <textarea style="min-height:120px" placeholder="Sesión 1: … · Sesión 2: … · Sesión 3: …" data-bind="anual.${i}.desarrollo.actividades">${esc((u.desarrollo || {}).actividades || "")}</textarea>
+                      <span class="help">${esc(u.sesiones || 0)} sesiones previstas en esta unidad.</span>
+                    </div>
+                    <div class="field">
+                      <label>Atención a la diversidad en esta unidad</label>
+                      <textarea placeholder="Apoyos, ampliaciones y ajustes concretos" data-bind="anual.${i}.desarrollo.diversidad">${esc((u.desarrollo || {}).diversidad || "")}</textarea>
+                    </div>
+                  </div>
+                </td>
+              </tr>` : ""}`).join("")}
+          </tbody>
+        </table>
+      </div>
+      <div class="row" style="margin-top:12px;justify-content:space-between">
+        <span class="small ${pesos === 100 ? "muted" : ""}">
+          ${pesos === 100
+            ? "Los pesos suman 100 %."
+            : `<span class="pill pill-warn">Los pesos suman ${pesos} %</span> <span class="muted">Ajusta hasta 100 % para que la calificación sea coherente.</span>`}
+          <span class="muted"> · ${sesiones} sesiones programadas</span>
+        </span>
+        <div class="row">
+          <button class="btn btn-sm" data-action="repartir-pesos">Repartir 100 %</button>
+          <button class="btn btn-sm" data-action="add-anual">Añadir unidad</button>
+          <button class="btn btn-sm" data-action="regen-anual">Regenerar desde el número de unidades</button>
+        </div>
+      </div>` : `
+      <div class="empty">
+        <h3>Aún no hay unidades</h3>
+        <p>Genera una estructura de ${esc(p.numUnidades)} unidades repartidas en tres evaluaciones y ajústala después.</p>
+        <button class="btn btn-primary" data-action="regen-anual">Generar ${esc(p.numUnidades)} unidades</button>
+      </div>`;
+
+    return `
+      <div class="view-head">
+        <h1>Programación anual</h1>
+        <p>Secuencia temporal del curso. Cada fila es una unidad didáctica o situación de aprendizaje con su peso en la calificación.</p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2>${esc(materiaDe(p.etapa, p.materia).nombre)} · ${esc(p.curso)}</h2>
+          <span class="hint">${esc(ccaaDe(p.ccaa) ? ccaaDe(p.ccaa).nombre : "")}</span>
+          <span class="grow"></span>
+          <span class="pill pill-mute">${state.anual.length} unidades</span>
+        </div>
+        <div class="card-body">${cuerpo}</div>
+      </div>
+      ${modelo.competencias.length ? `
+        <div class="card" style="margin-top:16px">
+          <div class="card-head"><h2>Competencias específicas de la materia</h2><span class="grow"></span><span class="hint">Referencia para rellenar la tabla</span></div>
+          <div class="card-body">
+            <ul class="list-num">
+              ${modelo.competencias.map((ce) => `<li><strong>${esc(ce.id.toUpperCase())}.</strong> ${esc(ce.texto)}</li>`).join("")}
+            </ul>
+          </div>
+        </div>` : ""}`;
+  }
+
+  // --- Situaciones ---
+  function vistaSituaciones() {
+    const p = state.perfil;
+    if (!p.materia) return avisoConfigurar("situaciones de aprendizaje");
+    const modelo = modeloActual();
+
+    const lista = state.situaciones.length ? state.situaciones.map((s) => {
+      const abierta = s.id === state.situacionAbierta;
+      return `
+        <div class="sit">
+          <div class="body">
+            <strong>${esc(s.titulo || "Situación sin título")}</strong>
+            <span>${esc(s.producto ? "Producto: " + s.producto : "Sin producto final definido")}${s.competenciasClave.length ? " · " + s.competenciasClave.length + " competencias clave" : ""}</span>
+          </div>
+          <button class="btn btn-sm" data-action="toggle-sit" data-id="${s.id}">${abierta ? "Cerrar" : "Editar"}</button>
+          <button class="btn btn-ghost btn-sm" data-action="dup-sit" data-id="${s.id}" title="Duplicar">⧉</button>
+          <button class="btn btn-ghost btn-sm" data-action="del-sit" data-id="${s.id}" title="Eliminar">✕</button>
+        </div>
+        ${abierta ? `<div class="sit-edit">${editorSituacion(s, modelo)}</div>` : ""}`;
+    }).join("") : `
+      <div class="empty">
+        <h3>Diseña tu primera situación de aprendizaje</h3>
+        <p>Una situación parte de un reto cercano al alumnado y termina en un producto evaluable con criterios del currículo.</p>
+        <button class="btn btn-primary" data-action="new-sit">Crear situación de aprendizaje</button>
+      </div>`;
+
+    return `
+      <div class="view-head">
+        <h1>Situaciones de aprendizaje</h1>
+        <p>Retos competenciales contextualizados. Cada situación conecta competencias clave, competencias específicas y criterios de evaluación.</p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2>${esc(materiaDe(p.etapa, p.materia).nombre)} · ${esc(p.curso)}</h2>
+          <span class="grow"></span>
+          <button class="btn btn-primary btn-sm" data-action="new-sit">Nueva situación</button>
+        </div>
+        ${lista}
+      </div>`;
+  }
+
+  function editorSituacion(s, modelo) {
+    const idx = state.situaciones.findIndex((x) => x.id === s.id);
+    const base = `situaciones.${idx}`;
+    return `
+      <div class="stack" style="padding-top:16px;border-top:1px solid var(--line)">
+        <div class="grid-2">
+          <div class="field">
+            <label>Título de la situación</label>
+            <input type="text" placeholder="Ej.: ¿Quién decide lo que comemos?" value="${esc(s.titulo)}" data-bind="${base}.titulo">
+          </div>
+          <div class="field">
+            <label>Producto final o actuación evaluable</label>
+            <input type="text" placeholder="Ej.: campaña de etiquetado saludable" value="${esc(s.producto)}" data-bind="${base}.producto">
+          </div>
+        </div>
+        <div class="field">
+          <label>Reto o pregunta que organiza la situación</label>
+          <textarea placeholder="Describe el reto competencial y el contexto del alumnado" data-bind="${base}.reto">${esc(s.reto)}</textarea>
+        </div>
+
+        <div class="field">
+          <label>Competencias clave movilizadas</label>
+          <div class="grid-3" style="gap:8px">
+            ${DATA.competenciasClave.map((cc) => `
+              <label class="check">
+                <input type="checkbox" data-check="${base}.competenciasClave" value="${esc(cc.id)}" ${s.competenciasClave.includes(cc.id) ? "checked" : ""}>
+                <span><strong>${esc(cc.etiqueta)}</strong><small>${esc(cc.nombre)}</small></span>
+              </label>`).join("")}
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Competencias específicas trabajadas</label>
+              ${modelo.competencias.length ? `<button class="btn btn-ghost btn-sm" data-action="sit-cargar" data-base="${base}">Cargar del curso</button>` : ""}
+            </div>
+            <textarea placeholder="${modelo.competencias.length ? modelo.competencias.slice(0, 2).map((c) => c.id.toUpperCase()).join(", ") : "CE1, CE2…"}" data-bind="${base}.competenciasEsp">${esc(s.competenciasEsp)}</textarea>
+            ${modelo.competencias.length ? `<span class="help">Disponibles: ${modelo.competencias.map((c) => c.id.toUpperCase()).join(" · ")}</span>` : ""}
+          </div>
+          <div class="field">
+            <label>Criterios de evaluación</label>
+            <textarea placeholder="Criterios que se evalúan con el producto final" data-bind="${base}.criterios">${esc(s.criterios)}</textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Saberes básicos implicados</label>
+          <textarea placeholder="Bloques y saberes del currículo" data-bind="${base}.saberes">${esc(s.saberes)}</textarea>
+        </div>
+
+        <div>
+          <div class="row" style="justify-content:space-between;margin-bottom:10px">
+            <h3 style="font-size:14px">Secuencia de trabajo</h3>
+            <div class="row">
+              <button class="btn btn-ghost btn-sm" data-action="sit-a-anual" data-id="${s.id}">Añadir a la programación anual</button>
+              <button class="btn btn-ghost btn-sm" data-action="sugerir-secuencia" data-i="${idx}">Insertar secuencia sugerida</button>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="fase field">
+              <label>1. Motivación y activación</label>
+              <textarea data-bind="${base}.fases.motivacion">${esc(s.fases.motivacion)}</textarea>
+            </div>
+            <div class="fase field">
+              <label>2. Desarrollo y exploración</label>
+              <textarea data-bind="${base}.fases.desarrollo">${esc(s.fases.desarrollo)}</textarea>
+            </div>
+            <div class="fase field">
+              <label>3. Aplicación y producto</label>
+              <textarea data-bind="${base}.fases.aplicacion">${esc(s.fases.aplicacion)}</textarea>
+            </div>
+            <div class="fase field">
+              <label>4. Evaluación y reflexión</label>
+              <textarea data-bind="${base}.fases.evaluacion">${esc(s.fases.evaluacion)}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="field"><label>Agrupamientos</label><input type="text" placeholder="Parejas, equipos de 4…" value="${esc(s.agrupamientos)}" data-bind="${base}.agrupamientos"></div>
+          <div class="field"><label>Recursos</label><input type="text" placeholder="Materiales, espacios, TIC…" value="${esc(s.recursos)}" data-bind="${base}.recursos"></div>
+          <div class="field"><label>Temporalización</label><input type="text" placeholder="6 sesiones" value="${esc(s.tiempo)}" data-bind="${base}.tiempo"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field"><label>Instrumentos de evaluación</label><textarea data-bind="${base}.evaluacion">${esc(s.evaluacion)}</textarea></div>
+          <div class="field"><label>Atención a la diversidad</label><textarea data-bind="${base}.diversidad">${esc(s.diversidad)}</textarea></div>
+        </div>
+      </div>`;
+  }
+
+  // --- Programación didáctica ---
+  function vistaDidactica() {
+    const p = state.perfil;
+    if (!p.materia) return avisoConfigurar("programación didáctica");
+    const d = state.didactica;
+    const modelo = modeloActual();
+    const etapa = etapaInfo(p.etapa);
+    const ccaa = ccaaDe(p.ccaa);
+    const pesos = totalPesos();
+
+    return `
+      <div class="view-head">
+        <h1>Programación didáctica</h1>
+        <p>Documento completo de la materia: contextualización, elementos curriculares, metodología y evaluación.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>1. Datos de identificación</h2></div>
+        <div class="card-body grid-2">
+          <div class="field"><label>Centro educativo</label><input type="text" placeholder="Nombre del centro" value="${esc(p.centro)}" data-bind="perfil.centro"></div>
+          <div class="field"><label>Docente responsable</label><input type="text" placeholder="Nombre y apellidos" value="${esc(p.docente)}" data-bind="perfil.docente"></div>
+          <div class="field"><label>Curso escolar</label><input type="text" value="${esc(p.cursoEscolar)}" data-bind="perfil.cursoEscolar"></div>
+          <div class="field"><label>Materia / ámbito</label><input type="text" value="${esc(materiaDe(p.etapa, p.materia).nombre)}" disabled></div>
+          <div class="field"><label>Curso</label><input type="text" value="${esc(p.curso)}" disabled></div>
+          <div class="field"><label>Comunidad autónoma</label><input type="text" value="${esc(ccaa ? ccaa.nombre : "")}" disabled></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>2. Justificación normativa</h2><span class="grow"></span><span class="hint">Se completa desde el catálogo</span></div>
+        <div class="card-body stack">
+          <div class="field">
+            <label>Referencia estatal</label>
+            <textarea disabled>${esc((materiaDe(p.etapa, p.materia).decreto) || (etapa ? etapa.decreto : ""))}</textarea>
+          </div>
+          <div class="field">
+            <label>Desarrollo autonómico</label>
+            <textarea disabled>${esc((ccaa && ccaa.etapas && ccaa.etapas[p.etapa] && ccaa.etapas[p.etapa].decreto_referencia) || "Sin ficha autonómica detallada. Consulta el boletín oficial de tu comunidad.")}</textarea>
+            ${ccaa && ccaa.etapas && ccaa.etapas[p.etapa] ? `
+              <div class="row" style="gap:8px;margin-top:6px;flex-wrap:wrap">
+                <span class="pill ${ccaa.etapas[p.etapa].estado === "verificado" ? "pill-ok" : "pill-warn"}">${ccaa.etapas[p.etapa].estado === "verificado" ? "Norma comprobada" : "Confirma la norma"}</span>
+                <span class="small muted">${esc(ccaa.etapas[p.etapa].boletin || "")}</span>
+                ${Object.values(ccaa.enlaces || {}).map((url) => `<a class="small" href="${esc(url)}" target="_blank" rel="noopener">Abrir portal oficial</a>`).join("")}
+              </div>` : ""}
+          </div>
+          <div class="field">
+            <label>Justificación propia</label>
+            <textarea placeholder="Explica la contribución de la materia al perfil de salida y al proyecto educativo del centro" data-bind="didactica.justificacion">${esc(d.justificacion)}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>3. Contextualización</h2></div>
+        <div class="card-body">
+          <div class="field">
+            <label>Contexto del centro y del grupo</label>
+            <textarea style="min-height:110px" placeholder="Entorno, características del grupo, nivel de competencia curricular, necesidades detectadas" data-bind="didactica.contexto">${esc(d.contexto)}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head">
+          <h2>4. Competencias específicas</h2>
+          <span class="grow"></span>
+          <span class="pill pill-mute">${d.competencias.length} seleccionadas</span>
+        </div>
+        <div class="card-body">
+          ${modelo.competencias.length ? `
+            <div class="stack">
+              ${modelo.competencias.map((ce) => `
+                <label class="check">
+                  <input type="checkbox" data-check="didactica.competencias" value="${esc(ce.id)}" ${d.competencias.includes(ce.id) ? "checked" : ""}>
+                  <span><strong>${esc(ce.id.toUpperCase())}</strong><small style="color:var(--ink-2)">${esc(ce.texto)}</small></span>
+                </label>`).join("")}
+            </div>` : `<p class="small muted">Esta materia aún no tiene ficha de competencias específicas en el repositorio. Puedes redactarlas en el campo de observaciones.</p>`}
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>5. Criterios de evaluación y saberes básicos</h2></div>
+        <div class="card-body grid-2">
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Criterios de evaluación trabajados</label>
+              <span class="row" style="gap:6px">
+                ${modelo.competencias.length ? `<button class="btn btn-ghost btn-sm" data-action="cargar-criterios-ce">Solo de las CE marcadas</button>` : ""}
+                ${Object.keys(modelo.criterios).length ? `<button class="btn btn-ghost btn-sm" data-action="cargar-criterios">Cargar de la ficha</button>` : ""}
+              </span>
+            </div>
+            <textarea style="min-height:150px" placeholder="Selecciona o redacta los criterios de evaluación" data-bind="didactica.criteriosTexto">${esc(d.criteriosTexto || "")}</textarea>
+            ${modelo.competencias.length ? `<span class="help">${Object.keys(modelo.criterios).length} bloques de criterios disponibles en la ficha.</span>` : ""}
+          </div>
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Saberes básicos</label>
+              ${modelo.saberes.length ? `<button class="btn btn-ghost btn-sm" data-action="cargar-saberes">Cargar de la ficha</button>` : ""}
+            </div>
+            <textarea style="min-height:150px" placeholder="Bloques de saberes del currículo" data-bind="didactica.saberesTexto">${esc(d.saberesTexto || "")}</textarea>
+            ${modelo.saberes.length ? `<span class="help">${modelo.saberes.length} saberes disponibles en la ficha.</span>` : ""}
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>6. Metodología y atención a la diversidad</h2><span class="grow"></span><span class="hint">Puedes insertar una propuesta y adaptarla</span></div>
+        <div class="card-body grid-2">
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Principios metodológicos</label>
+              <button class="btn btn-ghost btn-sm" data-action="sugerir" data-campo="metodologia">Insertar propuesta</button>
+            </div>
+            <textarea style="min-height:120px" placeholder="Aprendizaje basado en proyectos, trabajo cooperativo, rutinas de pensamiento…" data-bind="didactica.metodologia">${esc(d.metodologia)}</textarea>
+          </div>
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Atención a la diversidad</label>
+              <button class="btn btn-ghost btn-sm" data-action="sugerir" data-campo="diversidad">Insertar propuesta</button>
+            </div>
+            <textarea style="min-height:120px" placeholder="Medidas ordinarias, refuerzo, ampliación, adaptaciones" data-bind="didactica.diversidad">${esc(d.diversidad)}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>7. Recursos y actividades complementarias</h2></div>
+        <div class="card-body grid-2">
+          <div class="field">
+            <label>Recursos y materiales</label>
+            <textarea placeholder="Libro de texto, laboratorio, recursos digitales, espacios" data-bind="didactica.recursos">${esc(d.recursos)}</textarea>
+          </div>
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Actividades complementarias</label>
+              <button class="btn btn-ghost btn-sm" data-action="sugerir" data-campo="actividades">Insertar propuesta</button>
+            </div>
+            <textarea placeholder="Salidas, talleres, participación en proyectos del centro" data-bind="didactica.actividades">${esc(d.actividades)}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>8. Evaluación de la práctica docente</h2><span class="grow"></span><span class="hint">Indicadores y propuestas de mejora</span></div>
+        <div class="card-body">
+          <div class="field">
+            <div class="row" style="justify-content:space-between">
+              <label>Procedimiento e indicadores</label>
+              <button class="btn btn-ghost btn-sm" data-action="sugerir" data-campo="evaluacionPractica">Insertar propuesta</button>
+            </div>
+            <textarea style="min-height:110px" placeholder="Cómo se revisa la propia programación y qué indicadores se usan" data-bind="didactica.evaluacionPractica">${esc(d.evaluacionPractica)}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head">
+          <h2>9. Criterios de calificación</h2>
+          <span class="grow"></span>
+          <span class="pill ${pesos === 100 ? "pill-ok" : "pill-warn"}">Total ${pesos} %</span>
+        </div>
+        <div class="card-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th style="min-width:200px">Instrumento o bloque</th><th style="min-width:180px">Tipo</th><th style="width:110px">Peso %</th><th class="col-actions"></th></tr>
+              </thead>
+              <tbody>
+                ${d.calificacion.map((c, i) => `
+                  <tr>
+                    <td><input type="text" value="${esc(c.nombre)}" data-bind="didactica.calificacion.${i}.nombre"></td>
+                    <td>
+                      <select data-bind="didactica.calificacion.${i}.instrumento">
+                        ${["Prueba objetiva", "Rúbrica", "Lista de cotejo", "Observación sistemática", "Portafolio", "Diario de aprendizaje", "Autoevaluación", "Coevaluación", "Proyecto"].map((t) =>
+                          `<option ${t === c.instrumento ? "selected" : ""}>${t}</option>`).join("")}
+                      </select>
+                    </td>
+                    <td><input type="number" min="0" max="100" value="${esc(c.peso)}" data-bind="didactica.calificacion.${i}.peso"></td>
+                    <td class="col-actions"><button class="btn btn-ghost btn-sm" data-action="del-peso" data-i="${i}" title="Eliminar">✕</button></td>
+                  </tr>`).join("")}
+              </tbody>
+            </table>
+          </div>
+          <div class="row" style="margin-top:12px">
+            <button class="btn btn-sm" data-action="add-peso">Añadir criterio de calificación</button>
+            <span class="small muted">La suma debe ser exactamente 100 %.</span>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  // --- Documento final ---
+  function vistaDocumento() {
+    const p = state.perfil;
+    if (!p.materia) return avisoConfigurar("el documento final");
+    const lista = requisitos();
+    const pendientes = lista.filter((r) => !r.ok);
+    const hechos = lista.length - pendientes.length;
+    const materia = materiaDe(p.etapa, p.materia);
+
+    return `
+      <div class="view-head">
+        <h1>Documento final</h1>
+        <p>Vista previa real del expediente completo: portada, marco normativo, elementos curriculares, programación anual, situaciones de aprendizaje y evaluación. Es exactamente lo que se imprime.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-head">
+          <h2>${esc(materia.nombre)} · ${esc(p.curso)}</h2>
+          <span class="grow"></span>
+          <span class="pill ${pendientes.length ? "pill-warn" : "pill-ok"}">
+            ${pendientes.length ? pendientes.length + " apartados pendientes" : "Documento completo"}
+          </span>
+          <button class="btn btn-sm" data-action="ir-didactica">Editar</button>
+          <button class="btn btn-primary btn-sm" data-action="print">Imprimir / PDF</button>
+        </div>
+        <div class="card-body">
+          ${pendientes.length ? `
+            <div class="req-list" style="margin-bottom:14px">
+              ${pendientes.map((r) => `
+                <div class="req">
+                  <div class="mark ko">!</div>
+                  <div class="txt"><strong>${esc(r.t)}</strong><span>${esc(r.s)}</span></div>
+                  <button class="btn btn-ghost btn-sm" data-action="ir-vista" data-vista="${r.vista}">Ir</button>
+                </div>`).join("")}
+            </div>` : `<p class="small muted" style="margin-bottom:12px">Todos los apartados del checklist están completos. Revisa la vista previa y descarga el PDF.</p>`}
+          <div class="row" style="margin-bottom:14px;flex-wrap:wrap">
+            <span class="small muted">${hechos} de ${lista.length} apartados listos</span>
+            <span class="grow"></span>
+            <button class="btn btn-primary btn-sm" data-action="borrador">Generar borrador completo</button>
+            <button class="btn btn-sm" data-action="export-word">Descargar Word (.doc)</button>
+            <button class="btn btn-sm" data-action="export-html">Abrir en pestaña imprimible</button>
+            <button class="btn btn-sm" data-action="export-json">Copia de seguridad</button>
+          </div>
+          <iframe id="doc-preview" class="doc-frame" title="Vista previa del documento final" sandbox="allow-same-origin"></iframe>
+        </div>
+      </div>`;
+  }
+
+  // --- Catálogo ---
+  function vistaCatalogo() {
+    const cat = state.catalogo;
+    const etapa = etapaInfo(cat.etapa);
+    const lista = materiasDe(cat.etapa);
+    const seleccion = lista.find((m) => m.id === cat.id) || lista[0];
+    const modelo = modeloFicha(seleccion);
+    const ccaa = ccaaDe(cat.ccaa);
+
+    return `
+      <div class="view-head">
+        <h1>Catálogo curricular</h1>
+        <p>Competencias específicas, criterios de evaluación y saberes básicos por etapa y materia, con el desarrollo autonómico disponible.</p>
+      </div>
+      <div class="row" style="margin-bottom:14px">
+        ${DATA.etapas.map((e) => `
+          <button class="btn btn-sm ${e.id === cat.etapa ? "btn-primary" : ""}" data-action="cat-etapa" data-id="${esc(e.id)}">${esc(e.nombre)}</button>`).join("")}
+        <span class="grow"></span>
+        <select style="width:auto" data-change="catalogo.ccaa">
+          <option value="">Ver comunidad autónoma…</option>
+          ${DATA.ccaa.map((c) => `<option value="${esc(c.id)}" ${c.id === cat.ccaa ? "selected" : ""}>${esc(c.nombre)}</option>`).join("")}
+        </select>
+      </div>
+
+      ${ccaa ? `
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-head"><h2>${esc(ccaa.nombre)}</h2><span class="grow"></span>
+            ${ccaa.enlaces ? Object.entries(ccaa.enlaces).map(([clave, url]) => `<a class="btn btn-sm" href="${esc(url)}" target="_blank" rel="noopener">${clave === "boletin" ? "Boletín oficial" : "Portal de currículo"}</a>`).join("") : ""}
+          </div>
+          <div class="card-body stack">
+            ${ccaa.etapas && ccaa.etapas[cat.etapa] ? `
+              <div>
+                <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+                  <span class="small muted">Referencia para ${esc(etapa ? etapa.nombre : cat.etapa)}</span>
+                  <span class="pill ${ccaa.etapas[cat.etapa].estado === "verificado" ? "pill-ok" : "pill-warn"}">${ccaa.etapas[cat.etapa].estado === "verificado" ? "Norma comprobada" : "Confirma la norma"}</span>
+                  ${ccaa.etapas[cat.etapa].boletin ? `<span class="small muted">${esc(ccaa.etapas[cat.etapa].boletin)}</span>` : ""}
+                </div>
+                <p class="small" style="margin-top:6px">${esc(ccaa.etapas[cat.etapa].decreto_referencia || "")}</p>
+                ${ccaa.etapas[cat.etapa].observaciones ? `<p class="small muted" style="margin-top:4px">${esc(ccaa.etapas[cat.etapa].observaciones)}</p>` : ""}
+                ${ccaa.etapas[cat.etapa].estado !== "verificado" ? `<p class="small muted" style="margin-top:4px">${esc((ccaa.fuente && ccaa.fuente.nota) || "")} Comprueba el número y la fecha en el boletín antes de citarla.</p>` : ""}
+              </div>` : `<p class="small muted">Sin ficha autonómica para esta etapa.</p>`}
+            ${ccaa.notas && ccaa.notas.length ? `<ul class="list-num">${ccaa.notas.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
+          </div>
+        </div>` : ""}
+
+      <div class="cat-grid">
+        <div class="card">
+          <div class="card-head"><h2>${esc(etapa ? etapa.nombre : "")}</h2><span class="grow"></span><span class="pill pill-mute">${lista.length}</span></div>
+          <div class="cat-list">
+            ${lista.length ? lista.map((m) => `
+              <button class="cat-item ${seleccion && m.id === seleccion.id ? "sel" : ""}" data-action="cat-materia" data-id="${esc(m.id)}">
+                <span>${esc(m.nombre)}</span>
+                <span class="flag">${m.tieneFicha ? "ficha" : "pendiente"}</span>
+              </button>`).join("") : `<p class="small muted" style="padding:12px">Esta etapa se organiza por módulos profesionales. Añade tus títulos desde Ajustes.</p>`}
+          </div>
+        </div>
+
+        <div class="card detail">
+          ${seleccion ? `
+            <div class="card-head">
+              <div>
+                <h3>${esc(seleccion.nombre)}</h3>
+                <div class="hint" style="font-size:12.5px">${esc(seleccion.decreto || (etapa ? etapa.decreto : ""))}</div>
+              </div>
+              <span class="grow"></span>
+              <span class="pill ${seleccion.tieneFicha ? "pill-ok" : "pill-warn"}">${seleccion.tieneFicha ? "Ficha disponible" : "Ficha pendiente"}</span>
+            </div>
+            <div class="card-body stack">
+              ${seleccion.fuente ? `
+                <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+                  <span class="pill pill-ok">Texto literal</span>
+                  <span class="small">${esc(seleccion.fuente.norma)} · ${esc(seleccion.fuente.anexo)}</span>
+                  <span class="grow"></span>
+                  <a class="btn btn-sm" href="${esc(seleccion.fuente.url)}" target="_blank" rel="noopener">Ver en el BOE</a>
+                </div>` : `<p class="small muted">Este elemento no se fija en los reales decretos de enseñanzas mínimas.</p>`}
+              ${seleccion.remiteA ? `
+                <p class="small" style="border-left:3px solid var(--brand);padding-left:10px">
+                  Esta materia comparte el currículo de <strong>${esc(seleccion.remiteA)}</strong>. El real decreto lo dice así:
+                  ${seleccion.remisionTexto ? `<em>«${esc(seleccion.remisionTexto)}»</em>` : ""}
+                </p>` : ""}
+              ${seleccion.organizacion ? `
+                <details>
+                  <summary class="small" style="cursor:pointer;font-weight:600">Sentido de la materia según el real decreto</summary>
+                  <p class="small" style="color:var(--ink-2);margin-top:8px">${esc(seleccion.organizacion)}</p>
+                </details>` : ""}
+              ${modelo.competencias.length ? `
+                <div>
+                  <h4 style="font-size:13.5px;margin-bottom:8px">Competencias específicas <span class="small muted">(${modelo.competencias.length}, comunes a la etapa)</span></h4>
+                  ${modelo.competencias.map((ce) => `
+                    <div class="ce">
+                      <h4>${esc(ce.id.toUpperCase())}</h4>
+                      <p>${esc(ce.texto)}</p>
+                      ${ce.descriptores ? `<p class="small muted" style="margin-top:6px">Perfil de salida: ${esc(ce.descriptores)}</p>` : ""}
+                      ${ce.explicacion.length ? `
+                        <details style="margin-top:6px">
+                          <summary class="small" style="cursor:pointer">Explicación de la competencia</summary>
+                          ${ce.explicacion.map((p) => `<p class="small" style="color:var(--ink-2);margin-top:6px">${esc(p)}</p>`).join("")}
+                        </details>` : ""}
+                    </div>`).join("")}
+                </div>` : `<p class="small muted">Este elemento aún no tiene competencias específicas registradas.</p>`}
+              ${modelo.niveles.length ? `
+                <div class="stack">
+                  <h4 style="font-size:13.5px;margin-bottom:2px">Criterios de evaluación y saberes básicos</h4>
+                  ${modelo.niveles.map((nivel) => {
+                    const bloque = modelo.ciclos[nivel.clave];
+                    const criterios = Object.entries(bloque.criterios);
+                    return `
+                      <details style="border:1px solid var(--line);border-radius:10px;padding:10px 12px">
+                        <summary style="cursor:pointer">
+                          <strong>${esc(nivel.etiqueta)}</strong>
+                          <span class="small muted">· ${criterios.reduce((s, [, l]) => s + l.length, 0)} criterios · ${bloque.saberes.length} saberes</span>
+                        </summary>
+                        <div class="stack" style="margin-top:12px">
+                          ${criterios.map(([ceId, lista]) => `
+                            <div>
+                              <div class="small" style="font-weight:600;margin-bottom:4px">${esc(ceId.toUpperCase())}</div>
+                              <ul class="list-num">${lista.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+                            </div>`).join("")}
+                          ${bloque.saberes.length ? `
+                            <div>
+                              <div class="small" style="font-weight:600;margin-bottom:4px">Saberes básicos</div>
+                              <ul class="list-num">${bloque.saberes.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+                            </div>` : ""}
+                        </div>
+                      </details>`;
+                  }).join("")}
+                </div>` : ""}
+              ${seleccion.notas && seleccion.notas.length ? `
+                <div>
+                  <h4 style="font-size:13.5px;margin-bottom:6px">Notas</h4>
+                  <ul class="list-num">${seleccion.notas.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
+                </div>` : ""}
+              <p class="small muted" style="border-top:1px solid var(--line);padding-top:12px">${esc(DATA.notaFicha || "")}</p>
+            </div>` : `<div class="card-body"><p class="small muted">Selecciona un elemento del catálogo.</p></div>`}
+        </div>
+      </div>`;
+  }
+
+  // --- Ajustes ---
+  function vistaAjustes() {
+    const p = state.perfil;
+    const etapa = etapaInfo(p.etapa);
+    return `
+      <div class="view-head">
+        <h1>Ajustes y normativa</h1>
+        <p>Datos de cabecera, copia de seguridad del expediente y referencias legales que aplica la herramienta.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2>Datos del expediente</h2></div>
+        <div class="card-body grid-2">
+          <div class="field"><label>Centro educativo</label><input type="text" value="${esc(p.centro)}" data-bind="perfil.centro" placeholder="Nombre del centro"></div>
+          <div class="field"><label>Docente responsable</label><input type="text" value="${esc(p.docente)}" data-bind="perfil.docente" placeholder="Nombre y apellidos"></div>
+          <div class="field"><label>Curso escolar</label><input type="text" value="${esc(p.cursoEscolar)}" data-bind="perfil.cursoEscolar"></div>
+          <div class="field"><label>Número de unidades</label><input type="number" min="1" max="30" value="${esc(p.numUnidades)}" data-bind="perfil.numUnidades"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>Copia de seguridad</h2><span class="grow"></span><span class="hint">Los datos viven solo en este navegador</span></div>
+        <div class="card-body">
+          <p class="small" style="color:var(--ink-2);margin-bottom:14px">Descarga un JSON con todo tu trabajo para guardarlo o moverlo a otro equipo. Al importar se sustituye el contenido actual.</p>
+          <div class="row">
+            <button class="btn btn-primary" data-action="export-json">Descargar copia (JSON)</button>
+            <button class="btn" data-action="export-word">Descargar Word (.doc)</button>
+            <button class="btn" data-action="export-html">Vista previa imprimible</button>
+            <button class="btn" data-action="import-json">Importar copia</button>
+            <input type="file" accept="application/json" id="import-file" style="display:none">
+            <span class="grow"></span>
+            <button class="btn btn-danger" data-action="reset">Empezar de cero</button>
+          </div>
+          ${state.guardado ? `<p class="small muted" style="margin-top:12px">Último guardado: ${esc(new Date(state.guardado).toLocaleString("es-ES"))}</p>` : ""}
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="card-head"><h2>Marco normativo</h2><span class="grow"></span><span class="pill pill-brand">LOMLOE</span></div>
+        <div class="card-body stack">
+          <ul class="list-num">
+            <li>Ley Orgánica 3/2020, de 29 de diciembre (LOMLOE).</li>
+            <li>Real Decreto 95/2022, de 1 de febrero — Educación Infantil.</li>
+            <li>Real Decreto 157/2022, de 1 de marzo — Educación Primaria.</li>
+            <li>Real Decreto 217/2022, de 29 de marzo — Educación Secundaria Obligatoria.</li>
+            <li>Real Decreto 243/2022, de 5 de abril — Bachillerato.</li>
+            <li>Ley Orgánica 3/2022, de 31 de marzo — Formación Profesional.</li>
+            <li>Desarrollo autonómico de cada comunidad: consulta siempre el boletín oficial vigente.</li>
+          </ul>
+          <div class="divider"></div>
+          <div class="grid-2">
+            <div>
+              <div class="small muted" style="margin-bottom:4px">Etapa configurada</div>
+              <p class="small">${esc(etapa ? etapa.nombre : "—")}</p>
+            </div>
+            <div>
+              <div class="small muted" style="margin-bottom:4px">Referencia estatal</div>
+              <p class="small">${esc((etapa && etapa.decreto) || "—")}</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <p class="small muted">${esc(DATA.notaFicha || "")}</p>
+        </div>
+      </div>`;
+  }
+
+  function avisoConfigurar(herramienta) {
+    const p = state.perfil;
+    return `
+      <div class="view-head">
+        <h1>${esc(TITULOS[state.vista])}</h1>
+        <p>Antes de trabajar en la ${esc(herramienta)} necesitamos saber para qué etapa y materia programas.</p>
+      </div>
+      <div class="card">
+        <div class="card-body stack">
+          <div class="grid-2">
+            <div class="field">
+              <label>Etapa educativa</label>
+              <select data-change="perfil.etapa">
+                ${DATA.etapas.map((e) => `<option value="${esc(e.id)}" ${e.id === p.etapa ? "selected" : ""}>${esc(e.nombre)}</option>`).join("")}
+              </select>
+            </div>
+            <div class="field">
+              <label>Curso o ciclo</label>
+              <select data-change="perfil.curso">
+                <option value="">Selecciona…</option>
+                ${((etapaInfo(p.etapa) || {}).ciclos || []).map((c) => `<option ${c === p.curso ? "selected" : ""}>${esc(c)}</option>`).join("")}
+              </select>
+            </div>
+            <div class="field">
+              <label>Materia o área</label>
+              <select data-change="perfil.materia">
+                <option value="">Selecciona…</option>
+                ${materiasDe(p.etapa).map((m) => `<option value="${esc(m.id)}" ${m.id === p.materia ? "selected" : ""}>${esc(m.nombre)}</option>`).join("")}
+              </select>
+            </div>
+            <div class="field">
+              <label>Comunidad autónoma</label>
+              <select data-change="perfil.ccaa">
+                <option value="">Selecciona…</option>
+                ${DATA.ccaa.map((c) => `<option value="${esc(c.id)}" ${c.id === p.ccaa ? "selected" : ""}>${esc(c.nombre)}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+          <div class="row"><button class="btn btn-primary" data-action="ir-panel">Ir al panel</button></div>
+        </div>
+      </div>`;
+  }
+
+  // ---------- Exportación ----------
+  function descargar(nombre, contenido, tipo) {
+    const blob = new Blob([contenido], {type: tipo});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = nombre;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function exportarJSON() {
+    descargar(`profe-${(state.perfil.cursoEscolar || "").replace("/", "-")}.json`,
+      JSON.stringify(state, null, 2), "application/json");
+    toast("Copia de seguridad descargada.");
+  }
+
+  function documentoImprimible() {
+    const p = state.perfil;
+    const etapa = etapaInfo(p.etapa);
+    const materia = materiaDe(p.etapa, p.materia);
+    const ccaa = ccaaDe(p.ccaa);
+    const d = state.didactica;
+    const modelo = modeloParaCurso();
+    const seleccionadas = modelo.competencias.filter((ce) => d.competencias.includes(ce.id));
+    const pesosAnual = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+
+    const bloque = (n, titulo, texto) => texto && texto.trim()
+      ? `<section><h2>${n}. ${esc(titulo)}</h2><p>${esc(texto).replace(/\n/g, "<br>")}</p></section>`
+      : "";
+
+    const situaciones = state.situaciones.length ? `
+      <section class="nueva-pagina">
+        <h2>10. Situaciones de aprendizaje</h2>
+        ${state.situaciones.map((s, i) => `
+          <article class="sit-doc">
+            <h3>10.${i + 1}. ${esc(s.titulo || "Situación sin título")}</h3>
+            ${s.reto ? `<p><strong>Reto o pregunta:</strong> ${esc(s.reto)}</p>` : ""}
+            ${s.producto ? `<p><strong>Producto final:</strong> ${esc(s.producto)}</p>` : ""}
+            ${s.competenciasClave.length ? `<p><strong>Competencias clave:</strong> ${s.competenciasClave.map((id) => {
+              const cc = DATA.competenciasClave.find((c) => c.id === id);
+              return cc ? `${cc.etiqueta} (${cc.nombre})` : id;
+            }).join("; ")}</p>` : ""}
+            ${s.competenciasEsp ? `<p><strong>Competencias específicas:</strong> ${esc(s.competenciasEsp)}</p>` : ""}
+            ${s.criterios ? `<p><strong>Criterios de evaluación:</strong> ${esc(s.criterios)}</p>` : ""}
+            ${s.saberes ? `<p><strong>Saberes básicos:</strong> ${esc(s.saberes)}</p>` : ""}
+            ${(s.fases.motivacion || s.fases.desarrollo || s.fases.aplicacion || s.fases.evaluacion) ? `
+              <table>
+                <thead><tr><th>Fase</th><th>Desarrollo</th></tr></thead>
+                <tbody>
+                  ${[['1. Motivación', s.fases.motivacion], ['2. Desarrollo', s.fases.desarrollo], ['3. Aplicación', s.fases.aplicacion], ['4. Evaluación', s.fases.evaluacion]]
+                    .filter(([, txt]) => txt).map(([fase, txt]) => `<tr><td>${fase}</td><td>${esc(txt)}</td></tr>`).join("")}
+                </tbody>
+              </table>` : ""}
+            <p class="small">
+              ${s.agrupamientos ? `<strong>Agrupamientos:</strong> ${esc(s.agrupamientos)}. ` : ""}
+              ${s.recursos ? `<strong>Recursos:</strong> ${esc(s.recursos)}. ` : ""}
+              ${s.tiempo ? `<strong>Temporalización:</strong> ${esc(s.tiempo)}. ` : ""}
+            </p>
+            ${s.evaluacion ? `<p><strong>Instrumentos de evaluación:</strong> ${esc(s.evaluacion)}</p>` : ""}
+            ${s.diversidad ? `<p><strong>Atención a la diversidad:</strong> ${esc(s.diversidad)}</p>` : ""}
+          </article>`).join("")}
+      </section>` : "";
+
+    return `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+      <title>Programación didáctica · ${esc(materia ? materia.nombre : "")} · ${esc(p.curso || "")}</title>
+      <style>
+        @page{size:A4;margin:18mm}
+        body{font-family:"Segoe UI",Arial,sans-serif;max-width:820px;margin:0 auto;padding:24px;color:#1b2030;line-height:1.55;font-size:13.5px}
+        h1{font-size:21px;margin:0 0 4px}
+        h2{font-size:14px;margin:26px 0 8px;color:#2c39b8;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #dfe3ee;padding-bottom:5px}
+        h3{font-size:13.5px;margin:18px 0 6px}
+        p{margin:0 0 8px}
+        table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:12px}
+        th,td{border:1px solid #d7dbe4;padding:6px 8px;text-align:left;vertical-align:top}
+        th{background:#f2f4f9;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+        ul{padding-left:18px;margin:6px 0}
+        .portada{min-height:88vh;display:flex;flex-direction:column;justify-content:center;text-align:center;border-bottom:1px solid #dfe3ee}
+        .portada .marca{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#4353e8;font-weight:700;margin-bottom:18px}
+        .portada h1{font-size:29px;line-height:1.25;margin-bottom:10px}
+        .portada .sub{font-size:15px;color:#4a5468;margin-bottom:26px}
+        .portada dl{display:grid;grid-template-columns:auto auto;gap:5px 18px;justify-content:center;font-size:13px;text-align:left;margin:0 auto}
+        .portada dt{color:#78829a}
+        .portada dd{margin:0;font-weight:600}
+        .indice{margin-top:22px;font-size:12.5px;color:#4a5468}
+        .indice ol{margin:6px 0 0;padding-left:18px}
+        .nueva-pagina{page-break-before:always}
+        .sit-doc{border:1px solid #e3e7f0;border-radius:6px;padding:12px 14px;margin-bottom:14px;page-break-inside:avoid}
+        .small{font-size:12px;color:#4a5468}
+        .nota{margin-top:26px;font-size:11px;color:#78829a;border-top:1px solid #e3e7f0;padding-top:9px}
+        .firma{margin-top:34px;display:flex;justify-content:space-between;font-size:12px;color:#4a5468}
+      </style></head><body>
+
+      <div class="portada">
+        <div class="marca">Profe · Programación docente</div>
+        <h1>Programación didáctica</h1>
+        <div class="sub">${esc(materia ? materia.nombre : "")} · ${esc(p.curso || "")} · Curso ${esc(p.cursoEscolar)}</div>
+        <dl>
+          <dt>Centro</dt><dd>${esc(p.centro || "—")}</dd>
+          <dt>Etapa</dt><dd>${esc(etapa ? etapa.nombre : "—")}</dd>
+          <dt>Docente</dt><dd>${esc(p.docente || "—")}</dd>
+          <dt>Comunidad</dt><dd>${esc(ccaa ? ccaa.nombre : "—")}</dd>
+        </dl>
+      </div>
+
+      <div class="indice">
+        <strong>Índice</strong>
+        <ol>
+          <li>Datos de identificación y marco normativo</li>
+          <li>Justificación</li>
+          <li>Contextualización</li>
+          <li>Competencias específicas</li>
+          <li>Criterios de evaluación y saberes básicos</li>
+          <li>Metodología</li>
+          <li>Atención a la diversidad</li>
+          <li>Recursos y actividades complementarias</li>
+          <li>Evaluación: criterios de calificación y práctica docente</li>
+          <li>Situaciones de aprendizaje</li>
+          <li>Anexo: programación anual</li>
+        </ol>
+      </div>
+
+      <section>
+        <h2>1. Datos de identificación y marco normativo</h2>
+        <table>
+          <tbody>
+            <tr><th>Centro</th><td>${esc(p.centro || "—")}</td><th>Docente</th><td>${esc(p.docente || "—")}</td></tr>
+            <tr><th>Etapa</th><td>${esc(etapa ? etapa.nombre : "—")}</td><th>Curso</th><td>${esc(p.curso || "—")}</td></tr>
+            <tr><th>Materia / área</th><td>${esc(materia ? materia.nombre : "—")}</td><th>Curso escolar</th><td>${esc(p.cursoEscolar)}</td></tr>
+          </tbody>
+        </table>
+        <p class="small"><strong>Normativa estatal:</strong> ${esc((materia && materia.decreto) || (etapa && etapa.decreto) || "")}</p>
+        ${materia && materia.fuente ? `<p class="small"><strong>Texto curricular:</strong> ${esc(materia.fuente.norma)}, ${esc(materia.fuente.anexo)}, texto literal (BOE ${esc(materia.fuente.identificador)}).</p>` : ""}
+        ${ccaa && ccaa.etapas && ccaa.etapas[p.etapa] ? `<p class="small"><strong>Desarrollo autonómico (${esc(ccaa.nombre)}):</strong> ${esc(ccaa.etapas[p.etapa].decreto_referencia || "")}${ccaa.etapas[p.etapa].estado !== "verificado" ? " (referencia pendiente de confirmar en el boletín oficial)" : ""}</p>` : ""}
+      </section>
+
+      ${bloque(2, "Justificación", d.justificacion)}
+      ${bloque(3, "Contextualización", d.contexto)}
+
+      <section>
+        <h2>4. Competencias específicas</h2>
+        ${seleccionadas.length
+          ? `<ul>${seleccionadas.map((ce) => `<li><strong>${esc(ce.id.toUpperCase())}.</strong> ${esc(ce.texto)}</li>`).join("")}</ul>`
+          : `<p class="small">Sin competencias específicas seleccionadas.</p>`}
+      </section>
+
+      ${bloque(5, "Criterios de evaluación y saberes básicos", [d.criteriosTexto, d.saberesTexto].filter(Boolean).join("\n\n"))}
+      ${bloque(6, "Metodología", d.metodologia)}
+      ${bloque(7, "Atención a la diversidad", d.diversidad)}
+      ${bloque(8, "Recursos y actividades complementarias", [d.recursos, d.actividades].filter(Boolean).join("\n\n"))}
+
+      <section>
+        <h2>9. Evaluación</h2>
+        <h3>9.1. Criterios de calificación</h3>
+        <table>
+          <thead><tr><th>Bloque / instrumento</th><th>Tipo</th><th style="width:70px">Peso</th></tr></thead>
+          <tbody>${d.calificacion.map((c) => `<tr><td>${esc(c.nombre)}</td><td>${esc(c.instrumento)}</td><td>${esc(c.peso)} %</td></tr>`).join("")}</tbody>
+        </table>
+        <h3>9.2. Evaluación de la práctica docente</h3>
+        <p>${esc(d.evaluacionPractica || "Sin definir.").replace(/\n/g, "<br>")}</p>
+      </section>
+
+      ${situaciones}
+
+      <section class="nueva-pagina">
+        <h2>11. Anexo: programación anual</h2>
+        ${state.anual.length ? `
+          <table>
+            <thead><tr><th>Nº</th><th>Unidad</th><th>Evaluación</th><th>Competencias</th><th>Instrumentos</th><th>Sesiones</th><th>Peso</th></tr></thead>
+            <tbody>${state.anual.map((u, i) => `<tr><td>${i + 1}</td><td>${esc(u.titulo || "—")}</td><td>${esc(u.trimestre)}</td><td>${esc(u.competencias || "—")}</td><td>${esc(u.instrumentos || "—")}</td><td>${esc(u.sesiones || "—")}</td><td>${esc(u.peso)} %</td></tr>`).join("")}</tbody>
+          </table>
+          <p class="small">Total de pesos: ${pesosAnual} %. Sesiones programadas: ${state.anual.reduce((s, u) => s + (Number(u.sesiones) || 0), 0)}.</p>` : `<p class="small">Sin unidades registradas.</p>`}
+        ${state.anual.some((u) => u.desarrollo && Object.values(u.desarrollo).some((v) => String(v || "").trim())) ? `
+          <h3>Desarrollo de las unidades</h3>
+          ${state.anual.map((u, i) => {
+            const des = u.desarrollo || {};
+            const campos = [
+              ["Objetivos", des.objetivos],
+              ["Actividades por sesión", des.actividades],
+              ["Atención a la diversidad", des.diversidad],
+              ["Evaluación", des.evaluacion]
+            ].filter(([, valor]) => String(valor || "").trim());
+            if (!campos.length) return "";
+            return `
+              <div class="unidad">
+                <h4>Unidad ${i + 1}. ${esc(u.titulo || "Sin título")}</h4>
+                ${campos.map(([etiqueta, valor]) => `<p><strong>${etiqueta}.</strong> ${esc(valor).replace(/\n/g, "<br>")}</p>`).join("")}
+              </div>`;
+          }).join("")}` : ""}
+        <div class="firma"><span>Firma del docente: ____________________</span><span>Fecha: ${esc(new Date().toLocaleDateString("es-ES"))}</span></div>
+      </section>
+
+      <p class="nota">${esc(DATA.notaFicha || "")} Documento generado con Profe.</p>
+      </body></html>`;
+  }
+
+  function exportarWord() {
+    const html = documentoImprimible();
+    const cuerpo = (html.match(/<body[^>]*>([\s\S]*)<\/body>/i) || [null, html])[1];
+    const materia = materiaDe(state.perfil.etapa, state.perfil.materia);
+    const doc = `\ufeff<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8"><title>Programación didáctica · ${esc(materia ? materia.nombre : "")}</title>
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->
+<style>
+  @page{size:A4;margin:2cm}
+  body{font-family:Calibri,"Segoe UI",sans-serif;font-size:11pt;line-height:1.45;color:#1b2030}
+  h1{font-size:18pt} h2{font-size:12pt;color:#2c39b8;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid #dfe3ee;padding-bottom:3pt;margin-top:16pt}
+  h3{font-size:11pt;margin-top:12pt}
+  table{border-collapse:collapse;width:100%;margin:8pt 0}
+  th,td{border:1px solid #bfc6d4;padding:4pt 6pt;font-size:10pt;vertical-align:top}
+  th{background:#eef0f7;text-align:left}
+  ul{padding-left:16pt}
+  .portada{margin-bottom:18pt} .nueva-pagina{page-break-before:always}
+  .nota{margin-top:18pt;font-size:8.5pt;color:#78829a;border-top:1px solid #dfe3ee;padding-top:6pt}
+</style></head>
+<body>${cuerpo}</body></html>`;
+    descargar(`programacion-didactica-${(state.perfil.curso || "curso").replace(/\s+/g, "-").toLowerCase()}.doc`, doc, "application/msword");
+    toast("Documento de Word descargado.");
+  }
+
+  function exportarHTML() {
+    const html = documentoImprimible();
+    const win = window.open("", "_blank");
+    if (!win) {
+      descargar("programacion-didactica.html", html, "text/html");
+      toast("Ventana bloqueada: se ha descargado el documento.");
+      return;
+    }
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+    setTimeout(() => win.print(), 350);
+  }
+
+  // ---------- Eventos ----------
+  document.addEventListener("click", (event) => {
+    const navBtn = event.target.closest("[data-nav]");
+    if (navBtn) {
+      state.vista = navBtn.dataset.nav;
+      save();
+      render();
+      focusTitulo();
+      return;
     }
 
-    function mostrarMensaje(msg, tipo) {
-      const div = document.getElementById('mensaje');
-      div.innerHTML = `<div class="card ${tipo === 'success' ? 'success' : ''}">${msg}</div>`;
-      setTimeout(() => div.innerHTML = '', 5000);
+    const actionBtn = event.target.closest("[data-action]");
+    if (!actionBtn) return;
+    const {action} = actionBtn.dataset;
+    const i = Number(actionBtn.dataset.i);
+
+    switch (action) {
+      case "ir-panel": state.vista = "panel"; break;
+      case "ir-anual": state.vista = "anual"; break;
+      case "ir-didactica": state.vista = "didactica"; break;
+      case "ir-situaciones": state.vista = "situaciones"; break;
+      case "ir-catalogo": state.vista = "catalogo"; break;
+      case "ir-vista": state.vista = actionBtn.dataset.vista; break;
+      case "sit-a-anual": {
+        const sit = state.situaciones.find((s) => s.id === actionBtn.dataset.id);
+        if (!sit || !sit.titulo.trim()) { toast("Ponle un título a la situación antes de añadirla."); return; }
+        if (state.anual.some((u) => u.titulo === sit.titulo)) {
+          toast("Esa situación ya está en la programación anual.");
+          return;
+        }
+        const total = state.anual.length + 1;
+        state.anual.push({
+          id: uid(),
+          titulo: sit.titulo,
+          trimestre: trimestreDe(state.anual.length, total),
+          competencias: sit.competenciasEsp || "",
+          criterios: sit.criterios || "",
+          saberes: sit.saberes || "",
+          instrumentos: sit.evaluacion || "",
+          sesiones: 0,
+          peso: 0
+        });
+        toast(`«${sit.titulo}» añadida a la programación anual.`);
+        break;
+      }
+
+      case "sugerir": {
+        const campo = actionBtn.dataset.campo;
+        const texto = propuesta(campo);
+        if (!texto) { toast("No hay propuesta disponible para esta etapa."); return; }
+        const actual = String(getPath(`didactica.${campo}`) || "").trim();
+        if (actual && !confirm("Se sustituirá el texto que ya has escrito en este apartado. ¿Continuar?")) return;
+        setPath(`didactica.${campo}`, texto);
+        toast("Propuesta insertada. Adáptala a tu grupo.");
+        break;
+      }
+      case "cargar-criterios": {
+        const modelo = modeloParaCurso();
+        const lineas = Object.entries(modelo.criterios).map(([ceId, lista]) =>
+          `${ceId.toUpperCase()}: ${lista.join("; ")}`);
+        if (!lineas.length) { toast("Esta ficha no incluye criterios de evaluación."); return; }
+        if (String(getPath("didactica.criteriosTexto") || "").trim()
+            && !confirm("Se sustituirán los criterios escritos por los de la ficha. ¿Continuar?")) return;
+        setPath("didactica.criteriosTexto", lineas.join("\n"));
+        toast(`${lineas.length} bloques de criterios cargados.`);
+        break;
+      }
+      case "sit-cargar": {
+        const base = actionBtn.dataset.base;
+        const modelo = modeloParaCurso();
+        const marcadas = (state.didactica.competencias || []).map((id) => String(id).toLowerCase());
+        const disponibles = modelo.competencias || [];
+        const elegidas = (marcadas.length
+          ? disponibles.filter((ce) => marcadas.includes(String(ce.id).toLowerCase()))
+          : disponibles).slice(0, 3);
+        if (!elegidas.length) { toast("La ficha no tiene competencias específicas."); return; }
+        if (String(getPath(`${base}.criterios`) || "").trim()
+            && !confirm("Se sustituirán los criterios escritos. ¿Continuar?")) return;
+        const textos = elegidas.flatMap((ce) => (modelo.criterios[ce.id] || []).slice(0, 2));
+        setPath(`${base}.competenciasEsp`, elegidas.map((ce) => ce.id.toUpperCase()).join(", "));
+        setPath(`${base}.criterios`, textos.join("; "));
+        toast(`Competencias y criterios de ${elegidas.length} CE cargados.`);
+        break;
+      }
+      case "cargar-criterios-ce": {
+        const modelo = modeloParaCurso();
+        const seleccionadas = state.didactica.competencias || [];
+        const lineas = seleccionadas
+          .map((id) => {
+            const lista = modelo.criterios[id] || [];
+            return lista.length ? `${id.toUpperCase()}: ${lista.join("; ")}` : "";
+          })
+          .filter(Boolean);
+        if (!lineas.length) { toast("Marca antes alguna competencia específica."); return; }
+        if (String(getPath("didactica.criteriosTexto") || "").trim()
+            && !confirm("Se sustituirán los criterios escritos por los de la ficha. ¿Continuar?")) return;
+        setPath("didactica.criteriosTexto", lineas.join("\n"));
+        toast(`${lineas.length} bloques de criterios cargados de las CE marcadas.`);
+        break;
+      }
+      case "cargar-saberes": {
+        const modelo = modeloParaCurso();
+        if (!modelo.saberes.length) { toast("Esta ficha no incluye saberes básicos."); return; }
+        if (String(getPath("didactica.saberesTexto") || "").trim()
+            && !confirm("Se sustituirán los saberes escritos por los de la ficha. ¿Continuar?")) return;
+        setPath("didactica.saberesTexto", modelo.saberes.map((s) => `- ${s}`).join("\n"));
+        toast(`${modelo.saberes.length} saberes cargados.`);
+        break;
+      }
+      case "borrador": {
+        if (!perfilCompleto()) {
+          toast("Completa etapa, curso, materia y comunidad antes de generar el borrador.");
+          return;
+        }
+        if ((state.didactica.criteriosTexto || state.anual.length) &&
+            !confirm("Se completarán los apartados vacíos y se generarán las unidades. " +
+                     "Lo que ya has escrito no se modifica. ¿Continuar?")) return;
+        generarBorrador();
+        break;
+      }
+      case "toggle-unidad": {
+        const id = actionBtn.dataset.id;
+        state.unidadAbierta = state.unidadAbierta === id ? null : id;
+        break;
+      }
+      case "cubrir-ce": {
+        const modelo = modeloParaCurso();
+        const criterios = modelo.criterios || {};
+        const contar = (u) => String(u.competencias || "").split(/[,;]+/).filter((x) => x.trim()).length;
+        let anadidas = 0;
+        modelo.competencias.forEach((ce) => {
+          const yaEsta = state.anual.some((u) =>
+            String(u.competencias || "").toLowerCase().split(/[,;]+/)
+              .map((x) => x.trim()).includes(ce.id.toLowerCase()));
+          if (yaEsta) return;
+          const destino = state.anual.slice().sort((a, b) => contar(a) - contar(b))[0];
+          if (!destino) return;
+          destino.competencias = [String(destino.competencias || "").trim(), ce.id.toUpperCase()]
+            .filter(Boolean).join(", ");
+          const textos = (criterios[ce.id] || []).slice(0, 2);
+          if (textos.length) {
+            destino.criterios = [String(destino.criterios || "").trim(), textos.join("; ")]
+              .filter(Boolean).join("; ");
+          }
+          anadidas += 1;
+        });
+        toast(anadidas
+          ? `${anadidas} competencias repartidas entre las unidades.`
+          : "Todas las competencias específicas ya están trabajadas.");
+        break;
+      }
+      case "repartir-pesos": {
+        const n = state.anual.length;
+        if (!n) { toast("Añade alguna unidad antes de repartir los pesos."); return; }
+        const base = Math.floor((100 / n) * 10) / 10;
+        state.anual.forEach((u) => { u.peso = base; });
+        const resto = Math.round((100 - base * n) * 10) / 10;
+        state.anual[n - 1].peso = Math.round((base + resto) * 10) / 10;
+        toast("Pesos repartidos al 100 %.");
+        break;
+      }
+      case "dup-sit": {
+        const original = state.situaciones.find((s) => s.id === actionBtn.dataset.id);
+        if (!original) return;
+        const copia = JSON.parse(JSON.stringify(original));
+        copia.id = uid();
+        copia.titulo = (copia.titulo || "Situación") + " (copia)";
+        const pos = state.situaciones.indexOf(original) + 1;
+        state.situaciones.splice(pos, 0, copia);
+        state.situacionAbierta = copia.id;
+        toast("Situación duplicada.");
+        break;
+      }
+      case "sugerir-secuencia": {
+        const sit = state.situaciones[Number(actionBtn.dataset.i)];
+        if (!sit) return;
+        sit.fases = {
+          motivacion: "Presentación del reto a partir de una situación cercana al alumnado. Lluvia de ideas, detección de conocimientos previos y formulación de preguntas de investigación.",
+          desarrollo: "Investigación guiada en equipos con reparto de roles. Búsqueda y contraste de información, prácticas o talleres, y puesta en común parcial para ajustar el trabajo.",
+          aplicacion: `Elaboración del producto final${sit.producto ? ` (${sit.producto})` : ""} y preparación de la presentación al grupo. Revisión entre iguales con una lista de cotejo.`,
+          evaluacion: "Presentación del producto, valoración con la rúbrica y reflexión individual sobre lo aprendido y sobre el proceso de trabajo en equipo."
+        };
+        toast("Secuencia insertada. Ajusta tiempos y agrupamientos.");
+        break;
+      }
+
+      case "regen-anual":
+        if (state.anual.length && !confirm("Se sustituirá la tabla actual por una nueva estructura. ¿Continuar?")) return;
+        generarAnual();
+        toast(`Estructura de ${state.anual.length} unidades generada.`);
+        break;
+      case "add-anual":
+        state.anual.push({id: uid(), titulo: "", trimestre: "3.ª evaluación", competencias: "", criterios: "", saberes: "", instrumentos: "", sesiones: 0, peso: 0});
+        break;
+      case "dup-anual":
+        state.anual.splice(i + 1, 0, Object.assign({}, state.anual[i], {id: uid()}));
+        break;
+      case "del-anual":
+        state.anual.splice(i, 1);
+        break;
+
+      case "new-sit": nuevaSituacion(); break;
+      case "toggle-sit":
+        state.situacionAbierta = state.situacionAbierta === actionBtn.dataset.id ? null : actionBtn.dataset.id;
+        break;
+      case "del-sit":
+        if (!confirm("¿Eliminar esta situación de aprendizaje?")) return;
+        state.situaciones = state.situaciones.filter((s) => s.id !== actionBtn.dataset.id);
+        if (state.situacionAbierta === actionBtn.dataset.id) state.situacionAbierta = null;
+        break;
+
+      case "add-peso":
+        state.didactica.calificacion.push({nombre: "", instrumento: "Rúbrica", peso: 0});
+        break;
+      case "del-peso":
+        state.didactica.calificacion.splice(i, 1);
+        break;
+
+      case "cat-etapa":
+        state.catalogo.etapa = actionBtn.dataset.id;
+        state.catalogo.id = "";
+        break;
+      case "cat-materia":
+        state.catalogo.id = actionBtn.dataset.id;
+        break;
+
+      case "export-json": exportarJSON(); return;
+      case "export-word": exportarWord(); return;
+      case "export-html": exportarHTML(); return;
+      case "import-json": document.getElementById("import-file").click(); return;
+      case "reset":
+        if (!confirm("Se borrará todo el trabajo guardado en este navegador. ¿Continuar?")) return;
+        localStorage.removeItem(STORAGE_KEY);
+        state = statePorDefecto();
+        toast("Expediente reiniciado.");
+        break;
+      case "print": exportarHTML(); return;
+      default: return;
     }
-  </script>
+    save();
+    render();
+  });
+
+  document.addEventListener("input", (event) => {
+    const input = event.target.closest("[data-bind]");
+    if (!input) return;
+    const path = input.dataset.bind;
+    let value = input.value;
+    if (input.type === "number") value = value === "" ? "" : Number(value);
+    setPath(path, value);
+    save();
+    if (path === "didactica.calificacion" || path.endsWith(".peso")) actualizarPesos();
+    if (path === "anual" || path.startsWith("anual.")) actualizarTotalesAnual();
+  });
+
+  function actualizarPesos() {
+    const pill = document.querySelector('.card-head .pill.pill-ok, .card-head .pill.pill-warn');
+    if (!pill) return;
+    const total = totalPesos();
+    pill.textContent = `Total ${total} %`;
+    pill.className = `pill ${total === 100 ? "pill-ok" : "pill-warn"}`;
+  }
+
+  function actualizarTotalesAnual() {
+    const total = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    const hint = document.querySelector('[data-total-anual]');
+    if (hint) hint.textContent = `${total} %`;
+  }
+
+  document.addEventListener("change", (event) => {
+    const select = event.target.closest("[data-change]");
+    if (select) {
+      setPath(select.dataset.change, select.value);
+      save();
+      render();
+      return;
+    }
+    const check = event.target.closest("[data-check]");
+    if (check) {
+      const path = check.dataset.check;
+      const list = getPath(path) || [];
+      const value = check.value;
+      setPath(path, check.checked ? Array.from(new Set([...list, value])) : list.filter((v) => v !== value));
+      save();
+      const counter = document.querySelector(".card-head .pill.pill-mute");
+      if (counter && path === "didactica.competencias") counter.textContent = `${getPath(path).length} seleccionadas`;
+    }
+    const file = event.target.closest("#import-file");
+    if (file && file.files && file.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const imported = JSON.parse(String(reader.result));
+          if (!imported || typeof imported !== "object") throw new Error("formato no válido");
+          state = Object.assign(statePorDefecto(), imported);
+          save();
+          render();
+          toast("Copia importada correctamente.");
+        } catch (err) {
+          toast("No se pudo importar: el archivo no es una copia válida de Profe.");
+        }
+      };
+      reader.readAsText(file.files[0]);
+      file.value = "";
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") {
+      event.preventDefault();
+      save();
+      toast("Guardado.");
+    }
+  });
+
+  // ---------- Arranque ----------
+  if (!DATA.etapas || !DATA.etapas.length) {
+    view().innerHTML = `
+      <div class="card"><div class="card-body">
+        <h2>No se pudo cargar el catálogo curricular</h2>
+        <p class="small muted" style="margin-top:8px">Falta <code>data/app-data.js</code>. Ejecuta <code>python3 scripts/build_app.py</code> o lanza la app con el comando <code>Profe</code>.</p>
+      </div></div>`;
+    return;
+  }
+
+  render();
+})();
+</script>
 </body>
 </html>

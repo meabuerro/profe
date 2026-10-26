@@ -1,33 +1,41 @@
 {
   "id_ccaa": "comunitat-valenciana",
   "nombre": "Comunitat Valenciana",
-  "notas_generales": [
-    "Esta ficha de referencia recoge los aspectos más relevantes del currículo autonómico en la Comunitat Valenciana.",
-    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "genval": "https://educacio.gva.es"
+    "curriculo": "https://ceice.gva.es/es/web/ordenacion-academica"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
-      "observaciones": "Primera etapa de Educación Infantil"
+      "decreto_referencia": "Decret 100/2022, de 29 de juliol",
+      "boletin": "DOGV",
+      "estado": "verificado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
-      "observaciones": "Currículo de Educación Primaria"
+      "decreto_referencia": "Decret 106/2022, de 5 d'agost",
+      "boletin": "DOGV",
+      "estado": "verificado",
+      "observaciones": "Modificado por el Decret 96/2026, de 19 de juny."
     },
     "eso": {
-      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
-      "observaciones": "Currículo de Educación Secundaria Obligatoria"
+      "decreto_referencia": "Decret 107/2022, de 5 d'agost",
+      "boletin": "DOGV",
+      "estado": "contrastado",
+      "observaciones": ""
     },
     "bachillerato": {
-      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
-      "observaciones": "Currículo de Bachillerato"
+      "decreto_referencia": "Decret 108/2022, de 5 d'agost",
+      "boletin": "DOGV",
+      "estado": "contrastado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "En la Comunitat Valenciana pueden existir adaptaciones curriculares propias.",
-    "Coordinación entre el currículo estatal y la normativa autonómica."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

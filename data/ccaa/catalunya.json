@@ -1,33 +1,41 @@
 {
   "id_ccaa": "catalunya",
   "nombre": "Cataluña",
-  "notas_generales": [
-    "Esta ficha de referencia recoge los aspectos más relevantes del currículo oficial en Cataluña.",
-    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
-  ],
+  "fuente": {
+    "consultado": "2026-10-26",
+    "nota": "Normativa autonómica de desarrollo del currículo LOMLOE."
+  },
   "enlaces_oficiales": {
-    "gencat": "https://educacio.gencat.cat"
+    "curriculo": "https://projectes.xtec.cat/nou-curriculum/"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
-      "observaciones": "Para la etapa de Educación Infantil, currículo para los centros de Cataluña."
+      "decreto_referencia": "Decret 21/2023, de 7 de febrer",
+      "boletin": "DOGC",
+      "estado": "contrastado",
+      "observaciones": ""
     },
     "primaria": {
-      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
-      "observaciones": "Currículo de Educación Primaria para la Comunidad Autónoma de Cataluña."
+      "decreto_referencia": "Decret 175/2022, de 27 de setembre",
+      "boletin": "DOGC",
+      "estado": "verificado",
+      "observaciones": "Ordena els ensenyaments de l'educació bàsica."
     },
     "eso": {
-      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
-      "observaciones": "Currículo de Educación para la ESO en Cataluña."
+      "decreto_referencia": "Decret 175/2022, de 27 de setembre",
+      "boletin": "DOGC",
+      "estado": "verificado",
+      "observaciones": "Ordena els ensenyaments de l'educació bàsica."
     },
     "bachillerato": {
-      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
-      "observaciones": "Currículo de Educación para el Bachillerato en Cataluña."
+      "decreto_referencia": "Decret 171/2022, de 20 de setembre",
+      "boletin": "DOGC",
+      "estado": "verificado",
+      "observaciones": ""
     }
   },
-  "observaciones_transversales": [
-    "En Cataluña pueden existir adaptaciones curriculares propias.",
-    "Coordinación entre el currículo estatal y la normativa autonómica."
+  "notas_generales": [
+    "La norma autonómica desarrolla y concreta el currículo estatal; prevalece en lo que amplía o especifica.",
+    "Comprueba siempre la vigencia y las modificaciones posteriores en el boletín oficial de tu comunidad."
   ]
 }

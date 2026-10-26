@@ -16,7 +16,7 @@ Estos son los Reales Decretos que desarrollan el currículo básico en cada etap
 - **Educación Infantil**: Real Decreto 95/2022, de 1 de febrero.
 - **Educación Primaria**: Real Decreto 157/2022, de 1 de marzo.
 - **Educación Secundaria Obligatoria (ESO)**: Real Decreto 217/2022, de 29 de marzo.
-- **Bachillerato**: Real Decreto 243/2022, de 5 de octubre.
+- **Bachillerato**: Real Decreto 243/2022, de 5 de abril.
 
 ### 1.3 Evaluación
 Entre los Reales Decretos que desarrollan aspectos de evaluación y promoción en la LOMLOE se encuentran:
@@ -133,8 +133,10 @@ En la herramienta, el docente relaciona cada criterio de evaluación con instrum
 
 - `data/competencias-clave.json`: las 8 competencias clave y sus etiquetas de referencia, con notas del Perfil de salida.
 - `data/etapas.json`: etapas, ciclos y terminología, junto con los Reales Decretos de referencia.
-- `data/materias/`: fichas de materia por etapa. Por ahora incluyen plantillas con competencias específicas de referencia y espacio para criterios y saberes básicos.
-- `data/ccaa/`: fichas de referencia normativa por Comunidad Autónoma.
+- `data/materias/`: fichas de materia y área por etapa con el **texto literal** del anexo II del real decreto correspondiente. Cada ficha declara `fuente` (norma, identificador del BOE, anexo y URL) y separa las competencias específicas de la etapa de los criterios y saberes de cada ciclo o curso.
+- `data/ccaa/`: ficha por Comunidad Autónoma con la norma de cada etapa, su boletín y su estado de comprobación (`verificado` o `contrastado`).
+
+Los ficheros de `data/materias/` y `data/ccaa/` se generan con `scripts/importar_boe.py` y `scripts/importar_ccaa.py`; no se editan a mano, para que el texto curricular no se separe nunca de su fuente.
 - `templates/`: plantillas de estructura para programación didáctica y situaciones de aprendizaje.
 
 Cuando añadas o modifiques contenido, la prioridad es que sea trazable a la normativa vigente y que se conserven las relaciones entre elementos curriculares.

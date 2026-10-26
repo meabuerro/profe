@@ -1,0 +1,136 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "economia-emprendimiento-y-actividad-empresarial",
+  "nombre": "Economía, Emprendimiento y Actividad Empresarial",
+  "denominacion_oficial": "Economía, Emprendimiento y Actividad Empresarial",
+  "terminologia_etapa": "materia",
+  "fuente": {
+    "norma": "Real Decreto 243/2022, de 5 de abril",
+    "identificador": "BOE-A-2022-5521",
+    "anexo": "Anexo II",
+    "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-5521",
+    "texto": "literal",
+    "importado": "2026-10-26"
+  },
+  "organizacion": "Cualquier ciudadano y ciudadana necesita comprender el mundo en el que vive y reflexionar de manera crítica sobre la información que recibe del entorno para entender la organización económica y social de los grupos humanos en los que se integra. De esta manera, podrá convertirse en parte activa y constructiva de la sociedad y contribuir a encontrar soluciones a los problemas que puedan surgir en ella. La realidad socioeconómica tiene muchas vertientes, de ahí la importancia de conectar el conocimiento que se genera desde diversas disciplinas y desde el ámbito de la economía y del estudio de las empresas, con lo que sucede en la realidad, para encontrar respuestas, tomar decisiones y actuar con formación, información y responsabilidad. La finalidad educativa de la materia de Economía, Emprendimiento y Actividad Empresarial está en consonancia con la Recomendación del Consejo de 22 de mayo de 2018 relativa a las competencias clave para el aprendizaje permanente, donde se recoge que las personas deben comprender la economía y las oportunidades sociales y económicas. Esta materia de modalidad está planteada para el primer curso de Bachillerato General, trata de aportar los conceptos económicos y empresariales necesarios para que el alumnado tenga un soporte teórico que le permita realizar análisis críticos y fundamentados a partir del estudio de casos sobre la realidad económica actual, valorar los efectos que provoca en los distintos ámbitos de la vida y aprovechar estos aprendizajes para generar una actitud proactiva y comprometida con la sociedad y de búsqueda de un mayor bienestar tanto colectivo como individual. Se diseña tomando como referentes los descriptores operativos que concretan el desarrollo competencial esperado para el alumnado de Bachillerato. Asimismo, su diseño tiene en cuenta los objetivos fijados en la legislación vigente, contribuyendo a afianzar «el espíritu emprendedor con actitudes de creatividad, flexibilidad, iniciativa, trabajo en equipo, confianza en uno mismo y sentido crítico». La materia parte de la adquisición de todas las competencias clave por parte del alumnado en las etapas de Educación Primaria y Educación Secundaria Obligatoria, pero, de forma particular, de la competencia emprendedora, de la competencia ciudadana y de la competencia personal, social y de aprender a aprender. Estas se complementan aportando, por un lado, elementos que permiten comprender el funcionamiento de economía, de las empresas y del perfil de las personas emprendedoras, así como aquellos elementos relacionados con la reflexión crítica y constructiva y la propuesta de soluciones a problemas y retos contemporáneos con una visión interdisciplinar. Está organizada en torno a la adquisición de unas competencias específicas que proponen que el alumnado analice de forma crítica y reflexiva las aportaciones de la ciencia económica, valorando su interrelación con otras disciplinas; que estudie, desde un enfoque interdisciplinar, el comportamiento de las personas e instituciones respecto a la toma de decisiones económicas, partiendo del problema de la escasez y sus efectos; que se sensibilice y comprometa con la consecución de los Objetivos de Desarrollo Sostenible; que identifique y valore las habilidades y competencias que caracterizan a las personas emprendedoras para hacerlas suyas en la medida en que así lo necesite; que conozca y comprenda las distintas estrategias empresariales, analizando su evolución y distinguiendo los nuevos modelos de negocio y que analice las transformaciones socioeconómicas relacionadas con la innovación y la revolución digital en la actividad empresarial. Los criterios de evaluación van dirigidos a comprobar el grado de adquisición de las competencias específicas, esto es, el desempeño a nivel cognitivo, instrumental y actitudinal, que pueda ser aplicado en situaciones o actividades del ámbito personal, social y académico con una futura proyección profesional. Los saberes básicos que contribuyen a adquirir las competencias específicas se organizan en tres bloques, haciendo coincidir sus títulos con la denominación de la materia. El primero se vincula a aspectos económicos y comprende a su vez dos subbloques, en los que se recoge el problema de la escasez y el tratamiento del problema económico, y se abordan cuestiones relacionadas con la economía y sus conexiones con otras disciplinas permitiendo realizar un análisis de la realidad desde una perspectiva más amplia e integradora. El segundo bloque de saberes, se liga al emprendimiento y al conocimiento de las personas emprendedoras. Trata de presentar al alumnado aquellas habilidades y competencias que son características de las personas con iniciativa y sentido emprendedor viendo en ellas referentes reales que les inspiren en su camino hacia el futuro. De igual modo, busca dar una visión objetiva y realista de las dificultades que pueden encontrar en dicho camino. El tercer y último bloque, se centra en la actividad empresarial y analiza las estrategias que llevan a cabo las empresas, así como los nuevos modelos de negocio teniendo siempre presentes las novedades que existen en este campo como consecuencia de la revolución tecnológica y digital. Se pretende abordar la materia desde una perspectiva teórico-práctica aplicando los saberes al análisis de casos e investigaciones sobre la realidad empresarial, de forma objetiva. Conocer y debatir estrategias empresariales a partir del estudio de casos reales y significativos permitirá que el alumnado tome conciencia de la importancia de potenciar las cualidades propias y de los demás y fomentar actitudes de esfuerzo, constancia y superación viendo en estos elementos un aporte de valor tanto individual como colectivo en el camino hacia el aprendizaje y el logro.",
+  "remite_a": null,
+  "remision_texto": null,
+  "competencias_especificas": [
+    {
+      "id": "ce1",
+      "texto": "Analizar de forma crítica y reflexiva las aportaciones de la ciencia económica, valorando su interrelación con otras disciplinas, para entender la realidad desde una visión integral y actuar como ciudadanos y ciudadanas responsables, autónomos y comprometidos.",
+      "descriptores": "Esta competencia específica se conecta con los siguientes descriptores: CCL2, STEM4, STEM5, CPSAA1.2, CPSAA5, CC1, CE1, CE2.",
+      "explicacion": [
+        "La realidad económica actual es compleja, así como la solución a los problemas y la toma de decisiones en este ámbito, porque intervienen muchas variables. Por ello es importante que el alumnado, a través del estudio y el análisis reflexivo, consiga relacionar los conocimientos de la ciencia económica, y sus dificultades para establecer leyes generales que no sean de carácter probabilístico, con los que ofrecen otras disciplinas, ya sean del ámbito de las ciencias sociales o de otros ámbitos. Esta conexión proporciona una visión más completa del mundo, permite comprender mejor los cambios en el entorno económico y social y proponer soluciones a problemas económicos como ciudadanos y ciudadanas responsables, autónomos y comprometidos con los retos de la sociedad en el siglo XXI."
+      ]
+    },
+    {
+      "id": "ce2",
+      "texto": "Analizar, desde un enfoque interdisciplinar, el comportamiento tanto individual como colectivo en la toma de decisiones económicas, evaluando el problema de la escasez y sus efectos, para comprender los cambios económicos y sociales derivados de dicho problema y actuar en consecuencia.",
+      "descriptores": "Esta competencia específica se conecta con los siguientes descriptores: CCL2, STEM2, CPSAA1.2, CPSAA5, CC4, CE1, CE2.",
+      "explicacion": [
+        "El problema de la escasez y sus efectos subyace a toda la ciencia económica y condiciona el comportamiento de los individuos y la sociedad a la hora de tomar decisiones en este campo. El análisis de este problema desde una perspectiva integral va a permitir que el alumnado sea capaz de actuar y tomar decisiones más rigurosas puesto que serán fruto de un análisis global, donde habrá tenido en cuenta no solo variables económicas sino otras de tipo sociológico, como la influencia del comportamiento de los individuos en la toma de decisiones; de tipo psicológico, como el análisis de los fallos en la toma de decisiones racionales; o de tipo filosófico y ético, como la reflexión sobre la utilidad y la felicidad."
+      ]
+    },
+    {
+      "id": "ce3",
+      "texto": "Establecer correspondencias entre los Objetivos de Desarrollo Sostenible y los aprendizajes adquiridos a través del estudio de casos, analizándolos con ayuda de herramientas económicas y empresariales para generar una actitud sensible y un comportamiento responsable y proactivo que contribuya a dar respuesta a los retos actuales.",
+      "descriptores": "Esta competencia específica se conecta con los siguientes descriptores: STEM2, STEM5, CPSAA1.2, CC4, CE1, CE2.",
+      "explicacion": [
+        "Comprender de forma práctica la relación entre los Objetivos de Desarrollo Sostenible (ODS) y el desarrollo económico y social, y analizarlos con herramientas económicas y empresariales permitirá al alumnado tomar conciencia de la importancia de lograr estos objetivos y dar respuesta a los desafíos mundiales del siglo XXI con amplia repercusión en el ámbito económico.",
+        "El análisis de situaciones reales también va a permitir que el alumnado se sensibilice y comprenda que, con acciones sencillas, individuales o colectivas, se puede mejorar la sociedad y el entorno."
+      ]
+    },
+    {
+      "id": "ce4",
+      "texto": "Identificar y valorar habilidades y competencias que caracterizan a las personas emprendedoras dentro de la realidad actual, analizando sus perfiles y su forma de afrontar los retos, para reconocer y potenciar las destrezas emprendedoras propias y aplicarlas a situaciones reales de la vida.",
+      "descriptores": "Esta competencia específica se conecta con los siguientes descriptores: CPSAA1.1, CPSAA1.2, CPSAA3.1, CC1, CC3, CE2.",
+      "explicacion": [
+        "Analizar el perfil de la persona emprendedora actual requiere reflexionar sobre las competencias personales y sociales que son deseables, como la creatividad, la empatía, la capacidad de iniciativa y de enfrentarse a los retos. También es necesario valorar y tener en cuenta otros aspectos psicológicos que influyen en el desarrollo de ese perfil, como las creencias limitantes que provocan miedos a la hora de emprender, o la importancia de las habilidades sociemocionales, que condicionan los pensamientos y el alcance del logro.",
+        "Es conveniente aproximar al alumnado a personas emprendedoras cercanas para que sepan reconocer sus cualidades y competencias de modo que puedan aprender de ellas y evaluar en qué medida pueden adquirir o potenciar esas cualidades y competencias con formación y entrenamiento, para aplicarlas en su vida cotidiana. ."
+      ]
+    },
+    {
+      "id": "ce5",
+      "texto": "Comprender las estrategias empresariales, analizando su evolución y distinguiendo los nuevos modelos de negocio desarrollados por entidades vinculadas a diferentes ámbitos y sectores, para identificar la filosofía de las empresas, reconocer las tendencias y poner en valor, con sentido crítico, su actividad en la sociedad actual.",
+      "descriptores": "Esta competencia específica se conecta con los siguientes descriptores: CCL2, STEM2, CD1, CPSAA4, CC1, CC3, CE1, CE2.",
+      "explicacion": [
+        "La estrategia empresarial evoluciona y se adapta a los cambios económicos y sociales. Es preciso analizar esta evolución y reflexionar sobre los nuevos modelos de negocio y las tendencias de la empresa en la sociedad actual, valorando con espíritu crítico los cambios que se están incorporando, como la nueva forma de entender el lugar de trabajo o las nuevas características del cliente, lo que requiere de nuevas estrategias de negocio.",
+        "El alumnado a través del análisis de casos concretos de empresas podrá comprender mejor la visión y la filosofía de cada una de ellas y valorar sus puntos fuertes y débiles. El análisis de casos puede tratar sobre grandes empresas con estrategias innovadoras que han cambiado el concepto de empresa en su sector, o de otras más pequeñas y cercanas cuya propuesta de valor no es tan ambiciosa pero sí efectiva en diferentes entornos rurales, urbanos, locales y globales."
+      ]
+    },
+    {
+      "id": "ce6",
+      "texto": "Analizar la transformación económica y social y sus consecuencias, reconociendo la importancia que tienen la innovación y la revolución digital en la actividad empresarial, para comprender las respuestas que las empresas ofrecen a los desafíos actuales y proponer alternativas y nuevas soluciones a dichos desafíos.",
+      "descriptores": "Esta competencia específica se conecta con los siguientes descriptores: CCL2, CCL3, STEM4, CD5, CPSAA4, CC4, CE1, CE2.",
+      "explicacion": [
+        "La rápida transformación tecnológica, económica y social está provocando cambios profundos en la actividad empresarial lo cual obliga a las empresas a adaptarse e innovar para sobrevivir en un mundo cada vez más competitivo, dar respuesta a problemas cada vez más complejos y ofrecer soluciones a los desafíos actuales.",
+        "Comprender cómo las empresas están llevando a cabo esta transformación va a permitir al alumnado evaluar los efectos de la revolución tecnológica y la transformación digital en la economía, pero también en otros ámbitos como el del mercado de trabajo o la organización social, pudiendo plantear alternativas y soluciones para mejorar los desajustes desde un análisis crítico."
+      ]
+    }
+  ],
+  "ciclos": {
+    "etapa": {
+      "etiqueta": "Etapa completa",
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "1.1 Entender la realidad partiendo del análisis crítico y reflexivo sobre las aportaciones que ofrece la ciencia económica, valorando su interrelación con otras disciplinas y adquiriendo una visión integral de la misma que favorezca la asunción de responsabilidades y compromisos."
+        ],
+        "ce2": [
+          "2.1 Comprender los cambios económicos y sociales desde un análisis interdisciplinar sobre el comportamiento humano en el proceso de toma de decisiones y evaluando el problema de la escasez y sus efectos, y estimulando al alumnado a actuar en consecuencia."
+        ],
+        "ce3": [
+          "3.1 Mostrar actitudes sensibles y comportamientos responsables y proactivos que contribuyan a dar respuesta a los retos actuales a partir del estudio de casos reales estableciendo correspondencias entre la realidad y los aprendizajes adquiridos.",
+          "3.2 Tomar conciencia de problemas globales y locales analizándolos a través de herramientas económicas y empresariales y aportando posibles soluciones a los mismos."
+        ],
+        "ce4": [
+          "4.1 Reconocer y potenciar las destrezas emprendedoras propias, identificando y valorando previamente las habilidades que poseen personas emprendedoras cercanas y analizando sus competencias a la hora de afrontar los retos que se les presentan.",
+          "4.2 Afrontar retos sencillos de la vida cotidiana aplicando las destrezas propias que caracterizan a una persona emprendedora."
+        ],
+        "ce5": [
+          "5.1 Reconocer las tendencias e identificar la filosofía de las empresas comprendiendo las estrategias empresariales llevadas a cabo por estas y analizando su evolución, así como los modelos de negocio desarrollados poniendo en valor, con sentido crítico, su actividad empresarial.",
+          "5.2 Distinguir los nuevos modelos de negocio desarrollados por empresas pertenecientes a diversos sectores y ámbitos analizando sus posibilidades y limitaciones."
+        ],
+        "ce6": [
+          "6.1 Comprender las respuestas que ofrecen las empresas a los desafíos actuales, analizando la transformación económica y social que está experimentando la sociedad.",
+          "6.2 Proponer alternativas y nuevas soluciones a los desafíos actuales, analizando los efectos de la transformación económica y social y reconociendo la importancia que tiene la innovación y revolución digital en la actividad empresarial."
+        ]
+      },
+      "saberes_basicos": [
+        "A. Economía.",
+        "1. La escasez y el problema económico.",
+        "La escasez y sus implicaciones. El coste de oportunidad. La escasez y la eficiencia. La paradoja del valor, el valor de uso y el valor de cambio de los bienes.",
+        "La escasez y los sistemas de asignación de recursos. El funcionamiento del mercado.",
+        "Los fallos del mercado y la intervención del sector público. Fallos del sector público y sus implicaciones.",
+        "El flujo circular de la renta. Oferta y demanda agregada. Análisis de las interrelaciones que existen entre los diversos elementos y agregados de la realidad económica.",
+        "El entorno financiero. Dinero y transacciones. Planificación y gestión de las finanzas personales: riesgo y beneficio.",
+        "Los Objetivos de Desarrollo Sostenible (ODS) y los retos económicos actuales. Estudio de casos.",
+        "2. Economía y otras disciplinas.",
+        "La economía como ciencia social. Principales problemas para el análisis económico: la complejidad de la realidad y la incorporación de supuestos simplificadores. Dificultades para el establecimiento de leyes generales. La modelización matemática como herramienta para el análisis económico.",
+        "El análisis económico y el individualismo metodológico. Otras alternativas de análisis de la realidad social. Perspectiva sociológica: el grupo social como unidad de análisis económico.",
+        "Los individuos y el comportamiento racional. Fallos de la racionalidad. La economía del comportamiento, la psicología económica y la teoría de la decisión.",
+        "Los agentes económicos y la maximización de su utilidad. Filosofía y economía: el utilitarismo y la felicidad. La maximización del bienestar social y el debate eficiencia versus equidad desde un punto de vista ético. El bienestar social y la calidad de vida desde una perspectiva sociológica. El bienestar en la psicología positiva.",
+        "Ciencia económica y ecología: el cambio climático, el desarrollo sostenible y la economía circular.",
+        "B. Emprendimiento.",
+        "La persona emprendedora e intraemprendedora. Competencias, cualidades y hábitos. La inteligencia emocional y la inteligencia ejecutiva.",
+        "El espíritu emprendedor: búsqueda de necesidades y oportunidades. Entrenamiento de la creatividad y proactividad.",
+        "Creencias sobre emprendimiento. El miedo a emprender: la gestión del error como una oportunidad para aprender.",
+        "Competencias sociales. Tipos y aplicación. La gestión de grupos y la teoría de las relaciones humanas.",
+        "Autoevaluación de la persona emprendedora. Herramientas.",
+        "Misión y visión de la persona emprendedora. Creación y puesta en marcha de su proyecto emprendedor. Protección de la idea, el producto y la marca.",
+        "C. Actividad empresarial.",
+        "La revolución tecnológica. El poder de la tecnología. Los modelos de negocio.",
+        "Mercado y clientes. Marketing digital. Nuevos modelos de negocio.",
+        "Cultura empresarial y gestión del talento. El liderazgo. El papel de la mujer en la actividad empresarial.",
+        "El lugar de trabajo. La empresa del futuro. Tendencias.",
+        "Estrategia y gestión de la empresa. Transformación digital. Innovación. Sostenibilidad.",
+        "Análisis de casos: análisis interno y externo. DAFO."
+      ]
+    }
+  },
+  "notas": [
+    "Texto literal del Anexo II del Real Decreto 243/2022, de 5 de abril (BOE, BOE-A-2022-5521).",
+    "Las competencias específicas son comunes a toda la etapa; los criterios de evaluación y los saberes básicos se recogen por ciclo o curso tal como los publica el real decreto.",
+    "El desarrollo autonómico puede ampliar o concretar este currículo: consulta la ficha de tu comunidad autónoma."
+  ]
+}

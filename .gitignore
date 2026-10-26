@@ -1,4 +1,4 @@
-# No versionar datos privados del docente por omisión
+# Datos privados del docente y trabajo local
 local-export/
 local-work/
 *.bak
@@ -6,11 +6,25 @@ local-work/
 .DS_Store
 Thumbs.db
 
-# Evitar que se suban copias accidentales de documentos generados
-*.pdf
-*.odt
-*.docx
-*.html
+# Documentos generados por la app (copian datos del docente)
+local-export/*.pdf
+local-export/*.odt
+local-export/*.docx
+local-export/*.html
+vista_previa_programacion.html
+profe-*.json
 
-# Permisos de ejecución en Windows por si acaso
-*.sh
+# Entornos y cachés de Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Copia local del XML del BOE que usa scripts/importar_boe.py
+.cache/
+
+# Registros de ejecución del servidor local
+profe_test.log
+
+# Credenciales temporales para publicar (nunca se suben)
+.gh-token

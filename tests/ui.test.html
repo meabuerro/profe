@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>Auditoría UI · Profe</title>
+<style>
+  body{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;margin:0;padding:16px;background:#fff;color:#111}
+  #result{white-space:pre-wrap;margin:0}
+  iframe{width:100%;height:420px;border:1px solid #ccc;margin-top:12px}
+</style></head><body>
+<pre id="result">RUNNING</pre>
+<iframe id="frame" src="../index.html"></iframe>
+<script>
+const salida = [];
+const ok = (nombre, cond, extra) => salida.push(`${cond ? "PASS" : "FAIL"} · ${nombre}${extra ? " · " + extra : ""}`);
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const frame = document.getElementById("frame");
+frame.addEventListener("load", async () => {
+  const w = frame.contentWindow;
+  const d = w.document;
+  const q = (sel) => d.querySelector(sel);
+  const qa = (sel) => Array.from(d.querySelectorAll(sel));
+  const texto = (sel) => (q(sel) ? q(sel).textContent.replace(/\s+/g, " ").trim() : "");
+  const errores = [];
+  w.addEventListener("error", (e) => errores.push(e.message));
+  w.confirm = () => true;
+
+  const setSelect = (sel, valor) => {
+    const el = q(sel);
+    if (!el) throw new Error("no existe " + sel);
+    el.value = valor;
+    el.dispatchEvent(new w.Event("change", {bubbles: true}));
+  };
+  const escribir = (sel, valor) => {
+    const el = q(sel);
+    if (!el) throw new Error("no existe " + sel);
+    el.value = valor;
+    el.dispatchEvent(new w.Event("input", {bubbles: true}));
+  };
+  const pulsar = (sel) => {
+    const el = q(sel);
+    if (!el) throw new Error("no existe " + sel);
+    el.click();
+    return el;
+  };
+  const guardado = () => JSON.parse(w.localStorage.getItem("profe.state.v1"));
+
+  try {
+    w.localStorage.clear();
+    await wait(250);
+
+    // ---- 1. Datos y estructura ----
+    ok("catálogo cargado", !!w.PROFE_DATA && w.PROFE_DATA.etapas.length === 5,
+       `${w.PROFE_DATA.etapas.length} etapas, ${w.PROFE_DATA.materias.primaria.length} áreas de Primaria`);
+    ok("todas las fichas completas", Object.values(w.PROFE_DATA.materias).flat()
+         .every((m) => m.tieneFicha || m.tipoFicha === "sin-desarrollo-estatal"),
+       `${Object.values(w.PROFE_DATA.materias).flat().filter((m) => m.tieneFicha).length} fichas`);
+    const literales = Object.values(w.PROFE_DATA.materias).flat()
+      .filter((m) => m.tipoFicha === "literal" && m.fuente && m.fuente.texto === "literal");
+    ok("cada ficha declara su fuente literal del BOE", literales.length >= 70, `${literales.length} fichas literales`);
+    ok("navegación con 7 herramientas", qa(".nav-item").length === 7, `${qa(".nav-item").length}`);
+    ok("sin aviso de error de catálogo", !texto("#view").includes("No se pudo cargar"));
+
+    // ---- 2. Onboarding ----
+    setSelect('[data-change="perfil.etapa"]', "eso");
+    await wait(60);
+    setSelect('[data-change="perfil.curso"]', "2º ESO");
+    await wait(60);
+    setSelect('[data-change="perfil.materia"]', "biologia-y-geologia");
+    await wait(60);
+    setSelect('[data-change="perfil.ccaa"]', "andalucia");
+    await wait(80);
+    ok("contexto aplicado en la barra", texto("#context-chip").includes("Biología y Geología"),
+       texto("#context-chip"));
+
+    // Datos de cabecera accesibles desde el propio panel
+    escribir('#view input[data-bind="perfil.centro"]', "IES Ramón y Cajal");
+    escribir('#view input[data-bind="perfil.docente"]', "Lucía Ferrer");
+    await wait(90);
+    ok("cabecera editable desde el panel",
+       guardado().perfil.centro === "IES Ramón y Cajal" && guardado().perfil.docente === "Lucía Ferrer");
+
+    // ---- 3. Checklist ----
+    ok("checklist de entrega visible", qa("#view .req").length === 12, `${qa("#view .req").length} requisitos`);
+    ok("checklist arranca incompleto", /^\d+ %$/.test(texto("#checklist-pct")) && texto("#checklist-pct") !== "100 %",
+       texto("#checklist-pct"));
+    const completar = qa('#view .req [data-action="ir-vista"]');
+    ok("checklist enlaza a la herramienta que falta", completar.length > 0, `${completar.length} enlaces`);
+
+    // ---- 4. Programación didáctica: propuestas y carga desde la ficha ----
+    pulsar('[data-nav="didactica"]');
+    await wait(100);
+    ok("didáctica muestra 9 secciones", qa("#view h2").length >= 9, `${qa("#view h2").length} secciones`);
+
+    pulsar('[data-action="sugerir"][data-campo="metodologia"]');
+    await wait(90);
+    ok("inserta propuesta de metodología", (guardado().didactica.metodologia || "").length > 120);
+    ok("el texto se ve en el campo", q("#view textarea[data-bind='didactica.metodologia']").value.length > 120);
+
+    pulsar('[data-action="sugerir"][data-campo="diversidad"]');
+    await wait(70);
+    pulsar('[data-action="sugerir"][data-campo="evaluacionPractica"]');
+    await wait(70);
+    ok("inserta propuestas de diversidad y práctica docente",
+       guardado().didactica.diversidad.length > 100 && guardado().didactica.evaluacionPractica.length > 100);
+
+    pulsar('[data-action="cargar-criterios"]');
+    await wait(90);
+    ok("carga criterios desde la ficha", guardado().didactica.criteriosTexto.includes("CE1"));
+    pulsar('[data-action="cargar-saberes"]');
+    await wait(90);
+    ok("carga saberes desde la ficha", guardado().didactica.saberesTexto.startsWith("- "));
+
+    const checks = qa('[data-check="didactica.competencias"]');
+    checks.slice(0, 3).forEach((c) => { c.checked = true; c.dispatchEvent(new w.Event("change", {bubbles: true})); });
+    await wait(90);
+    ok("selecciona competencias específicas", guardado().didactica.competencias.length === 3,
+       `${guardado().didactica.competencias.length}`);
+    pulsar('[data-action="cargar-criterios-ce"]');
+    await wait(100);
+    const soloCE = guardado().didactica.criteriosTexto.split("\n");
+    ok("carga criterios solo de las CE marcadas",
+       soloCE.length === 3 && soloCE.every((l) => /^CE[123]:/.test(l)),
+       `${soloCE.length} bloques`);
+
+    escribir("#view textarea[data-bind='didactica.contexto']", "Grupo de 2º de ESO con 28 estudiantes, nivel competencial heterogéneo y dos alumnos con adaptación no significativa.");
+    escribir("#view textarea[data-bind='didactica.justificacion']", "La materia contribuye al perfil de salida mediante el desarrollo del pensamiento científico.");
+    await wait(80);
+    ok("contexto y justificación persisten",
+       guardado().didactica.contexto.length > 40 && guardado().didactica.justificacion.length > 40);
+
+    // ---- 5. Programación anual: reparto de pesos ----
+    pulsar('[data-nav="anual"]');
+    await wait(90);
+    pulsar('[data-action="regen-anual"]');
+    await wait(120);
+    ok("genera 9 unidades", qa("#view tbody tr").length === 9, `${qa("#view tbody tr").length}`);
+    ok("cada unidad arranca con criterios literales del curso",
+       guardado().anual.every((u) => (u.criterios || "").length > 20 && /\d\.\d/.test(u.criterios)),
+       guardado().anual[0].criterios.slice(0, 60));
+    ok("cada unidad declara competencias específicas",
+       guardado().anual.every((u) => /CE\d/.test(u.competencias || "")),
+       guardado().anual.map((u) => u.competencias).join(" | "));
+    ok("el panel muestra la cobertura del currículo",
+       /CE trabajadas: \d+\/\d+/.test(texto("#view")), texto("#view").match(/CE trabajadas: [\d/]+/));
+    pulsar('[data-action="repartir-pesos"]');
+    await wait(110);
+    const suma = guardado().anual.reduce((s, u) => s + Number(u.peso || 0), 0);
+    ok("reparte los pesos al 100 %", Math.round(suma * 10) / 10 === 100, `${Math.round(suma * 10) / 10} %`);
+    escribir('#view input[data-bind="anual.0.titulo"]', "Unidad 1: el método científico");
+    await wait(70);
+    ok("edición de la tabla persiste", guardado().anual[0].titulo === "Unidad 1: el método científico");
+
+    escribir('#view input[data-bind="anual.0.sesiones"]', "8");
+    await wait(80);
+    ok("registra sesiones por unidad", Number(guardado().anual[0].sesiones) === 8);
+    ok("muestra el total de sesiones", /sesiones programadas/.test(texto("#view")));
+
+    // Desarrollo de una unidad didáctica completa
+    pulsar('[data-action="toggle-unidad"]');
+    await wait(110);
+    ok("abre el desarrollo de la unidad", !!q('#view textarea[data-bind="anual.0.desarrollo.objetivos"]'));
+    escribir('#view textarea[data-bind="anual.0.desarrollo.objetivos"]', "Interpretar datos experimentales y argumentar conclusiones con vocabulario científico.");
+    escribir('#view textarea[data-bind="anual.0.desarrollo.actividades"]', "Sesión 1: pregunta inicial y lluvia de ideas.\nSesión 2: práctica de laboratorio.");
+    escribir('#view textarea[data-bind="anual.0.desarrollo.evaluacion"]', "Rúbrica del informe de laboratorio y observación del trabajo en equipo.");
+    await wait(120);
+    ok("guarda el desarrollo de la unidad",
+       guardado().anual[0].desarrollo.objetivos.length > 30
+       && guardado().anual[0].desarrollo.actividades.includes("Sesión 2")
+       && guardado().anual[0].desarrollo.evaluacion.length > 20);
+
+    // ---- 6. Situaciones de aprendizaje ----
+    pulsar('[data-nav="situaciones"]');
+    await wait(90);
+    pulsar('[data-action="new-sit"]');
+    await wait(120);
+    ok("crea situación", qa("#view .sit").length === 1);
+    escribir('#view .sit-edit input[data-bind="situaciones.0.titulo"]', "¿Qué comemos?");
+    escribir('#view .sit-edit input[data-bind="situaciones.0.producto"]', "Infografía nutricional");
+    await wait(80);
+    pulsar('[data-action="sit-cargar"]');
+    await wait(120);
+    ok("la situación carga CE y criterios del curso",
+       /CE1/.test(guardado().situaciones[0].competenciasEsp || "")
+       && (guardado().situaciones[0].criterios || "").length > 20,
+       guardado().situaciones[0].competenciasEsp);
+    escribir('#view .sit-edit textarea[data-bind="situaciones.0.criterios"]', "CE1, CE2: analizar datos y argumentar conclusiones.");
+    escribir('#view .sit-edit textarea[data-bind="situaciones.0.evaluacion"]', "Rúbrica del producto y lista de cotejo del trabajo en equipo.");
+    await wait(90);
+    pulsar('[data-action="sugerir-secuencia"]');
+    await wait(110);
+    const fases = guardado().situaciones[0].fases;
+    ok("inserta secuencia didáctica completa",
+       [fases.motivacion, fases.desarrollo, fases.aplicacion, fases.evaluacion].every((f) => f && f.length > 40));
+    ok("la secuencia recoge el producto final", fases.aplicacion.includes("Infografía nutricional"));
+    pulsar('[data-action="dup-sit"]');
+    await wait(110);
+    ok("duplica la situación", guardado().situaciones.length === 2, `${guardado().situaciones.length}`);
+
+    // Conexión con la programación anual: la situación se convierte en unidad
+    pulsar('[data-action="sit-a-anual"]');
+    await wait(130);
+    const unidadesVinculadas = guardado().anual.filter((u) => u.titulo.includes("¿Qué comemos?"));
+    ok("añade la situación a la programación anual", unidadesVinculadas.length === 1, `${guardado().anual.length} unidades`);
+    ok("conserva la evaluación de la situación",
+       !!unidadesVinculadas[0] && unidadesVinculadas[0].instrumentos.length > 0,
+       unidadesVinculadas[0] ? unidadesVinculadas[0].instrumentos.slice(0, 40) : "sin unidad");
+    ok("arrastra los criterios de la situación",
+       !!unidadesVinculadas[0] && unidadesVinculadas[0].criterios.includes("CE1"));
+    pulsar('[data-action="sit-a-anual"]');
+    await wait(120);
+    ok("no duplica la unidad al repetir",
+       guardado().anual.filter((u) => u.titulo.includes("¿Qué comemos?")).length === 1);
+
+    // ---- 7. Documento final ----
+    pulsar('[data-nav="documento"]');
+    await wait(260);
+    const previa = q("#doc-preview");
+    ok("vista previa del documento presente", !!previa);
+    const doc = previa && previa.contentDocument;
+    const cuerpo = doc ? doc.body.textContent : "";
+    ok("portada con centro y docente", /Programación didáctica/.test(cuerpo));
+    ok("incluye situación de aprendizaje", cuerpo.includes("¿Qué comemos?"));
+    ok("incluye reparto de competencias", cuerpo.includes("CE1"));
+    ok("incluye anexo de programación anual", cuerpo.includes("11. Anexo"));
+    ok("el anexo incluye el desarrollo de las unidades",
+       cuerpo.includes("Desarrollo de las unidades")
+       && cuerpo.includes("Interpretar datos experimentales"),
+       cuerpo.includes("Desarrollo de las unidades") ? "presente" : "ausente");
+    ok("la previsualización no está vacía", cuerpo.length > 2000, `${cuerpo.length} caracteres`);
+    ok("la portada lleva el centro real", cuerpo.includes("IES Ramón y Cajal"));
+    ok("el documento cita el texto literal del BOE", /Texto curricular:/.test(cuerpo) && /BOE-A-\d{4}-\d+/.test(cuerpo),
+       (cuerpo.match(/BOE-A-\d{4}-\d+/) || [""])[0]);
+    ok("el documento cita la norma autonómica", cuerpo.includes("Decreto 102/2023"),
+       (cuerpo.match(/Decreto [\d/]+/) || [""])[0]);
+
+    // Exportaciones: Word e impresión
+    let descarga = null;
+    const objetoUrlOriginal = w.URL.createObjectURL;
+    w.URL.createObjectURL = (blob) => { descarga = blob; return "blob:stub"; };
+    w.URL.revokeObjectURL = () => {};
+    const clickOriginal = w.HTMLAnchorElement.prototype.click;
+    w.HTMLAnchorElement.prototype.click = function () { descarga = descarga; };
+    pulsar('[data-action="export-word"]');
+    await wait(120);
+    ok("exporta a Word", !!descarga && /msword|word/i.test(descarga.type || ""), descarga ? descarga.type : "sin blob");
+
+    let escrito = "";
+    w.open = () => ({document: {write: (h) => { escrito += h; }, close: () => {}}, focus: () => {}, print: () => {}});
+    pulsar('[data-action="export-html"]');
+    await wait(120);
+    ok("la pestaña imprimible contiene el documento", escrito.includes("¿Qué comemos?") && escrito.includes("11. Anexo"),
+       `${escrito.length} caracteres`);
+    w.URL.createObjectURL = objetoUrlOriginal;
+    w.HTMLAnchorElement.prototype.click = clickOriginal;
+    ok("checklist refleja el avance", qa("#view .req").length === 0 || /apartados pendientes|Documento completo/.test(texto("#view")));
+
+    // ---- 8. Catálogo y ajustes ----
+    pulsar('[data-nav="catalogo"]');
+    await wait(110);
+    ok("catálogo lista materias", qa("#view .cat-item").length >= 10, `${qa("#view .cat-item").length}`);
+    pulsar('[data-action="cat-etapa"][data-id="infantil"]');
+    await wait(110);
+    ok("catálogo incluye Infantil", qa("#view .cat-item").length === 3, `${qa("#view .cat-item").length}`);
+    ok("detalle con competencias específicas", qa("#view .detail .ce").length >= 3, `${qa("#view .detail .ce").length}`);
+    ok("el detalle declara el texto literal y enlaza al BOE",
+       texto("#view .detail").includes("Texto literal") && !!q('#view .detail a[href*="boe.es"]'),
+       texto("#view .detail .pill"));
+    const niveles = q("#view .detail") ? Array.from(q("#view .detail").querySelectorAll("details")) : [];
+    ok("el detalle ofrece criterios y saberes por ciclo", niveles.length >= 2,
+       `${niveles.length} desplegables`);
+    pulsar('[data-action="cat-etapa"][data-id="eso"]');
+    await wait(120);
+    ok("la ESO incluye las matemáticas A y B de cuarto",
+       qa("#view .cat-item").some((b) => /Matemáticas A \(4/.test(b.textContent))
+       && qa("#view .cat-item").some((b) => /Matemáticas B \(4/.test(b.textContent)));
+    const segunda = qa("#view .cat-item").find((b) => /Segunda Lengua Extranjera/.test(b.textContent));
+    if (segunda) { segunda.click(); await wait(140); }
+    ok("Segunda Lengua Extranjera remite a Lengua Extranjera",
+       texto("#view .detail").includes("comparte el currículo de") && qa("#view .detail .ce").length === 6,
+       `${qa("#view .detail .ce").length} competencias heredadas`);
+    setSelect('[data-change="catalogo.ccaa"]', "andalucia");
+    await wait(120);
+    ok("la ficha autonómica avisa del estado de la norma",
+       /Norma comprobada|Confirma la norma/.test(texto("#view")),
+       texto("#view .card .pill"));
+
+    pulsar('[data-nav="ajustes"]');
+    await wait(90);
+    ok("ajustes cita la normativa", texto("#view").includes("Real Decreto 217/2022"));
+
+    // ---- 8 bis. Borrador completo en un clic ----
+    pulsar('[data-nav="ajustes"]');
+    await wait(80);
+    pulsar('[data-action="reset"]');
+    await wait(120);
+    pulsar('[data-nav="panel"]');
+    await wait(100);
+    setSelect('[data-change="perfil.etapa"]', "eso");
+    await wait(60);
+    setSelect('[data-change="perfil.curso"]', "2º ESO");
+    await wait(60);
+    setSelect('[data-change="perfil.materia"]', "biologia-y-geologia");
+    await wait(60);
+    setSelect('[data-change="perfil.ccaa"]', "andalucia");
+    await wait(100);
+    pulsar('[data-action="borrador"]');
+    await wait(200);
+    const trasBorrador = guardado();
+    ok("el borrador rellena los criterios literales del curso",
+       (trasBorrador.didactica.criteriosTexto || "").length > 300 && /CE1:/.test(trasBorrador.didactica.criteriosTexto));
+    ok("el borrador rellena saberes, metodología y práctica docente",
+       trasBorrador.didactica.saberesTexto.startsWith("- ")
+       && trasBorrador.didactica.metodologia.length > 100
+       && trasBorrador.didactica.evaluacionPractica.length > 100);
+    ok("el borrador justifica con la norma estatal y la autonómica",
+       /Real Decreto 217\/2022/.test(trasBorrador.didactica.justificacion)
+       && /Decreto 102\/2023/.test(trasBorrador.didactica.justificacion));
+    ok("el borrador crea las unidades con criterios y pesos al 100 %",
+       trasBorrador.anual.length === 9
+       && trasBorrador.anual.every((u) => (u.criterios || "").length > 20)
+       && Math.round(trasBorrador.anual.reduce((s, u) => s + Number(u.peso || 0), 0) * 10) / 10 === 100);
+    ok("el borrador marca las competencias específicas de la ficha",
+       trasBorrador.didactica.competencias.length === 6,
+       `${trasBorrador.didactica.competencias.length} CE`);
+    ok("el borrador no inventa el contexto del centro",
+       trasBorrador.didactica.contexto === "");
+
+    // ---- 9. Auditoría UX / accesibilidad ----
+    const campos = qa("#view input, #view select, #view textarea");
+    const sinEtiqueta = campos.filter((el) => {
+      if (el.type === "checkbox" || el.type === "file") return false;
+      if (el.getAttribute("aria-label") || el.getAttribute("aria-labelledby") || el.title) return false;
+      if (el.id && d.querySelector(`label[for="${el.id}"]`)) return false;
+      if (el.closest("label")) return false;
+      const field = el.closest(".field");
+      return !(field && field.querySelector("label"));
+    });
+    ok("todos los campos tienen etiqueta", sinEtiqueta.length === 0,
+       sinEtiqueta.map((el) => el.tagName + "[data-bind=" + (el.dataset.bind || "") + "]").slice(0, 3).join(", "));
+
+    const ids = qa("[id]").map((el) => el.id);
+    const repetidos = ids.filter((id, i) => ids.indexOf(id) !== i);
+    ok("sin identificadores duplicados", repetidos.length === 0, repetidos.slice(0, 3).join(", "));
+
+    // Cada vista se abre sin romper el render
+    const vistas = ["panel", "anual", "situaciones", "didactica", "documento", "catalogo", "ajustes"];
+    for (const vista of vistas) {
+      pulsar(`[data-nav="${vista}"]`);
+      await wait(70);
+      if (!q("#view").children.length) { ok(`vista ${vista} renderiza`, false); break; }
+    }
+    ok("las 7 vistas renderizan contenido", q("#view").children.length > 0);
+
+    // Accesibilidad de los controles y jerarquía de encabezados
+    const sinNombre = qa("#view button").filter((b) =>
+      !(b.textContent || "").trim() && !b.getAttribute("aria-label") && !b.title);
+    ok("todos los botones tienen nombre accesible", sinNombre.length === 0,
+       sinNombre.slice(0, 3).map((b) => b.dataset.action || b.className).join(", "));
+    const h1 = qa("#view h1").length;
+    ok("cada vista tiene un solo titular h1", h1 === 1, `${h1} h1`);
+
+    // Sin desbordamiento horizontal en móvil (380 px)
+    const anchoOriginal = frame.style.width;
+    frame.style.width = "380px";
+    const desbordes = [];
+    for (const vista of vistas) {
+      pulsar(`[data-nav="${vista}"]`);
+      await wait(80);
+      const doc = d.documentElement;
+      if (doc.scrollWidth > 392) desbordes.push(`${vista}:${doc.scrollWidth}`);
+    }
+    frame.style.width = anchoOriginal;
+    ok("ninguna vista desborda en móvil", desbordes.length === 0, desbordes.join(" "));
+
+    // Foco al cambiar de vista (teclado y lectores de pantalla)
+    pulsar('[data-nav="panel"]');
+    await wait(90);
+    ok("el foco pasa al titular de la vista", d.activeElement && d.activeElement.tagName === "H1",
+       d.activeElement ? d.activeElement.tagName : "sin foco");
+
+    ok("sin errores de script", errores.length === 0, errores.join(" | ").slice(0, 160));
+    ok("sin texto roto en pantalla", !/undefined|NaN|\[object Object\]/.test(texto("#view")));
+  } catch (err) {
+    salida.push("FAIL · excepción: " + err.message);
+  }
+
+  const total = salida.filter((l) => l.startsWith("PASS")).length;
+  document.getElementById("result").textContent =
+    salida.join("\n") + `\nSUMMARY ${total}/${salida.length}` + (total === salida.length ? " OK" : " CON FALLOS");
+});
+</script>
+</body></html>
