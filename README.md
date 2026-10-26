@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/img/logo.svg" alt="Logotipo de Profe" width="96" height="96">
+
 # Profe
 
 ### La programación didáctica, en una tarde y no en un mes
@@ -13,7 +15,7 @@ Aplicación local para docentes de España: programa, desarrolla y exporta la pr
 [![Tests](https://img.shields.io/badge/tests-34%20unitarios%20%C2%B7%2075%20UI-success)](#verificaci%C3%B3n)
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue)](#licencia)
 
-[Empezar](#empezar-en-30-segundos) · [Qué hace](#qué-hace) · [Los datos](#de-dónde-salen-los-datos) · [Desarrollo](#desarrollo) · [Verificación](#verificación) · [Limitaciones](#limitaciones-y-hoja-de-ruta)
+[Capturas](#capturas) · [Empezar](#empezar-en-30-segundos) · [Qué hace](#qué-hace) · [Los datos](#de-dónde-salen-los-datos) · [Desarrollo](#desarrollo) · [Verificación](#verificación) · [Limitaciones](#limitaciones-y-hoja-de-ruta)
 
 </div>
 
@@ -32,6 +34,30 @@ Y el PDF del que se copia suele estar desactualizado, mal codificado o directame
 - **El currículo no se redacta: se importa.** Las competencias específicas, los criterios de evaluación y los saberes básicos salen literalmente del anexo II del real decreto de cada etapa, con su norma, su identificador del BOE y su URL en la propia ficha.
 - **El folio en blanco se elimina.** Un botón rellena el expediente completo con el currículo del curso elegido; el docente revisa, contextualiza y firma.
 - **Lo que se entrega cuadra.** Cobertura de competencias, pesos al 100 %, criterios ligados a su competencia y un documento final con portada, índice y anexos.
+
+## Capturas
+
+**Panel de trabajo.** Contexto, checklist de entrega y avance del expediente en una sola pantalla.
+
+![Panel de trabajo: contexto, checklist de doce requisitos y avance del expediente](docs/img/panel.png)
+
+**Programación anual.** Cada unidad con sus competencias específicas, sus criterios, sus sesiones y su peso, con la cobertura del curso a la vista.
+
+![Programación anual con nueve unidades, competencias específicas y pesos al 100 %](docs/img/anual.png)
+
+**Catálogo curricular.** Cada ficha declara su norma, su anexo del BOE y su enlace, con los criterios y los saberes por ciclo o curso.
+
+![Catálogo curricular con las competencias específicas de Biología y Geología](docs/img/catalogo.png)
+
+**Situaciones de aprendizaje.** Reto, producto final, competencias clave y secuencia en cuatro fases.
+
+![Situación de aprendizaje con reto, producto final y competencias clave](docs/img/situaciones.png)
+
+**Documento final.** Vista previa real del expediente, exportable a Word y a PDF.
+
+![Documento final con portada, datos del centro y doce apartados](docs/img/documento.png)
+
+Las capturas se regeneran con `python3 scripts/capturas.py` (necesita Chrome) sobre un expediente de ejemplo con centro y docente ficticios.
 
 ## Empezar en 30 segundos
 
@@ -225,12 +251,15 @@ profe/
 │   ├── verificar_enlaces.py  # Comprueba los portales oficiales
 │   ├── build_app.py          # Construye data/app-data.js
 │   ├── profe_server.py       # Servidor local y apertura del navegador
+│   ├── capturas.py           # Genera las capturas del README
+│   ├── capturas.html         # Página de apoyo: expediente de ejemplo
 │   └── validate_data.sh      # Validación de los JSON
 ├── tests/
 │   ├── test_build_app.py     # Datos, importadores y generador (unittest)
 │   ├── ui.test.html          # Auditoría de interfaz
 │   └── run_ui.py             # Ejecutor en Chrome headless
 ├── docs/
+│   └── img/                  # Logotipo y capturas del README
 ├── templates/
 ├── CONTRIBUTING.md
 └── LICENSE
@@ -264,6 +293,17 @@ Basta con ampliar la tabla `DECRETOS` de `scripts/importar_boe.py` o `CCAA` de `
 
 ```bash
 python3 scripts/profe_server.py --no-browser   # sin abrir el navegador
+```
+
+### Logotipo y capturas
+
+El logotipo está en `docs/img/logo.svg` (vectorial, sin dependencias). Las cinco
+capturas del README se regeneran con Chrome headless sobre un expediente de
+ejemplo con centro y docente ficticios:
+
+```bash
+python3 scripts/capturas.py              # todas, en docs/img/
+python3 scripts/capturas.py --solo panel # solo una
 ```
 
 ## Verificación

@@ -244,10 +244,12 @@
   }
   tbody tr:last-child td{border-bottom:0}
   tbody tr:hover{background:#fafbff}
-  td input,td select,td textarea{border-color:transparent;background:transparent;padding:5px 7px;font-size:13.5px}
+  td input,td select,td textarea{border-color:transparent;background:transparent;padding:5px 7px;font-size:13.5px;min-width:0}
   td input:hover,td select:hover,td textarea:hover{border-color:var(--line-strong);background:#fff}
   td input:focus,td textarea:focus,td select:focus{background:#fff}
   td textarea{min-height:52px}
+  /* Un encabezado que no se parte impone su ancho a la columna y desborda la tabla. */
+  .table-wrap th{white-space:normal;line-height:1.3}
   .col-num{width:44px;text-align:center;color:var(--ink-3);font-variant-numeric:tabular-nums}
   .col-actions{width:74px;text-align:right;white-space:nowrap}
 
@@ -596,8 +598,16 @@
     node[keys[keys.length - 1]] = value;
   }
 
+  // Los pesos se guardan con una décima: sumarlos en coma flotante da 99.999…
+  // y la comprobación de "100 %" fallaba aunque el total se viera bien.
+  const redondearPeso = (total) => Math.round(total * 10) / 10;
+
   function totalPesos() {
-    return state.didactica.calificacion.reduce((sum, c) => sum + (Number(c.peso) || 0), 0);
+    return redondearPeso(state.didactica.calificacion.reduce((sum, c) => sum + (Number(c.peso) || 0), 0));
+  }
+
+  function totalPesosAnual() {
+    return redondearPeso(state.anual.reduce((sum, u) => sum + (Number(u.peso) || 0), 0));
   }
 
   function perfilCompleto() {
@@ -757,7 +767,7 @@
     const p = state.perfil;
     const d = state.didactica;
     const modelo = modeloParaCurso();
-    const pesos = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    const pesos = totalPesosAnual();
     return [
       {ok: Boolean(p.centro && p.docente), t: "Datos del centro y del docente", s: "Cabecera de todos los documentos.", vista: "ajustes"},
       {ok: Boolean(p.etapa && p.curso && p.materia && p.ccaa), t: "Contexto curricular", s: "Etapa, curso, materia y comunidad autónoma.", vista: "panel"},
@@ -972,7 +982,7 @@
     const p = state.perfil;
     if (!p.materia) return avisoConfigurar("programación anual");
     const modelo = modeloActual();
-    const pesos = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    const pesos = totalPesosAnual();
     const sesiones = state.anual.reduce((s, u) => s + (Number(u.sesiones) || 0), 0);
 
     // Cobertura del currículo: qué competencias específicas toca cada unidad.
@@ -1001,13 +1011,13 @@
           <thead>
             <tr>
               <th class="col-num">Nº</th>
-              <th style="min-width:220px">Unidad / situación</th>
-              <th style="min-width:150px">Evaluación</th>
-              <th style="min-width:150px">Competencias específicas</th>
-              <th style="min-width:200px">Criterios de evaluación</th>
-              <th style="min-width:160px">Instrumentos</th>
-              <th style="width:82px">Sesiones</th>
-              <th style="width:86px">Peso %</th>
+              <th style="min-width:186px">Unidad / situación</th>
+              <th style="min-width:120px">Evaluación</th>
+              <th style="min-width:104px">Competencias específicas</th>
+              <th style="min-width:166px">Criterios de evaluación</th>
+              <th style="min-width:120px">Instrumentos</th>
+              <th style="width:70px">Sesiones</th>
+              <th style="width:88px">Peso %</th>
               <th class="col-actions"></th>
             </tr>
           </thead>
@@ -1750,7 +1760,7 @@
     const d = state.didactica;
     const modelo = modeloParaCurso();
     const seleccionadas = modelo.competencias.filter((ce) => d.competencias.includes(ce.id));
-    const pesosAnual = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    const pesosAnual = totalPesosAnual();
 
     const bloque = (n, titulo, texto) => texto && texto.trim()
       ? `<section><h2>${n}. ${esc(titulo)}</h2><p>${esc(texto).replace(/\n/g, "<br>")}</p></section>`
@@ -2223,7 +2233,7 @@
   }
 
   function actualizarTotalesAnual() {
-    const total = state.anual.reduce((s, u) => s + (Number(u.peso) || 0), 0);
+    const total = totalPesosAnual();
     const hint = document.querySelector('[data-total-anual]');
     if (hint) hint.textContent = `${total} %`;
   }
