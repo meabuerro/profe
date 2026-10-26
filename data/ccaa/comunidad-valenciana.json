@@ -1,0 +1,35 @@
+{
+  "id_ccaa": "comunidad-valenciana",
+  "nombre": "Comunitat Valenciana",
+  "notas_generales": [
+    "La Comunitat Valenciana publica seu propi currículum por etapa que desenvolupa los Reales Decrets estatals.",
+    "El docente debe verificar los enlaces oficials vigents abans de usar esta fitxa.",
+    "En oposicions, la convocatòria pot incloure requisits formals particulars."
+  ],
+  "enlaces_oficiales": {
+    "educacion_cva": "https://educacio.gva.es"
+  },
+  "etapas": {
+    "infantil": {
+      "decreto_referencia": "currículo de Educación Infantil desenvolupat per la Generalitat Valenciana, amb referència al Real Decret 95/2022",
+      "observaciones": "En aquesta etapa el document institucional pot ser la proposta pedagògica, amb unitats de programació didàctica per cicle."
+    },
+    "primaria": {
+      "decreto_referencia": "currículo de Educación Primaria desenvolupat per la Generalitat Valenciana, amb referència al Real Decret 157/2022",
+      "observaciones": "La programació didàctica de cada una de les àrees s'ha d'ordenar per a cada cicle."
+    },
+    "eso": {
+      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desenvolupat per la Generalitat Valenciana, amb referència al Real Decret 217/2022",
+      "observaciones": "A ESO les mateües i la seua organització poden variar segons l'autonòmic."
+    },
+    "bachillerato": {
+      "decreto_referencia": "currículo de Bachillerato desenvolupat per la Generalitat Valenciana, amb referència al Real Decret 243/2022",
+      "observaciones": "El Batxillerat s'organitza en mateües i modalitats; el docente ha de tenir en compte la modalitat i els itineraris quan correspongui."
+    }
+  },
+  "observaciones_transversales": [
+    "Els centres, en ús de sa autonomía pedagògica, concreten i temporalitzen el currículum.",
+    "Els elements transversals poden tractar-se de forma específica en alguns cicles i no en uns altres.",
+    "En oposicions, la convocatòria pot exigir requisits formals particulars."
+  ]
+}

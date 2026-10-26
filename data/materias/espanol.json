@@ -1,0 +1,58 @@
+{
+  "id_etapa": "eso",
+  "id_materia": "espanol",
+  "nombre": "Lengua Castellana y Literatura",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, anexo II",
+  "organizacion": "En ESO, Lengua Castellana y Literatura se trabaja como materia obligatoria de la primera fase. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente por nivel.",
+  "ciclos": {
+    "1-eso": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender y producir textos orales y escritos de distintos tipos y registros, con coherencia, adecuación y cohesión, en distintos contextos comunicativos y usando estrategias de comprensión y expresión."
+        },
+        {
+          "id": "ce2",
+          "texto": "Leer, interpretar y valorar textos literarios y no literarios, identificar recursos expresivos y formales, y relacionarlos con la época, el género y el contexto cultural."
+        },
+        {
+          "id": "ce3",
+          "texto": "Reflexionar sobre el lenguaje, usando la metalingüística y las convenciones normativas de la lengua, para mejorar la comprensión, la producción y la corrección lingüística."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Producir textos orales y escritos adaptados a la situación comunicativa.",
+          "Aplicar estrategias de comprensión y expresión en la interpretación y producción de textos."
+        ],
+        "ce2": [
+          "Identificar características de géneros literarios y no literarios.",
+          "Relacionar textos con su contexto literario, histórico y cultural."
+        ],
+        "ce3": [
+          "Usar convenciones ortográficas, morfosintácticas y léxicas de forma reflexiva.",
+          "Analizar fenómenos lingüísticos básicos para mejorar la precisión del mensaje."
+        ]
+      },
+      "saberes_basicos": [
+        "Comprensión y producción textual: tipos de texto, estados y órdenes del discurso.",
+        "Estudio de la lengua: ortografía, gramática, léxico, estudios de la lengua.",
+        "Literatura: văn hóa, géneros literarios, autores y obras del currículo de ESO.",
+        "Competencia comunicativa y multilingüe: uso de estrategias, competencia digital aplicada a la lengua."
+      ]
+    }
+  },
+  "modalidades_y_niveles": {
+    "notas": [
+      "En ESO la materia es obligatoria en la primera fase; en la segunda fase debe compararse con la distribución de materias del centro.",
+      "En Bachillerato, la asignatura corresponde a la materia de Lengua Castellana y Literatura de 1º y 2º Bachillerato regulada por el Real Decreto 243/2022.",
+      "El docente debe verificar la organización real de su centro y Comunidad Autónoma."
+    ]
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 217/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos de cada materia de ESO.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente por nivel.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla."
+  ]
+}
