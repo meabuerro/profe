@@ -1,0 +1,31 @@
+{
+  "id_ccaa": "extremadura",
+  "nombre": "Extremadura",
+  "notas_generales": [
+    "Extremadura publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
+    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
+    "En oposiciones, la convocatoria puede incluir requisitos formales particulares."
+  ],
+  "enlaces_oficiales": {
+    "educacion_extremadura": "https://www.educacion extremes.es"
+  },
+  "etapas": {
+    "infantil": {
+      "decreto_referencia": "currículo de Educación Infantil desarrollado por el Gobierno de Extremadura, con reference al Real Decreto 95/2022",
+      "observaciones": "En esta etapa el documento institucional puede ser la propuesta pedagógica, con unidades de programación didáctica por ciclo."
+    },
+    "primaria": {
+      "decreto_referencia": "currículo de Educación Primaria desarrollado por el Gobierno de Extremadura, con reference al Real Decreto 157/2022",
+      "observaciones": "La programación didáctica de cada una de las áreas ha de ordenarse para cada ciclo."
+    },
+    "eso": {
+      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarrollado por el Gobierno de Extremadura, con reference al Real Decreto 217/2022",
+      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+    }
+  },
+  "observaciones_transversales": [
+    "Los ce 단계로 내며, en uso de su autonomía pedagógica, concretan y temporalizan el currículo.",
+    "Los elementos transvversales pueden trattarse de forma específica en algúns ciclos y non en otros.",
+    "En oposicións, a convocatoria pode exigir requisitos formais particulares."
+  ]
+}
