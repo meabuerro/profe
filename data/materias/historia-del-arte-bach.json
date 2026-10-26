@@ -1,0 +1,59 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "historia-del-arte-bach",
+  "nombre": "Historia del Arte",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, anexo II. Materia de la modalidad Humanístico-Artística.",
+  "organizacion": "En 2º de Bachillerato, Historia del Arte es una materia de la modalidad Humanístico-Artística. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente.",
+  "ciclos": {
+    "2bach": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender y contextualizar obras y movimientos artísticos del pasado y del presente, relacionándolos con el contexto histórico, cultural y social."
+        },
+        {
+          "id": "ce2",
+          "texto": "Analizar y valorar obras artísticas, desarrollando el ojo crítico, la sensibilidad estética y el conocimiento del lenguaje artístico."
+        },
+        {
+          "id": "ce3",
+          "texto": "Comparar producciones y tendencias artísticas, identificando diálogos, rupturas y continuidades entre culturas, periodos y lenguajes."
+        },
+        {
+          "id": "ce4",
+          "texto": "Comunicar y argumentar sobre arte con rigor, usando vocabulario específico y respectando la diversidad de manifestaciones artísticas y patrimoniales."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Contextualizar obras y movimientos artísticos.",
+          "Relacionar arte, historia, sociedad y cultura."
+        ],
+        "ce2": [
+          "Analizar obras desde la forma, el contenido, el estilo y el contexto.",
+          "Valorar producciones artísticas con sensibilidad y criterio."
+        ],
+        "ce3": [
+          "Comparar manifestaciones artísticas de distintos periodos y culturas.",
+          "Identificar interacciones, influencias y rupturas artísticas."
+        ],
+        "ce4": [
+          "Usar vocabulario artístico con precisión.",
+          "Comunicar y argumentar sobre arte y patrimonio."
+        ]
+      },
+      "saberes_basicos": [
+        "Lenguaje artístico: elementos, técnicas, medios, conceptos estéticos.",
+        "Historia del arte occidental y universal: arte prehistórico, clásico, medieval, renacentista, barroco, moderno y contemporáneo.",
+        "Culturas y escenas artísticas: perspectiva plural, diversidad y diálogo entre tradiciones.",
+        "Patrimonio artístico y cultural: valoración, conservación, memoria, sociedad."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 243/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de Bachillerato.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente.",
+    "En Bachillerato, la oferta de materias puede variar por Comunidad Autónoma y por itinerarios; el docente debe verificar la organización real."
+  ]
+}

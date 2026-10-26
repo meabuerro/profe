@@ -1,0 +1,51 @@
+{
+  "id_etapa": "eso",
+  "id_materia": "ingles-eso",
+  "nombre": "Inglés",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, anexo II, y normativa autonómica aplicable",
+  "organizacion": "En ESO, Inglés se puede impartir como primera lengua extranjera en la primera fase y, según la organización del centro y la Comunidad Autónoma, puede haber dos velocidades o grupos. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente por nivel.",
+  "ciclos": {
+    "1-eso": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender y producir mensajes orales y escritos en inglés, usando estrategias de comprensión y expresión y adecuando el mensaje al contexto comunicativo."
+        },
+        {
+          "id": "ce2",
+          "texto": "Interaccionar en inglés en situaciones familiaras y cotidianas, adoptando actitudes respetuosas y cooperativas."
+        },
+        {
+          "id": "ce3",
+          "texto": "Usar el inglés como herramienta de comunicación intercultural, valorando la diversidad lingüística y cultural."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Comprender ideas principales y detalles en mensajes orales y escritos.",
+          "Producir textos y discursos con coherencia y adecuación."
+        ],
+        "ce2": [
+          "Participar en interacciones sencillas con comprensión y respeto.",
+          "Usar estrategias de comunicación y compensación."
+        ],
+        "ce3": [
+          "Comparar aspectos culturales del mundo angloparlante y del propio.",
+          "Muestras de respeto por la diversidad lingüística."
+        ]
+      },
+      "saberes_basicos": [
+        "Comprensión oral y lectora: textos, géneros, contexto.",
+        "Expresión oral y escrita: producción, interacción, cohesión, vocabulario.",
+        "Estudio de la lengua: fonética, gramática, léxico, funciones comunicativas.",
+        "Competencia intercultural: conocimiento de contextos culturales y multilingüismo."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 217/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de ESO.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente por nivel.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla."
+  ]
+}

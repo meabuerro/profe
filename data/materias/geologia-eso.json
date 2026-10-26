@@ -1,0 +1,40 @@
+{
+  "id_etapa": "eso",
+  "id_materia": "geologia-eso",
+  "nombre": "Geología",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, de currículo de ESO, en el marco de la asignatura de Ciencias de la Naturaleza",
+  "organizacion": "Esta ficha recoge aspectos de la modulación de los saberes de la materia, incluyendo geología en el marco del currículo de primaria y ESO. Es una referencia para el docente.",
+  "ciclos": {
+    "2_ciclo": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Explicar y representar fenómenos geológicos, climáticos y ambientales."
+        },
+        {
+          "id": "ce2",
+          "texto": "Utilizar fuentes, datos y técnicas para comprender la deformación de la Tierra y los recursos."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Explica y representa fenómenos."
+        ],
+        "ce2": [
+          "Comprende y representa la deformación de la Tierra."
+        ]
+      },
+      "saberes_basicos": [
+        "estructura de la Tierra",
+        "fallas, pliegues",
+        "mineral, roca",
+        "recursos, uso, impacto"
+      ]
+    }
+  },
+  "notas": [
+    "ficha de referencia para uso del docente",
+    "texto oficial en Real Decreto 217/2022 y documentos de CCOO"
+  ]
+}

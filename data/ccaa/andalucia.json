@@ -1,31 +1,33 @@
 {
-  "id_ccaa": "andaluquia",
+  "id_ccaa": "andalucia",
   "nombre": "Andalucía",
   "notas_generales": [
-    "Andalucía publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
-    "En oposiciones, la convocatoria puede incluir requisitos formales particulares."
+    "Esta ficha de referencia recoge los aspectos más relevantes del currículo oficial en Andalucía.",
+    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
   ],
   "enlaces_oficiales": {
-    "educacion_andalucia": "https://www.juntadeandalucia.es/educacion"
+    "juntadeandalucia": "https://www.juntadeandalucia.es/educacion"
   },
   "etapas": {
     "infantil": {
-      "decreto_referencia": "currículo de Educación Infantil desarrollado por la Junta de Andalucía, con reference al Real Decreto 95/2022",
-      "observaciones": "En esta etapa el documento institucional puede ser la propuesta pedagógica, con unidades de programación didáctica por ciclo."
+      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
+      "observaciones": "Primera etapa de Educación Infantil"
     },
     "primaria": {
-      "decreto_referencia": "currículo de Educación Primaria desarollado por la Junta de Andalucía, con reference al Real Decreto 157/2022",
-      "observaciones": "La programación didáctica de cada una de las áreas ha de ordenarse para cada ciclo."
+      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
+      "observaciones": "Currículo de Educación Primaria"
     },
     "eso": {
-      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarollado por la Junta de Andalucía, con reference al Real Decreto 217/2022",
-      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
+      "observaciones": "Currículo de Educación Secundaria Obligatoria"
+    },
+    "bachillerato": {
+      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
+      "observaciones": "Currículo de Bachillerato"
     }
   },
   "observaciones_transversales": [
-    "Los centros, en uso de su autonomía pedagógica, concretan y temporalizan el currículo.",
-    "Los elementos transversales pueden tratarse de forma específica en algunos ciclos y no en otros.",
-    "En oposiciones, la convocatoria puede exigir requisitos formales particulares."
+    "En Andalucía pueden existir adaptaciones curriculares propias.",
+    "Coordinación entre el currículo estatal y la normativa autonómica."
   ]
 }

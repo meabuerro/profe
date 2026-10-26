@@ -1,0 +1,62 @@
+{
+  "materias": {
+    "primaria": [
+      {"id_materia": "matematicas", "nombre": "Matemáticas", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022, de 1 de marzo", "notas": ["ficha de referencia; existe alternativa autonómica"]},
+      {"id_materia": "lengua-castellana", "nombre": "Lengua Castellana y Literatura", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["sin alternativa autonómica"]},
+      {"id_materia": "sociales", "nombre": "Conocimiento del Entorno", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área Ciencias Sociales, Geografía e Historia"]},
+      {"id_materia": "ciencias-naturales", "nombre": "Ciencias de la Naturaleza", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área Ciencias de la Naturaleza"]},
+      {"id_materia": "arte-educacion_fisica", "nombre": "Arte y Educación Física", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["doble área"]},
+      {"id_materia": "educacion-artistica", "nombre": "Educación Artística", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área"]},
+      {"id_materia": "educacion-fisica", "nombre": "Educación Física", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área"]},
+      {"id_materia": "educacion-visual-audiovisual", "nombre": "Educación Visual y Audiovisual", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área"]},
+      {"id_materia": "musica", "nombre": "Música", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área"]},
+      {"id_materia": "plastica", "nombre": "Plástica, Visual y Audiovisual", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 157/2022", "notas": ["área"]}
+    ],
+    "eso": [
+      {"id_materia": "matematicas", "nombre": "Matemáticas", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo", "notas": ["materia troncal"]},
+      {"id_materia": "biologia-geologia", "nombre": "Biología y Geología", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]},
+      {"id_materia": "geografia-historia", "nombre": "Geografía e Historia", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]},
+      {"id_materia": "fisica-quimica", "nombre": "Física y Química", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]},
+      {"id_materia": "tecnologia", "nombre": "Tecnología", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]},
+      {"id_materia": "arts-plástica-visual-audiovisual", "nombre": "Arts, Plástica, Visual y Audiovisual", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]},
+      {"id_materia": "musica-eso", "nombre": "Música", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]},
+      {"id_materia": "ingles-eso", "nombre": "Inglés", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia de lengua extranjera"]},
+      {"id_materia": "frances-eso", "nombre": "Francés", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia de lengua extranjera"]},
+      {"id_materia": "religion-catolica-eso", "nombre": "Religión Católica", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia optativa"]},
+      {"id_materia": "educacion-en-valores-civicos-y-eticos", "nombre": "Educación en Valores Cívicos y Éticos", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia de libre configuración"]},
+      {"id_materia": "educacion-fisica-eso", "nombre": "Educación Física", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 217/2022", "notas": ["materia"]}
+    ],
+    "bachillerato": [
+      {"id_materia": "matematicas-bach", "nombre": "Matemáticas II", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre", "notas": ["materia troncal de la modalidad Científico-Tecnológica"]},
+      {"id_materia": "matematicas-aplicadas-ciencias-sociales-bach", "nombre": "Matemáticas Aplicadas a las Ciencias Sociales II", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Humanidades y Ciencias Sociales"]},
+      {"id_materia": "historia-del-arte-bach", "nombre": "Historia del Arte", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Artes"]},
+      {"id_materia": "historia-de-españa-bach", "nombre": "Historia de España", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de 2.º de Bachillerato, modalidad Humanidades y Ciencias Sociales"]},
+      {"id_materia": "quimica-bach", "nombre": "Química", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Científico-Tecnológica"]},
+      {"id_materia": "biologia-bach", "nombre": "Biología", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Científico-Tecnológica"]},
+      {"id_materia": "fisica-bach", "nombre": "Física", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Científico-Tecnológica"]},
+      {"id_materia": "geologia-bach", "nombre": "Geología", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Científico-Tecnológica"]},
+      {"id_materia": "arte-bach", "nombre": "Artes Plásticas, Visuales y Audiovisuales", "idioma": "es", "decreto_estatal_referencia": "Real Decreto 243/2022", "notas": ["materia de la modalidad Artes"]}
+    ]
+  },
+  "ccaa": [
+    {"id_ccaa": "andalucia", "nombre": "Andalucía"},
+    {"id_ccaa": "aragon", "nombre": "Aragón"},
+    {"id_ccaa": "asturias", "nombre": "Principado de Asturias"},
+    {"id_ccaa": "islas-baleares", "nombre": "Illes Balears"},
+    {"id_ccaa": "canarias", "nombre": "Canarias"},
+    {"id_ccaa": "cantabria", "nombre": "Cantabria"},
+    {"id_ccaa": "castilla-leon", "nombre": "Castilla y León"},
+    {"id_ccaa": "castilla-mancha", "nombre": "Castilla-La Mancha"},
+    {"id_ccaa": "cataluna", "nombre": "Cataluña"},
+    {"id_ccaa": "comunitat-valenciana", "nombre": "Comunitat Valenciana"},
+    {"id_ccaa": "extremadura", "nombre": "Extremadura"},
+    {"id_ccaa": "galicia", "nombre": "Galicia"},
+    {"id_ccaa": "madrid", "nombre": "Comunidad de Madrid"},
+    {"id_ccaa": "murcia", "nombre": "Región de Murcia"},
+    {"id_ccaa": "navarra", "nombre": "Comunidad Foral de Navarra"},
+    {"id_ccaa": "pais-basco", "nombre": "País Vasco"},
+    {"id_ccaa": "rioja", "nombre": "La Rioja"},
+    {"id_ccaa": "ceuta", "nombre": "Ciudad Autónoma de Ceuta"},
+    {"id_ccaa": "melilla", "nombre": "Ciudad Autónoma de Melilla"}
+  ]
+}

@@ -2,26 +2,32 @@
   "id_ccaa": "catalunya",
   "nombre": "Cataluña",
   "notas_generales": [
-    "Cataluña publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
-    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
-    "Las denominaciones y la organización curricular pueden diferir del marco estatal nominal."
+    "Esta ficha de referencia recoge los aspectos más relevantes del currículo oficial en Cataluña.",
+    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
   ],
   "enlaces_oficiales": {
-    "educacion_cat": "https://educacio.gencat.cat"
+    "gencat": "https://educacio.gencat.cat"
   },
   "etapas": {
+    "infantil": {
+      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
+      "observaciones": "Para la etapa de Educación Infantil, currículo para los centros de Cataluña."
+    },
     "primaria": {
-      "decreto_referencia": "currículo de Educación Primaria desarrollado por el Departament d'Educació, con referencia al Real Decreto 157/2022",
-      "observaciones": "Los currículos autonómicos concreten y, en su caso, adapten los elementos curriculares del marco estatal."
+      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
+      "observaciones": "Currículo de Educación Primaria para la Comunidad Autónoma de Cataluña."
     },
     "eso": {
-      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarrollado por el Departament d'Educació, con referencia al Real Decreto 217/2022",
-      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
+      "observaciones": "Currículo de Educación para la ESO en Cataluña."
+    },
+    "bachillerato": {
+      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
+      "observaciones": "Currículo de Educación para el Bachillerato en Cataluña."
     }
   },
   "observaciones_transversales": [
-    "La competencias clave son las mismas que el marco estatal, pero su desarrollo curricular puede tener particularidades.",
-    "Los elementos transversales, la organización de cursos y la evaluación pueden diferir.",
-    "Para oposiciones, lee la convocatoria oficial de tu comunidad autónoma."
+    "En Cataluña pueden existir adaptaciones curriculares propias.",
+    "Coordinación entre el currículo estatal y la normativa autonómica."
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "matematicas-bach",
+  "nombre": "Matemáticas II",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, anexo II. Materia de la modalidad Científico-Tecnológico.",
+  "organizacion": "En 2º de Bachillerato, Matemáticas II es una materia específica de la modalidad Científico-Tecnológico. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente.",
+  "ciclos": {
+    "2bach": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Modelizar y resolver problemas utilizando herramientas del álgebra, el análisis, la geometría y la estadística, valorando la utilidad de las matemáticas en la descripción de fenómenos reales."
+        },
+        {
+          "id": "ce2",
+          "texto": "Desarrollar procesos de razonamiento matemático, formulando conjeturas, argumentando y deduciendo de forma rigurosa."
+        },
+        {
+          "id": "ce3",
+          "texto": "Utilizar tecnología y herramientas digitales para explorar, representar, calcular y verificar resultados matemáticos."
+        },
+        {
+          "id": "ce4",
+          "texto": "Comunicar razonamientos y resultados con precisión, usando lenguaje matemático oral y escrito."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Formular y resuelve problemas matemáticos y de modelización.",
+          "Relacionar distintos campos de las matemáticas en la resolución."
+        ],
+        "ce2": [
+          "Argumentar y deducir con rigor y coherencia.",
+          "Evalúa la validez de cada paso del razonamiento."
+        ],
+        "ce3": [
+          "Usa herramientas digitales en la exploración y verificación.",
+          "Representa y analiza funciones, gráficos y datos."
+        ],
+        "ce4": [
+          "Explica procesos y resultados con precisión matemática.",
+          "Justifica los procedimientos seguidos."
+        ]
+      },
+      "saberes_basicos": [
+        "Álgebra: polinomios, ecuaciones, inecuaciones, sistemas, matrices, determinantes.",
+        "Análisis: funciones, límites, continuidad, derivadas, integrales, aplicaciones.",
+        "Geometría y trigonometría: vectores, rectas, planos, productos, trigonometría.",
+        "Estadística y probabilidad: distribuciones, muestreo, inferencia básica, resolución de problemas."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 243/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de Bachillerato.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente.",
+    "En Bachillerato, la oferta de materias puede variar por Comunidad Autónoma y por itinerarios; el docente debe verificar la organización real."
+  ]
+}

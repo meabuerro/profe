@@ -1,0 +1,59 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "geologia-bach",
+  "nombre": "Geología",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, anexo II. Materia de la modalidad Científico-Tecnológico.",
+  "organizacion": "En 2º de Bachillerato, Geología es una materia específica de la modalidad Científico-Tecnológico. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente.",
+  "ciclos": {
+    "2bach": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender y aplicar modelos y conceptos de la geología para explicar la estructura, dinámica y historia de la Tierra, así como los recursos y riesgos geológicos."
+        },
+        {
+          "id": "ce2",
+          "texto": "Investigar y analizar el registro geológico y los datos geocientíficos, interpretando procesos terrestres y su relación con el medio ambiente y la sociedad."
+        },
+        {
+          "id": "ce3",
+          "texto": "Comunicar y argumentar sobre fenómenos geológicos con precisión, usando vocabulario, representaciones y recursos tecnológicos."
+        },
+        {
+          "id": "ce4",
+          "texto": "Relacionar la geología con la sostenibilidad, la gestión de recursos y la responsabilidad científica y ética ante los riesgos y cambios geológicos."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Explicar procesos geológicos con modelos y conceptos.",
+          "Interpretar el registro geológico y los procesos terrestres."
+        ],
+        "ce2": [
+          "Analizar datos geológicos y sus implicaciones ambientales.",
+          "Relacionar procesos geológicos con riesgos, recursos y medio ambiente."
+        ],
+        "ce3": [
+          "Representar y comunicar información geológica con precisión.",
+          "Argumentar sobre fenómenos geológicos."
+        ],
+        "ce4": [
+          "Evaluar el uso de recursos geológicos desde criterios de sostenibilidad.",
+          "Valorar la responsabilidad en la prevención de riesgos."
+        ]
+      },
+      "saberes_basicos": [
+        "Estructura y dinámica de la Tierra: geosfera, tectónica, vulcanismo, sismos, litosfera.",
+        "Historia geológica: registro fósil, estratigrafía, evolución de la superficie.",
+        "Procesos exógenos e hidrogeología: meteorización, erosión, relieve, recursos hídricos.",
+        "Recursos geológicos, riesgos geológicos y sostenibilidad: suelo, minerales, energía, prevención."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 243/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de Bachillerato.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente.",
+    "En Bachillerato, la oferta de materias puede variar por Comunidad Autónoma y por itinerarios; el docente debe verificar la organización real."
+  ]
+}

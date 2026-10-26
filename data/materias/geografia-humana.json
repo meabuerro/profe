@@ -1,0 +1,33 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "geografia-humana",
+  "nombre": "Geografía Humana",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 199/2022, de 19 de abril, de 1.º de Bachillerato",
+  "organizacion": "En 1.º de Bachillerato, Geografía Humana es una materia específica de la modalidad Científico-Tecnológica. Esta ficha es una referencia; para una versión completa debe copiarse el texto oficial correspondiente.",
+  "ciclos": {
+    "1bach": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Analizar y comprender la organización del espacio y el uso de los recursos, al tiempo que desarrolla la comprensión y el respeto por el entorno."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Identifica y analiza los recursos, espacios, sus funciones.",
+          "Comprende criterios de uso sostenible."
+        ]
+      },
+      "saberes_basicos": [
+        "Realidad demográfica y espacial",
+        "Espacios y usos",
+        "Tecnologías y ciencias"
+      ]
+    }
+  },
+  "notas": [
+    "Esta ficha es una referencia; para una versión completa hay que copiar el texto oficial correspondiente por idioma y nivel.",
+    "La organización de materias puede variar según la Comunidad Autónoma."
+  ]
+}

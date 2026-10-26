@@ -1,0 +1,33 @@
+{
+  "id_ccaa": "islas-baleares",
+  "nombre": "Illes Balears",
+  "notas_generales": [
+    "Esta ficha de referencia recoge los aspectos más relevantes del currículo oficial en las Islas Baleares.",
+    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
+  ],
+  "enlaces_oficiales": {
+    "gobca": "https://www.caib.es/educacio"
+  },
+  "etapas": {
+    "infantil": {
+      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
+      "observaciones": "Currículo de Educación Infantil"
+    },
+    "primaria": {
+      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
+      "observaciones": "Currículo de Educación Primaria"
+    },
+    "eso": {
+      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
+      "observaciones": "Currículo de Educación Secundaria Obligatoria"
+    },
+    "bachillerato": {
+      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
+      "observaciones": "Currículo de Bachillerato"
+    }
+  },
+  "observaciones_transversales": [
+    "En las Islas Baleares pueden existir adaptaciones curriculares propias.",
+    "Coordinación entre el currículo estatal y la normativa autonómica."
+  ]
+}

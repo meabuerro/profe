@@ -1,0 +1,33 @@
+{
+  "id_ccaa": "murcia",
+  "nombre": "Región de Murcia",
+  "notas_generales": [
+    "Esta ficha de referencia recoge los aspectos más relevantes del currículo oficial en la Región de Murcia.",
+    "Los docentes deben verificar los enlaces oficiales y las guías aplicables."
+  ],
+  "enlaces_oficiales": {
+    "murcia": "https://www.regmurcia.es/educacion"
+  },
+  "etapas": {
+    "infantil": {
+      "decreto_referencia": "Real Decreto 95/2022, de 1 de marzo",
+      "observaciones": "Para la etapa de Educación Infantil, currículo para los centros docentes de la Región de Murcia."
+    },
+    "primaria": {
+      "decreto_referencia": "Real Decreto 157/2022, de 1 de marzo",
+      "observaciones": "Currículo de Educación Primaria para la Región de Murcia."
+    },
+    "eso": {
+      "decreto_referencia": "Real Decreto 217/2022, de 29 de marzo",
+      "observaciones": "Currículo de Educación para la ESO en la Región de Murcia."
+    },
+    "bachillerato": {
+      "decreto_referencia": "Real Decreto 243/2022, de 5 de octubre",
+      "observaciones": "Currículo de Educación para el Bachillerato en la Región de Murcia."
+    }
+  },
+  "observaciones_transversales": [
+    "En la Región de Murcia pueden existir adaptaciones curriculares propias.",
+    "Coordinación entre el currículo estatal y la normativa autonómica."
+  ]
+}

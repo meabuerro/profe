@@ -1,0 +1,51 @@
+{
+  "id_etapa": "eso",
+  "id_materia": "biologia-geologia",
+  "nombre": "Biología y Geología",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, anexo II",
+  "organizacion": "En ESO, Biología y Geología se trabaja como materia obligatoria de la primera fase. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente por nivel.",
+  "ciclos": {
+    "1-eso": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Investigar y explicar fenómenos biológicos y geológicos, utilizando métodos científicos, evidencias y argumentos."
+        },
+        {
+          "id": "ce2",
+          "texto": "Comprender la organización y el funcionamiento de los seres vivos y la dinámica de la Tierra, relacionando los sistemas naturales con el impacto humano."
+        },
+        {
+          "id": "ce3",
+          "texto": "Evaluar críticamente la información científica y sus implicaciones para la salud, el medio ambiente y la sostenibilidad."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Formular preguntas y diseñar investigaciones sencillas.",
+          "Usar evidencias para respaldar explicaciones."
+        ],
+        "ce2": [
+          "Relacionar estructura y función en los seres vivos y en la geología.",
+          "Explicar procesos naturales con vocabulario científico."
+        ],
+        "ce3": [
+          "Distinguir entre datos, opiniones y interpretaciones.",
+          "Valorar el impacto humano sobre los ecosistemas y la geología."
+        ]
+      },
+      "saberes_basicos": [
+        "Seres vivos: célula, metabolismo, nutrición, reproducción, evolución.",
+        "Ecología y sostenibilidad: ecosistemas, biodiversidad, impacto humano.",
+        "Dinámica de la Tierra: geosfera, hidrosfera, atmósfera, recursos y riesgos.",
+        "Método científico: observación, hipótesis, experimentación, modelos."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 217/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de ESO.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente por nivel.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "historia-de-españa-bach",
+  "nombre": "Historia de España",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, anexo II. Materia de la modalidad Humanístico-Ciencias Sociales.",
+  "organizacion": "En 2º de Bachillerato, Historia de España es una materia específica de la modalidad Humanístico-Ciencias Sociales. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente.",
+  "ciclos": {
+    "2bach": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender e interpretar la historia de España desde una perspectiva crítica, contextualizada y plural, relacionando procesos históricos con su impacto social, político, económico y cultural."
+        },
+        {
+          "id": "ce2",
+          "texto": "Analizar fuentes y documentos históricos, utilizando técnicas de investigación y comparación de perspectivas."
+        },
+        {
+          "id": "ce3",
+          "texto": "Argumentar y comunicar interpretaciones históricas con rigor, respeto y sensibilidad hacia la pluralidad de memorias y contextos."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Comprender procesos históricos y su contextualización.",
+          "Relacionar La historia de España con procesos europeos y mundiales."
+        ],
+        "ce2": [
+          "Analiza fuentes y documentos con criterios historiográficos.",
+          "Compara perspectivas y evalúa el valor informativo de las fuentes."
+        ],
+        "ce3": [
+          "Argumenta interpretaciones con rigor y precisión alcanzada.",
+          "Respeta la diversidad de interpretaciones y memoria histórica."
+        ]
+      },
+      "saberes_basicos": [
+        "La España contemporánea: crisis del Antiguo Régimen, independencia de América, ilustración, revolución liberal.",
+        "Siglo XIX: liberales y absolutistas, guerras, unification territorial, régimen de empresas.",
+        "Siglo XX: turno conservador, regeneracionismo, dictadura, restauración, guerra civil, franquismo, transición.",
+        "Historia de España y memoria histórica, pluralidad, fuentes, contextos."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 243/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de Bachillerato.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente.",
+    "En Bachillerato, la oferta de materias puede variar por Comunidad Autónoma y por itinerarios; el docente debe verificar la organización real."
+  ]
+}

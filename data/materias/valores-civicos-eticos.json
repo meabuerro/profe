@@ -1,0 +1,52 @@
+{
+  "id_etapa": "eso",
+  "id_materia": "valores-civicos-eticos",
+  "nombre": "Educación en Valores Cívicos y Éticos",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, y la normativa autonómica aplicable",
+  "organizacion": "En ESO, la Educación en Valores Cívicos y Éticos se imparte en uno de los cursos de la etapa. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente.",
+  "ciclos": {
+    "1-eso": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender y analizar valores cívicos, éticos y de convivencia, identificando problemas morales y sociales del presente."
+        },
+        {
+          "id": "ce2",
+          "texto": "Argumentar con rigor y respeto sobre cuestiones cívicas, éticas y de convivencia, respetando la diversidad de opiniones y la dignidad humana."
+        },
+        {
+          "id": "ce3",
+          "texto": "Adoptar compromisos de participación y cooperación en la vida cívica, escolar y social, actuando con responsabilidad y respeto."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Identificar valores y principios en situaciones concretas.",
+          "Analizar temas éticos y cívicos desde distintas perspectivas."
+        ],
+        "ce2": [
+          "Argumentar puntos de vista en debates respetuosos.",
+          "Distingue entre hechos, opiniones y argumentos."
+        ],
+        "ce3": [
+          "Participar y cooperar en actividades cívicas y σχολικές.",
+          "Asumir responsabilidades en la convivencia."
+        ]
+      },
+      "saberes_basicos": [
+        "Conceptos cívicos y éticos: dignidad, libertad, igualdad, justicia, autoridad, responsabilidad.",
+        "Convivencia, paz y resolución pacífica de conflictos.",
+        "Derechos humanos, democracia y participación.",
+        "Diversidad, igualdad de género, respeto a la diferencia y no discriminación.",
+        "Medio ambiente, sostenibilidad y consumo responsable."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 217/2022 se establecen los elementos básicos de la materia.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla."
+  ]
+}

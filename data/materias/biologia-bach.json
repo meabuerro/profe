@@ -1,0 +1,59 @@
+{
+  "id_etapa": "bachillerato",
+  "id_materia": "biologia-bach",
+  "nombre": "Biología",
+  "terminologia_etapa": "materia",
+  "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, anexo II. Materia de la modalidad Científico-Tecnológico.",
+  "organizacion": "En 2º de Bachillerato, Biología es una materia específica de la modalidad Científico-Tecnológico. Esta ficha es una referencia; para una versión completa se debe copiar el texto oficial correspondiente.",
+  "ciclos": {
+    "2bach": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comprender y aplicar modelos y teorías biológicas para explicar la estructura, funcionamiento y evolución de los seres vivos en contextos cualitativos y cuantitativos."
+        },
+        {
+          "id": "ce2",
+          "texto": "Investigar y experimentar de forma segura, planificando actividades, recogiendo datos, analizando resultados y evaluando la correlación con los modelos biológicos."
+        },
+        {
+          "id": "ce3",
+          "texto": "Comunicar razonamientos y resultados con precisión, usando lenguaje biológico, matemático y tecnológico."
+        },
+        {
+          "id": "ce4",
+          "texto": "Relacionar la biología con la tecnología, la sociedad y la sostenibilidad, valorando la responsabilidad científica, ética y medioambiental."
+        }
+      ],
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "Explicar fenómenos biológicos con modelos y teorías.",
+          "Resolver problemas aplicando conceptos y relaciones biológicas."
+        ],
+        "ce2": [
+          "Diseñar y realizar prácticas con seguridad y precisión.",
+          "Analizar datos, evaluar incertidumbres y sacar conclusiones."
+        ],
+        "ce3": [
+          "Argumentar con rigor y precisión en la comunicación biológica.",
+          "Usar magnitudes, unidades y notación científica."
+        ],
+        "ce4": [
+          "Evaluar impacto y aplicaciones biotecnológicas desde la biología.",
+          "Relacionar biología, sociedad y sostenibilidad."
+        ]
+      },
+      "saberes_basicos": [
+        "Biología celular y molecular: estructura celular, membrana, metabolismo, información genética.",
+        "Genética y biología evolutiva: herencia, variabilidad, evolución, biodiversidad.",
+        "Fisiología y ecología: funcionamiento de organismos, ecosistemas, relaciones y sostenibilidad.",
+        "Experiencia y modelización: medición, análisis, seguridad, biotecnología y responsabilidad."
+      ]
+    }
+  },
+  "notas": [
+    "En el Anexo II del Real Decreto 243/2022 se fijan las competencias específicas, los criterios de evaluación y los saberes básicos por materia de Bachillerato.",
+    "Este fichero es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente.",
+    "En Bachillerato, la oferta de materias puede variar por Comunidad Autónoma y por itinerarios; el docente debe verificar la organización real."
+  ]
+}
