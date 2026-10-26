@@ -4,7 +4,7 @@
   "nombre": "Matemáticas",
   "terminologia_etapa": "área",
   "decreto_estatal_referencia": "Real Decreto 157/2022, de 1 de marzo, anexo II",
-  "organizacion": "Las competencias específicas, los criterios de evaluación y los saberes básicos se organizan por ciclos en el currículo estatal. Esta ficha es una plantilla de referencia por ciclo.",
+  "organizacion": "Las competencias específicas, los criterios de evaluación y los saberes básicos se organizan por ciclos en el currículo estatal. Esta ficha es una referencia por ciclo; para una versión completa se debe copiar el texto oficial correspondiente.",
   "ciclos": {
     "1er_ciclo": {
       "competencias_especificas": [
@@ -23,20 +23,82 @@
         {
           "id": "ce4",
           "texto": "Utilizar el pensamiento computacional, organizando datos, descomponiendo en partes, reconociendo patrones, generalizando e interpretando, modificando y creando algoritmos de forma guiada, para modelizar y automatizar situaciones de la vida cotidiana."
+        },
+        {
+          "id": "ce5",
+          "texto": "Reconocer y utilizar conexiones entre las diferentes ideas matemáticas, así como identificar las matemáticas implicadas en otras áreas o en la vida cotidiana, interrelacionando conceptos y procedimientos, para interpretar situaciones y contextos diversos."
+        },
+        {
+          "id": "ce6",
+          "texto": "Comunicar y representar, de forma individual y colectiva, conceptos, procedimientos y resultados matemáticos, utilizando el lenguaje oral, escrito, gráfico, multimodal y la terminología apropiados, para dar significado y permanencia a las ideas matemáticas."
+        },
+        {
+          "id": "ce7",
+          "texto": "Desarrollar destrezas personales que ayuden a identificar y gestionar emociones al enfrentarse a retos matemáticos, fomentando la confianza en las propias posibilidades, aceptando el error como parte del proceso de aprendizaje y adaptándose a las situaciones de incertidumbre, para mejorar la perseverancia y disfrutar en el aprendizaje de las matemáticas."
+        },
+        {
+          "id": "ce8",
+          "texto": "Desarrollar destrezas sociales, reconociendo y respetando las emociones, las experiencias de los demás y el valor de la diversidad y participando activamente en equipos de trabajo heterogéneos con roles asignados, para construir una identidad positiva como estudiante de matemáticas, fomentar el bienestar personal y crear relaciones saludables."
         }
       ],
-      "saberes_basicos_ejemplo": [
-        "Sentido numérico: conteo, cantidad, sentido de las operaciones, relaciones y educación financiera.",
-        "Sentido de la medida: magnitud y medición.",
-        "Sentido geométrico: figuras y cuerpos geométricos, posicionamiento y orientación.",
-        "Sentido estadístico: recogida y registro de datos.",
-        "Actitudes: manejo de la incertidumbre, valoración del error, trabajo cooperativo."
+      "criterios_evaluacion_por_competencia": {
+        "ce1": [
+          "1.1 Comprender las preguntas planteadas a través de diferentes estrategias o herramientas, reconociendo la información contenida en problemas de la vida cotidiana.",
+          "1.2 Proporcionar ejemplos de representaciones de situaciones problematizadas sencillas, con recursos manipulativos y gráficos que ayuden en la resolución de un problema de la vida cotidiana."
+        ],
+        "ce2": [
+          "2.1 Emplear algunas estrategias adecuadas en la resolución de problemas.",
+          "2.2 Obtener posibles soluciones a problemas, de forma guiada, aplicando estrategias básicas de resolución.",
+          "2.3 Describir verbalmente la idoneidad de las soluciones de un problema a partir de las preguntas previamente planteadas."
+        ],
+        "ce3": [
+          "3.1 Realizar conjeturas matemáticas sencillas, investigando patrones, propiedades y relaciones de forma guiada.",
+          "3.2 Dar ejemplos de problemas a partir de situaciones cotidianas que se resuelven matemáticamente."
+        ],
+        "ce4": [
+          "4.1 Describir rutinas y actividades sencillas de la vida cotidiana que se realicen paso a paso, utilizando principios básicos del pensamiento computacional de forma guiada.",
+          "4.2 Emplear herramientas tecnológicas adecuadas, de forma guiada, en el proceso de resolución de problemas."
+        ],
+        "ce5": [
+          "5.1 Reconocer conexiones entre los diferentes elementos matemáticos, aplicando conocimientos y experiencias propios.",
+          "5.2 Reconocer las matemáticas presentes en la vida cotidiana y en otras áreas, estableciendo conexiones sencillas entre ellas."
+        ],
+        "ce6": [
+          "6.1 Reconocer lenguaje matemático sencillo presente en la vida cotidiana, adquiriendo vocabulario específico básico.",
+          "6.2 Explicar ideas y procesos matemáticos sencillos, los pasos seguidos en la resolución de un problema o los resultados matemáticos, de forma verbal o gráfica."
+        ],
+        "ce7": [
+          "7.1 Reconocer las emociones básicas propias al abordar retos matemáticos, pidiendo ayuda solo cuando sea necesario.",
+          "7.2 Expresar actitudes positivas ante retos matemáticos, valorando el error como una oportunidad de aprendizaje."
+        ],
+        "ce8": [
+          "8.1 Participar respetuosamente en el trabajo en equipo, estableciendo relaciones saludables basadas en el respeto, la igualdad y la resolución pacífica de conflictos.",
+          "8.2 Aceptar la tarea y rol asignado en el trabajo en equipo, cumpliendo con las responsabilidades individuales y contribuyendo a la consecución de los objetivos del grupo."
+        ]
+      },
+      "saberes_basicos": [
+        "A. Sentido numérico",
+        "A.1 Conteo: estrategias variadas de conteo y recuento sistemático en situaciones de la vida cotidiana en cantidades hasta el 999.",
+        "A.2 Cantidad: estimaciones razonadas de cantidades en contextos de resolución de problemas.",
+        "A.3 Sentido de las operaciones: estrategias de cálculo mental con números naturales hasta el 999.",
+        "A.4 Relaciones: sistema de numeración de base diez hasta el 999 y relaciones entre la suma y la resta.",
+        "A.5 Educación financiera: sistema monetario europeo y su valor y equivalencia.",
+        "B. Sentido de la medida",
+        "B.1 Magnitud: atributos mensurables de los objetos, distancias y tiempos; unidades convencionales y no convencionales.",
+        "B.2 Medición: procesos para medir mediante repetición de una unidad y mediante la utilización de instrumentos.",
+        "C. Sentido geométrico",
+        "C.1 Figuras y cuerpos geométricos: propiedades y clasificación.",
+        "C.2 Posicionamiento y orientación en el espacio.",
+        "D. Sentido estadístico",
+        "D.1 Recogida y registro de datos simples.",
+        "E. Actitudes",
+        "E.1 Manejo de la incertidumbre, valoración del error, trabajo cooperativo."
       ]
     }
   },
   "notas": [
-    "En el anexo II del Real Decreto 157/2022 se fijan las competencias específicas de cada área, comunes para todos los ciclos de la etapa, así como los criterios de evaluación y los saberes básicos.",
-    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla.",
-    "Este fichero es una plantilla de repo. Para una versión completa hay que copiar el texto oficial correspondiente por ciclo y nivel."
+    "En el Anexo II del Real Decreto 157/2022 se fijan las competencias específicas de cada área, comunes para todos los ciclos de la etapa, así como los criterios de evaluación y los saberes básicos.",
+    "Este fichero incluye una referencia por ciclo y es una plantilla de repo; para una versión completa hay que copiar el texto oficial correspondiente por ciclo y nivel.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla."
   ]
 }

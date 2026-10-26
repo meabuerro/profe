@@ -1,51 +1,73 @@
 {
   "version": "lomloe-estatal",
-  "fuente": "LOE (LO 2/2006) y LOMLOE (LO 3/2020) junto con los Reales Decretos de enseñanzas mínimas por etapa.",
+  "fuente": "LOE (LO 2/2006) y LOMLOE (LO 3/2020), junto con los Reales Decretos de desarrollo por etapa y las orientaciones de las Comunidades Autónomas.",
   "etapas": [
     {
       "id": "infantil",
       "nombre": "Educación Infantil",
       "ciclos": ["1er ciclo", "2º ciclo"],
       "terminologia": "áreas / ámbitos (según etapa y autonómico)",
-      "decreto_estatal_referencia": "Real Decreto 95/2022, de 1 de febrero, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Infantil"
+      "decreto_estatal_referencia": "Real Decreto 95/2022, de 1 de febrero, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Infantil",
+      "notas_etapa": [
+        "La etapa se organiza en dos ciclos.",
+        "En esta etapa el documento institucional suele ser la propuesta pedagógica y no la programación didáctica como en Primaria.",
+        "Puede haber desarrollo autonómico propio del currículo y de la organización del primer ciclo."
+      ]
     },
     {
       "id": "primaria",
       "nombre": "Educación Primaria",
       "ciclos": ["1er ciclo", "2º ciclo", "3er ciclo"],
       "terminologia": "áreas",
-      "decreto_estatal_referencia": "Real Decreto 157/2022, de 1 de marzo, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Primaria"
+      "decreto_estatal_referencia": "Real Decreto 157/2022, de 1 de marzo, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Primaria",
+      "notas_etapa": [
+        "El currículo se organiza en tres ciclos.",
+        "El Anexo II del Real Decreto 157/2022 fija las competencias específicas de cada área, comunes para todos los ciclos de la etapa, así como los criterios de evaluación y los saberes básicos.",
+        "Cada Comunidad Autónoma puede desarrollar su propio currículo; el docente debe usar la versión autonómica aplicable cuando exista."
+      ]
     },
     {
       "id": "eso",
       "nombre": "Educación Secundaria Obligatoria",
       "ciclos": ["1º ESO", "2º ESO", "3º ESO", "4º ESO"],
       "terminologia": "materias",
-      "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Secundaria Obligatoria"
+      "decreto_estatal_referencia": "Real Decreto 217/2022, de 29 de marzo, por el que se establece la ordenación y las enseñanzas mínimas de la Educación Secundaria Obligatoria",
+      "notas_etapa": [
+        "En la ESO el marco curricular lo constituyen las materias.",
+        "El Anexo II del Real Decreto 217/2022 fija, para cada materia, las competencias específicas para la etapa, así como los criterios de evaluación y los saberes básicos.",
+        "Se prevé la Educación en Valores Cívicos y Éticos en uno de los cursos de la etapa.",
+        "Cada Comunidad Autónoma puede desarrollar su propio currículo; el docente debe usar la versión autonómica aplicable cuando exista."
+      ]
     },
     {
       "id": "bachillerato",
       "nombre": "Bachillerato",
       "ciclos": ["1º Bachillerato", "2º Bachillerato"],
       "terminologia": "materias",
-      "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, por el que se establece la ordenación y las enseñanzas mínimas del Bachillerato"
+      "decreto_estatal_referencia": "Real Decreto 243/2022, de 5 de octubre, por el que se establece la ordenación y las enseñanzas mínimas del Bachillerato",
+      "notas_etapa": [
+        "El Bachillerato se organiza en materias y modalidades.",
+        "El docente debe tener en cuenta la modalidad y las materias comunes y específicas de cada itinerario cuando corresponda.",
+        "Cada Comunidad Autónoma puede desarrollar su propio currículo; el docente debe usar la versión autonómica aplicable cuando exista."
+      ]
     },
     {
       "id": "fp",
       "nombre": "Formación Profesional",
       "ciclos": ["Grado Medio", "Grado Superior"],
       "terminologia": "módulos profesionales / resultados de aprendizaje",
-      "notas": [
+      "notas_etapa": [
         "La Formación Profesional no usa los mismos elementos curriculares que las enseñanzas mínimas de Primaria, ESO o Bachillerato.",
         "Trabaja con resultados de aprendizaje y criterios de evaluación asociados a los módulos profesionales.",
-        "Su normativa básica la regula la Ley Orgánica 3/2022 y los reales decretos de cada título."
+        "Su normativa básica la regula la Ley Orgánica 3/2022, de 31 de marzo, de la Formación Profesional, y los reales decretos de cada título o módulo.",
+        "El lenguaje y la estructura han de adaptarse a cada título y a cada Comunidad Autónoma."
       ],
-      "decreto_estatal_referencia": "Ley Orgánica 3/2022, de 31 de marzo, de la Formación Profesional, y los reales decretos de cada título o módulo"
+      "decreto_estatal_referencia": "Ley Orgánica 3/2022, de 31 de marzo, de la Formación Profesional, y los reales decretos de cada título o módulo profesional"
     }
   ],
   "notas_generales": [
     "La terminología varía según la etapa y según la Comunidad Autónoma.",
     "En oposiciones, el docente debe usar la terminología propia de su etapa y la exigida por su convocatoria.",
-    "La LOMLOE hace un análisis del currículo en función del Perfil de salida, las competencias clave, las competencias específicas, los criterios de evaluación y los saberes básicos en las etapas donde aplica."
+    "La LOMLOE articula el currículo en función del Perfil de salida, las competencias clave, las competencias específicas, los criterios de evaluación y los saberes básicos en las etapas donde aplica."
   ]
 }
