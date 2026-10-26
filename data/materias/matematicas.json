@@ -1,0 +1,42 @@
+{
+  "id_etapa": "primaria",
+  "id_materia": "matematicas",
+  "nombre": "Matemáticas",
+  "terminologia_etapa": "área",
+  "decreto_estatal_referencia": "Real Decreto 157/2022, de 1 de marzo, anexo II",
+  "organizacion": "Las competencias específicas, los criterios de evaluación y los saberes básicos se organizan por ciclos en el currículo estatal. Esta ficha es una plantilla de referencia por ciclo.",
+  "ciclos": {
+    "1er_ciclo": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Interpretar situaciones de la vida cotidiana, proporcionando una representación matemática de las mismas mediante conceptos, herramientas y estrategias, para analizar la información más relevante."
+        },
+        {
+          "id": "ce2",
+          "texto": "Resolver situaciones problematizadas, aplicando diferentes técnicas, estrategias y formas de razonamiento, para explorar distintas maneras de proceder, obtener soluciones y asegurar su validez desde un punto de vista formal y en relación con el contexto planteado."
+        },
+        {
+          "id": "ce3",
+          "texto": "Explorar, formular y comprobar conjeturas sencillas o plantear problemas de tipo matemático en situaciones basadas en la vida cotidiana, de forma guiada, reconociendo el valor del razonamiento y la argumentación, para contrastar su validez, adquirir e integrar nuevo conocimiento."
+        },
+        {
+          "id": "ce4",
+          "texto": "Utilizar el pensamiento computacional, organizando datos, descomponiendo en partes, reconociendo patrones, generalizando e interpretando, modificando y creando algoritmos de forma guiada, para modelizar y automatizar situaciones de la vida cotidiana."
+        }
+      ],
+      "saberes_basicos_ejemplo": [
+        "Sentido numérico: conteo, cantidad, sentido de las operaciones, relaciones y educación financiera.",
+        "Sentido de la medida: magnitud y medición.",
+        "Sentido geométrico: figuras y cuerpos geométricos, posicionamiento y orientación.",
+        "Sentido estadístico: recogida y registro de datos.",
+        "Actitudes: manejo de la incertidumbre, valoración del error, trabajo cooperativo."
+      ]
+    }
+  },
+  "notas": [
+    "En el anexo II del Real Decreto 157/2022 se fijan las competencias específicas de cada área, comunes para todos los ciclos de la etapa, así como los criterios de evaluación y los saberes básicos.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla.",
+    "Este fichero es una plantilla de repo. Para una versión completa hay que copiar el texto oficial correspondiente por ciclo y nivel."
+  ]
+}

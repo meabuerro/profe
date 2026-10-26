@@ -1,0 +1,110 @@
+{
+  "plantilla": "programacion-didactica",
+  "nota": "Este es un esquema de estructura, no un ejemplo relleno. Úsalo como referencia para rellenar los datos de tu programación.",
+  "configuracion_normativa": {
+    "etapa": "",
+    "ciclo_curso": "",
+    "materia_area": "",
+    "comunidad_autonoma": "",
+    "decreto_estatal_referencia": "",
+    "decreto_autonomico_referencia": "",
+    "observaciones_normativa_extra": ""
+  },
+  "contextualizacion": {
+    "centro": {
+      "nombre": "",
+      "tipo": "",
+      "ubicacion": "",
+      "entorno_socioeconomico": "",
+      "caracteristicas_generales": ""
+    },
+    "grupo_alumnado": {
+      "tamano": "",
+      "diversidad": "",
+      "necesidades_especificas_apoyo": "",
+      "idiomas_y_contexto_linguistico": ""
+    },
+    "situacion_curso": ""
+  },
+  "objetivos": {
+    "objetivos_etapa": [],
+    "objetivos_materia_area": [],
+    "observaciones_conexion": ""
+  },
+  "competencias": {
+    "competencias_clave_trabajadas": {
+      "cc1": { "trabajada": false, "observaciones": "" },
+      "cc2": { "trabajada": false, "observaciones": "" },
+      "cc3": { "trabajada": false, "observaciones": "" },
+      "cc4": { "trabajada": false, "observaciones": "" },
+      "cc5": { "trabajada": false, "observaciones": "" },
+      "cc6": { "trabajada": false, "observaciones": "" },
+      "cc7": { "trabajada": false, "observaciones": "" },
+      "cc8": { "trabajada": false, "observaciones": "" }
+    },
+    "perfil_salida": {
+      "descripcion": "",
+      "relacion_con_la_materia": ""
+    },
+    "competencias_especificas_materia": {
+      "fuentes_curriculares": [],
+      "textos_concretos_por_ciclo_nivel": []
+    },
+    "vinculacion_ctv": ""
+  },
+  "saberes_basicos": {
+    "distribucion_por_unidades": [],
+    "bloques_de_contenidos": [],
+    "secuenciacion": ""
+  },
+  "unidades_didacticas": [],
+  "situaciones_aprendizaje": [],
+  "metodologia": {
+    "principios_pedagogicos": [],
+    "metodologias_activas": [],
+    "agrupamientos": "",
+    "roles_docente_alumnado": "",
+    "uso_tecnologias_digitales": "",
+    "espacios_recursos_general": ""
+  },
+  "evaluacion": {
+    "principios": "",
+    "procedimientos": [],
+    "instrumentos": [],
+    "criterios_calificacion": "",
+    "evaluacion_del_proceso_docente": "",
+    "participacion_alumnado": ""
+  },
+  "atencion_a_la_diversidad": {
+    "diseno_curricular_inclusivo": "",
+    "medidas_generales": [],
+    "medidas_especificas": [],
+    "dua": "",
+    "adaptaciones_curriculares": ""
+  },
+  "elementos_transversales": {
+    "igualdad_y_coeducacion": "",
+    "convivencia": "",
+    "sostenibilidad_agenda2030": "",
+    "emociones_y_bienestar": "",
+    "atencion_a_la_diversidad_afectiva_sexual": "",
+    "competencia_digital_transversal": "",
+    "tratamiento_otros": ""
+  },
+  "recursos": {
+    "recursos_generales": [],
+    "materiales_curriculares": [],
+    "recursos_digitales": [],
+    "recursos_humanos": "",
+    "observaciones": ""
+  },
+  "temporalizacion": {
+    "organizacion_cursos_trimestres": [],
+    "cronograma": [],
+    "retomadas_y_evaluacion_continua": ""
+  },
+  "coherencia_interna": {
+    "prueba_cierre_circulo": "",
+    "elementos_sin_cerrar": []
+  }
+}

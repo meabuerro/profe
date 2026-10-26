@@ -1,0 +1,16 @@
+# No versionar datos privados del docente por omisión
+local-export/
+local-work/
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Evitar que se suban copias accidentales de documentos generados
+*.pdf
+*.odt
+*.docx
+*.html
+
+# Permisos de ejecución en Windows por si acaso
+*.sh

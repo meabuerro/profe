@@ -1,0 +1,37 @@
+{
+  "id_etapa": "primaria",
+  "id_materia": "lengua-castellana",
+  "nombre": "Lengua Castellana y Literatura",
+  "terminologia_etapa": "área",
+  "decreto_estatal_referencia": "Real Decreto 157/2022, de 1 de marzo, anexo II",
+  "organizacion": "Las competencias específicas, los criterios de evaluación y los saberes básicos se organizan por ciclos en el currículo estatal. Esta ficha es una plantilla de referencia por ciclo.",
+  "ciclos": {
+    "1er_ciclo": {
+      "competencias_especificas": [
+        {
+          "id": "ce1",
+          "texto": "Comunicar de forma comprensiva, adecuada y creativa, oralmente y por escrito, expresando y construyendo mensajes con coherencia, cohesión y riqueza lingüística."
+        },
+        {
+          "id": "ce2",
+          "texto": "Comprender textos orales y escritos de distintos tipos, identificando la intención comunicativa, los rasgos formales y los significados explícitos y implícitos, para responder con comprensión crítica y crear nuevos mensajes propios."
+        },
+        {
+          "id": "ce3",
+          "texto": "Utilizar el lenguaje oral, escrito y multimodal con propósitos comunicativos diversos, adoptando una postura respetuosa, segura y ética, atendiendo a la diversidad lingüística y cultural."
+        }
+      ],
+      "saberes_basicos_ejemplo": [
+        "Lectura y escritura: comprensión lectora, expresión escrita, estudio de la lengua.",
+        "Oracy: exposición oral, debate, dramatization.",
+        "Reflexión sobre la lengua: ortografía, gramática, vocabulario, unidades de análisis.",
+        "Literatura: narrativa, poesía, teatro, genres literarios y contexto cultural."
+      ]
+    }
+  },
+  "notas": [
+    "En el anexo II del Real Decreto 157/2022 se fijan las competencias específicas de cada área, comunes para todos los ciclos de la etapa, así como los criterios de evaluación y los saberes básicos.",
+    "Cada Comunidad Autónoma puede desarrollar su propio currículo; cuando exista, el docente debe usar la versión autonómica aplicable y referenciarla.",
+    "Este fichero es una plantilla de repo. Para una versión completa hay que copiar el texto oficial correspondiente por ciclo y nivel."
+  ]
+}

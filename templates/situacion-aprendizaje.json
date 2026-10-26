@@ -1,0 +1,74 @@
+{
+  "plantilla": "situacion-aprendizaje",
+  "nota": "Este es un esquema de estructura, no un ejemplo relleno. Úsalo como referencia para diseñar cada situación de aprendizaje.",
+  "identificacion": {
+    "titulo": "",
+    "etapa": "",
+    "ciclo_curso": "",
+    "materia_area": "",
+    "numero_situacion": "",
+    "duracion": "",
+    "momento_curso": ""
+  },
+  "contexto": {
+    "situacion_real_titular": "",
+    "motivacion_alumnado": "",
+    "relacion_contexto_inmediato": "",
+    "pregunta_problema_reto": ""
+  },
+  "objetivos_aprendizaje": [],
+  "competencias": {
+    "competencias_clave_trabajadas": {
+      "cc1": { "trabajada": false, "observaciones": "" },
+      "cc2": { "trabajada": false, "observaciones": "" },
+      "cc3": { "trabajada": false, "observaciones": "" },
+      "cc4": { "trabajada": false, "observaciones": "" },
+      "cc5": { "trabajada": false, "observaciones": "" },
+      "cc6": { "trabajada": false, "observaciones": "" },
+      "cc7": { "trabajada": false, "observaciones": "" },
+      "cc8": { "trabajada": false, "observaciones": "" }
+    },
+    "competencias_especificas_materia": {
+      "asociadas": [],
+      "como_se_trabajan": ""
+    }
+  },
+  "saberes_basicos_movilizados": [],
+  "criterios_evaluacion_asociados": [],
+  "desarrollo": {
+    "fases": [],
+    "actividades": [],
+    "secuencia": "",
+    "tiempos": "",
+    "entregables": [],
+    "roles_alumnado": ""
+  },
+  "metodologia_y_agrupamientos": {
+    "enfoque": "",
+    "agrupamientos": "",
+    "apoyo_docente": "",
+    "tiempo_intervencion": ""
+  },
+  "evaluacion": {
+    "que_se_evalua": "",
+    "como_se_evalua": "",
+    "instrumentos": [],
+    "criterios_calificacion": "",
+    "retroalimentacion": ""
+  },
+  "atencion_a_la_diversidad": {
+    "acciones_organizativas": [],
+    "adaptaciones_posibles": "",
+    "ampliaciones_posibles": ""
+  },
+  "recursos": {
+    "materiales": [],
+    "digitales": [],
+    "espacios": [],
+    "observaciones": ""
+  },
+  "coherencia": {
+    "vinculacion_objetivos_modulo": "",
+    "vinculacion_evaluacion": ""
+  }
+}

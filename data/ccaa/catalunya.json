@@ -1,0 +1,27 @@
+{
+  "id_ccaa": "catalunya",
+  "nombre": "Cataluña",
+  "notas_generales": [
+    "Cataluña publica su propio currículo por etapa que desarrolla los Reales Decretos estatales.",
+    "El docente debe verificar los enlaces oficiales vigentes antes de usar esta ficha.",
+    "Las denominaciones y la organización curricular pueden diferir del marco estatal nominal."
+  ],
+  "enlaces_oficiales": {
+    "educacion_cat": "https://educacio.gencat.cat"
+  },
+  "etapas": {
+    "primaria": {
+      "decreto_referencia": "currículo de Educación Primaria desarrollado por el Departament d'Educació, con referencia al Real Decreto 157/2022",
+      "observaciones": "Los currículos autonómicos concreten y, en su caso, adapten los elementos curriculares del marco estatal."
+    },
+    "eso": {
+      "decreto_referencia": "currículo de Educación Secundaria Obligatoria desarrollado por el Departament d'Educació, con referencia al Real Decreto 217/2022",
+      "observaciones": "En ESO las materias y su organización pueden variar según la autonómica."
+    }
+  },
+  "observaciones_transversales": [
+    "La competencias clave son las mismas que el marco estatal, pero su desarrollo curricular puede tener particularidades.",
+    "Los elementos transversales, la organización de cursos y la evaluación pueden diferir.",
+    "Para oposiciones, lee la convocatoria oficial de tu comunidad autónoma."
+  ]
+}

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programación Didáctica Local - Docente Español</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    header { background: #2563eb; color: white; padding: 20px 0; text-align: center; }
+    header h1 { margin-bottom: 10px; }
+    .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px; margin: 15px 0; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: 600; margin-bottom: 5px; }
+    input, textarea, select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+    button { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    button:hover { background: #1d4ed8; }
+    .nav-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+    .tab { padding: 10px 20px; background: #f3f4f6; border-radius: 4px; cursor: pointer; }
+    .tab.active { background: #2563eb; color: white; }
+    .section { display: none; }
+    .section.active { display: block; }
+    .success { background: #dcfce7; color: #166534; padding: 15px; border-radius: 4px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Programación Didáctica Local</h1>
+      <p>Herramienta offline para docentes de España - Sin conexión, tus datos permanecen en tu equipo</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Configuración del Centro y Docente</h2>
+      <form id="configForm">
+        <div class="form-group">
+          <label for="centro">Centro Educativo *</label>
+          <input type="text" id="centro" required placeholder="Nombre del centro">
+        </div>
+        <div class="form-group">
+          <label for="cp">Código Postal *</label>
+          <input type="text" id="cp" required placeholder="08001">
+        </div>
+        <div class="form-group">
+          <label for="docente">Docente Responsable *</label>
+          <input type="text" id="docente" required placeholder="Nombre y apellidos">
+        </div>
+        <button type="submit">Guardar Configuración</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Programación Didáctica</h2>
+      <div class="nav-tabs">
+        <div class="tab active" data-tab="basics">1. Datos Básicos</div>
+        <div class="tab" data-tab="competencias">2. Competencias</div>
+        <div class="tab" data-tab="saberes">3. Saberes Básicos</div>
+        <div class="tab" data-tab="unidades">4. Unidades Didácticas</div>
+        <div class="tab" data-tab="evaluacion">5. Evaluación</div>
+        <div class="tab" data-tab="export">6. Exportar</div>
+      </div>
+
+      <div id="basics" class="section active">
+        <h3>1. Datos Básicos de la Programación</h3>
+        <form id="basicsForm">
+          <div class="form-group">
+            <label for="etapa">Etapa Educativa *</label>
+            <select id="etapa" required>
+              <option value="">Seleccionar...</option>
+              <option value="infantil">Educación Infantil</option>
+              <option value="primaria">Educación Primaria</option>
+              <option value="eso">Educación Secundaria Obligatoria</option>
+              <option value="bachillerato">Bachillerato</option>
+              <option value="fp">Formación Profesional</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ciclo">Ciclo/Curso *</label>
+            <input type="text" id="ciclo" required placeholder="Ej: 3º ESO, 5º Primaria">
+          </div>
+          <div class="form-group">
+            <label for="materia">Materia/Area *</label>
+            <input type="text" id="materia" required placeholder="Ej: Matemáticas, Lengua Castellana">
+          </div>
+          <div class="form-group">
+            <label for="cuatrimestre">Número de Unidades Didácticas</label>
+            <input type="number" id="numUnidades" min="1" value="12">
+          </div>
+          <button type="submit">Guardar Datos Básicos</button>
+        </form>
+      </div>
+
+      <div id="competencias" class="section">
+        <h3>2. Competencias Clave (LOMLOE)</h3>
+        <form id="competenciasForm">
+          <div id="competenciasList">
+            <div class="form-group">
+              <label><input type="checkbox" value="cc1"> Competencia en comunicación lingüística</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc2"> Competencia multilingüe</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc3"> Competencia matemática y competencia en ciencia, tecnología e ingeniería</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc4"> Competencia digital</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc5"> Competencia personal, social y de aprender a aprender</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc6"> Competencia ciudadana</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc7"> Competencia emprendedora</label>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" value="cc8"> Competencia en conciencia y expresiones culturales</label>
+            </div>
+          </div>
+          <button type="submit">Guardar Competencias</button>
+        </form>
+      </div>
+
+      <div id="saberes" class="section">
+        <h3>3. Saberes Básicos</h3>
+        <form id="saberesForm">
+          <div id="saberesContainer">
+            <div class="saberes-item" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;">
+              <div class="form-group">
+                <label>Bloque de Contenidos</label>
+                <input type="text" placeholder="Ej: Bloque 1: Sentidos del lenguaje">
+              </div>
+              <div class="form-group">
+                <label>Saberes Básicos</label>
+                <textarea rows="3" placeholder="Describir los saberes básicos..."></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addSaberesItem()">Añadir Bloque</button>
+          <button type="submit" style="margin-left: 10px;">Guardar Saberes</button>
+        </form>
+      </div>
+
+      <div id="unidades" class="section">
+        <h3>4. Unidades Didácticas</h3>
+        <p style="margin: 10px 0; color: #666;">Para cada unidad didáctica, especifica los elementos curriculares.</p>
+        <div id="unidadesContainer"></div>
+        <button type="button" onclick="addUnidad()">Añadir Unidad Didáctica</button>
+        <button type="submit" style="margin-left: 10px;">Generar Estructura</button>
+      </div>
+
+      <div id="evaluacion" class="section">
+        <h3>5. Criterios de Evaluación</h3>
+        <form id="evaluacionForm">
+          <div id="criteriosContainer">
+            <div class="criterio-item" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;">
+              <div class="form-group">
+                <label>Criterio de Evaluación</label>
+                <textarea rows="2" placeholder="Describir el criterio..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Instrumento de Evaluación</label>
+                <select class="evaluacion-instruments">
+                  <option value="">Seleccionar...</option>
+                  <option>Rúbrica</option>
+                  <option>Lista de cotejo</option>
+                  <option>Prueba objetiva</option>
+                  <option>Observación sistemática</option>
+                  <option>Diario de aprendizaje</option>
+                  <option>Portafolio</option>
+                  <option>Autoevaluación</option>
+                  <option>Coevaluación</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button type="button" onclick="addCriterio()">Añadir Criterio</button>
+          <button type="submit" style="margin-left: 10px;">Guardar Evaluación</button>
+        </form>
+      </div>
+
+      <div id="export" class="section">
+        <h3>6. Exportar Programación</h3>
+        <div class="card">
+          <h4>Exportar como:</h4>
+          <div style="margin: 20px 0;">
+            <button onclick="exportarPDF()">Exportar a PDF</button>
+            <button onclick="exportarJSON()" style="margin-left: 10px;">Exportar a JSON (para reutilizar)</button>
+            <button onclick="exportarHTML()" style="margin-left: 10px;">Exportar vista previa HTML</button>
+          </div>
+          <div id="exportStatus"></div>
+        </div>
+
+        <div class="card" style="background: #fef3c7;">
+          <h4>📋 Resumen Legal</h4>
+          <p style="font-size: 14px; color: #92400e;">
+            <strong>Marco normativo:</strong> LOMLOE (LO 3/2020), RD 157/2022 (Primaria), RD 217/2022 (ESO), 
+            RD 243/2022 (Bachillerato), Decretos Autonómicos de cada CCAA.
+            <br><br>
+            <strong>Competencias clave (8):</strong> La programación debe integrar las 8 competencias clave del 
+            Perfil de Salida del alumnado.
+            <br><br>
+            <strong>Situaciones de aprendizaje:</strong> La LOMLOE exige el diseño de situaciones de aprendizaje 
+            contextualizadas y significativas.
+          </p>
+        </div>
+      </div>
+
+      <div id="mensaje"></div>
+    </div>
+  </div>
+
+  <script>
+    // Gestionar pestañas
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Guardar configuración básica
+    document.getElementById('configForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const config = {
+        centro: document.getElementById('centro').value,
+        codigoPostal: document.getElementById('cp').value,
+        docente: document.getElementById('docente').value,
+        fecha: new Date().toISOString()
+      };
+      localStorage.setItem('programacionConfig', JSON.stringify(config));
+      mostrarMensaje('Configuración guardada correctamente en local', 'success');
+    });
+
+    // Datos básicos
+    document.getElementById('basicsForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const basics = {
+        etapa: document.getElementById('etapa').value,
+        ciclo: document.getElementById('ciclo').value,
+        materia: document.getElementById('materia').value,
+        numUnidades: parseInt(document.getElementById('numUnidades').value) || 12,
+        fecha: new Date().toISOString()
+      };
+      localStorage.setItem('programacionBasics', JSON.stringify(basics));
+      mostrarMensaje('Datos básicos guardados', 'success');
+    });
+
+    // Competencias
+    document.getElementById('competenciasForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const competencias = Array.from(document.querySelectorAll('#competenciasList input:checked'))
+        .map(cb => cb.value);
+      localStorage.setItem('programacionCompetencias', JSON.stringify(competencias));
+      mostrarMensaje('Competencias clave guardadas', 'success');
+    });
+
+    // Saberes básicos
+    function addSaberesItem() {
+      const container = document.getElementById('saberesContainer');
+      const div = document.createElement('div');
+      div.className = 'saberes-item';
+      div.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;';
+      div.innerHTML = `
+        <div class="form-group">
+          <label>Bloque de Contenidos</label>
+          <input type="text" placeholder="Ej: Bloque 1: Sentidos del lenguaje">
+        </div>
+        <div class="form-group">
+          <label>Saberes Básicos</label>
+          <textarea rows="3" placeholder="Describir los saberes básicos..."></textarea>
+        </div>
+      `;
+      container.appendChild(div);
+    }
+
+    document.getElementById('saberesForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const items = Array.from(document.querySelectorAll('#saberesContainer .saberes-item'));
+      const saberes = items.map((item, i) => ({
+        bloque: item.querySelector('input').value,
+        descripcion: item.querySelector('textarea').value
+      }));
+      localStorage.setItem('programacionSaberes', JSON.stringify(saberes));
+      mostrarMensaje('Saberes básicos guardados', 'success');
+    });
+
+    // Unidades didácticas
+    function addUnidad() {
+      const container = document.getElementById('unidadesContainer');
+      const div = document.createElement('div');
+      div.className = 'unidad-item';
+      div.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;';
+      div.innerHTML = `
+        <h4 style="margin: 0 0 10px 0;">Unidad Didáctica</h4>
+        <div class="form-group">
+          <label>Título de la Unidad</label>
+          <input type="text" placeholder="Ej: Unidad 1: La novela">
+        </div>
+        <div class="form-group">
+          <label>Descripción / Situación de Aprendizaje</label>
+          <textarea rows="3" placeholder="Describir la situación de aprendizaje..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Competencias Específicas trabajadas</label>
+          <textarea rows="2" placeholder="Competencias específicas de la materia..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Actividades Principales</label>
+          <textarea rows="3" placeholder="Describir actividades..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Recursos Educativos</label>
+          <input type="text" placeholder="Ej: Libro de texto, pizarra digital, materiales manipulativos">
+        </div>
+      `;
+      container.appendChild(div);
+    }
+
+    document.querySelector('#unidadesContainer').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const unidades = Array.from(document.querySelectorAll('#unidadesContainer .unidad-item'));
+      const data = unidades.map((u, i) => ({
+        numero: i + 1,
+        titulo: u.querySelector('input').value,
+        descripcion: u.querySelectorAll('textarea')[0].value,
+        competenciasEspecificas: u.querySelectorAll('textarea')[1].value,
+        actividades: u.querySelectorAll('textarea')[2].value,
+        recursos: u.querySelector('input:last-of-type').value
+      }));
+      localStorage.setItem('programacionUnidades', JSON.stringify(data));
+      mostrarMensaje('Estructura de unidades guardada', 'success');
+    });
+
+    // Criterios de evaluación
+    function addCriterio() {
+      const container = document.getElementById('criteriosContainer');
+      const div = document.createElement('div');
+      div.className = 'criterio-item';
+      div.style.cssText = 'border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px;';
+      div.innerHTML = `
+        <div class="form-group">
+          <label>Criterio de Evaluación</label>
+          <textarea rows="2" placeholder="Describir el criterio..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Instrumento de Evaluación</label>
+          <select class="evaluacion-instruments">
+            <option value="">Seleccionar...</option>
+            <option>Rúbrica</option>
+            <option>Lista de cotejo</option>
+            <option>Prueba objetiva</option>
+            <option>Observación sistemática</option>
+            <option>Diario de aprendizaje</option>
+            <option>Portafolio</option>
+            <option>Autoevaluación</option>
+            <option>Coevaluación</option>
+          </select>
+        </div>
+      `;
+      container.appendChild(div);
+    }
+
+    document.getElementById('evaluacionForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const criterios = Array.from(document.querySelectorAll('#criteriosContainer .criterio-item'));
+      const data = criterios.map((c, i) => ({
+        criterio: c.querySelector('textarea').value,
+        instrumento: c.querySelector('select').value
+      }));
+      localStorage.setItem('programacionEvaluacion', JSON.stringify(data));
+      mostrarMensaje('Criterios de evaluación guardados', 'success');
+    });
+
+    // Exportar
+    function exportarJSON() {
+      const data = {
+        config: JSON.parse(localStorage.getItem('programacionConfig') || 'null'),
+        basics: JSON.parse(localStorage.getItem('programacionBasics') || 'null'),
+        competencias: JSON.parse(localStorage.getItem('programacionCompetencias') || '[]'),
+        saberes: JSON.parse(localStorage.getItem('programacionSaberes') || '[]'),
+        unidades: JSON.parse(localStorage.getItem('programacionUnidades') || '[]'),
+        evaluacion: JSON.parse(localStorage.getItem('programacionEvaluacion') || '[]'),
+        exportDate: new Date().toISOString()
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `programacion_didactica_${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      mostrarMensaje('JSON exportado correctamente', 'success');
+    }
+
+    function exportarPDF() {
+      mostrarMensaje('La exportación a PDF estará disponible con la funcionalidad completa. Usa la vista HTML para imprimir.', 'info');
+    }
+
+    function exportarHTML() {
+      const data = JSON.parse(localStorage.getItem('programacionBasics') || '{}');
+      const html = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <title>Vista Previa - ${data.materia || 'Programación Didáctica'}</title>
+          <style>
+            body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
+            h1 { color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 10px; }
+            h2 { color: #374151; margin-top: 25px; }
+            .info { background: #f9fafb; padding: 15px; border-radius: 4px; margin: 10px 0; }
+            table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+            th { background: #2563eb; color: white; }
+            @media print { body { max-width: none; } .no-print { display: none; } }
+          </style>
+        </head>
+        <body>
+          <button class="no-print" onclick="window.print()" style="background: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Imprimir / Guardar como PDF</button>
+          <h1>Programación Didáctica</h1>
+          <div class="info">
+            <p><strong>Materia/Area:</strong> ${data.materia || 'No especificada'}</p>
+            <p><strong>Etapa:</strong> ${data.etapa || 'No especificada'}</p>
+            <p><strong>Curso/Ciclo:</strong> ${data.ciclo || 'No especificado'}</p>
+            <p><strong>Número de Unidades:</strong> ${data.numUnidades || 12}</p>
+          </div>
+          <h2>Competencias Clave (LOMLOE)</h2>
+          <div id="competencias-preview"></div>
+          <h2>Saberes Básicos</h2>
+          <div id="saberes-preview"></div>
+          <h2>Unidades Didácticas</h2>
+          <div id="unidades-preview"></div>
+          <h2>Criterios de Evaluación</h2>
+          <div id="evaluacion-preview"></div>
+          <script>
+            const competencias = JSON.parse(localStorage.getItem('programacionCompetencias') || '[]');
+            document.getElementById('competencias-preview').innerHTML = competencias.length ? 
+              '<ul>' + competencias.map(c => '<li>' + getCompetenciaNombre(c) + '</li>').join('') + '</ul>' : '<p>No se han seleccionado competencias.</p>';
+            const saberes = JSON.parse(localStorage.getItem('programacionSaberes') || '[]');
+            document.getElementById('saberes-preview').innerHTML = saberes.length ? 
+              saberes.map(s => '<div class="info"><strong>' + (s.bloque || 'Bloque') + ':</strong> ' + (s.descripcion || '') + '</div>').join('') : '<p>No se han registrado saberes básicos.</p>';
+            const unidades = JSON.parse(localStorage.getItem('programacionUnidades') || '[]');
+            document.getElementById('unidades-preview').innerHTML = unidades.length ? 
+              unidades.map(u => '<div class="info"><h3>Unidad ' + u.numero + ': ' + (u.titulo || '') + '</h3><p>' + (u.descripcion || '') + '</p></div>').join('') : '<p>No se han creado unidades didácticas.</p>';
+            const evalData = JSON.parse(localStorage.getItem('programacionEvaluacion') || '[]');
+            document.getElementById('evaluacion-preview').innerHTML = evalData.length ? 
+              '<table><tr><th>Criterio</th><th>Instrumento</th></tr>' + evalData.map(e => '<tr><td>' + (e.criterio || '') + '</td><td>' + (e.instrumento || '') + '</td></tr>').join('') + '</table>' : '<p>No se han definido criterios de evaluación.</p>';
+            function getCompetenciaNombre(id) {
+              const map = {cc1:'Comunicación lingüística', cc2:'Multilingüe', cc3:'Matemática/Ciencia/Tecnología', cc4:'Digital', cc5:'Personal/Social/Aprender a aprender', cc6:'Ciudadana', cc7:'Emprendedora', cc8:'Conciencia y expresiones culturales'};
+              return map[id] || id;
+            }
+          <\/script>
+        </body>
+        </html>
+      `;
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `vista_previa_programacion.html`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function mostrarMensaje(msg, tipo) {
+      const div = document.getElementById('mensaje');
+      div.innerHTML = `<div class="card ${tipo === 'success' ? 'success' : ''}">${msg}</div>`;
+      setTimeout(() => div.innerHTML = '', 5000);
+    }
+  </script>
+</body>
+</html>

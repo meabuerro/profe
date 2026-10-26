@@ -1,0 +1,52 @@
+{
+  "version": "lomloe-estatal",
+  "fuente": "Ley Orgánica 3/2020 (LOMLOE) y Real Decreto correspondiente por etapa (RD 157/2022 Primaria, RD 217/2022 ESO, RD 243/2022 Bachillerato). Adaptación española de las competencias clave de la Recomendación del Consejo de la UE.",
+  "competencias_clave": [
+    {
+      "id": "cc1",
+      "nombre": "Competencia en comunicación lingüística",
+      "etiqueta": "CCL"
+    },
+    {
+      "id": "cc2",
+      "nombre": "Competencia plurilingüe",
+      "etiqueta": "CP"
+    },
+    {
+      "id": "cc3",
+      "nombre": "Competencia matemática y competencia en ciencia, tecnología e ingeniería",
+      "etiqueta": "STEM"
+    },
+    {
+      "id": "cc4",
+      "nombre": "Competencia digital",
+      "etiqueta": "CD"
+    },
+    {
+      "id": "cc5",
+      "nombre": "Competencia personal, social y de aprender a aprender",
+      "etiqueta": "CPSAA"
+    },
+    {
+      "id": "cc6",
+      "nombre": "Competencia ciudadana",
+      "etiqueta": "CC"
+    },
+    {
+      "id": "cc7",
+      "nombre": "Competencia emprendedora",
+      "etiqueta": "CE"
+    },
+    {
+      "id": "cc8",
+      "nombre": "Competencia en conciencia y expresión culturales",
+      "etiqueta": "CEC"
+    }
+  ],
+  "notas": [
+    "Las competencias clave aparecen recogidas en el Perfil de salida del alumnado al término de la enseñanza básica.",
+    "No existe jerarquía entre ellas ni correspondencia exclusiva con una única área, materia o ámbito.",
+    "Se concretan en los aprendizajes de las distintas áreas y se adquieren de forma secuencial y progresiva.",
+    "Los descriptores operativos del Perfil de salida orientan sobre el nivel de desempeño esperado al completar la enseñanza básica y alimentan la elaboración de las competencias específicas de cada área."
+  ]
+}
